@@ -1,3 +1,5 @@
+import video from 'modules/video';
+
 let test = () => {
-	console.log('Hello World');
+	console.log(video);
 };
