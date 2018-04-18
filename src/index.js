@@ -1,7 +1,7 @@
 import video from './modules/video.js';
 
-let test = () => {
+let dart = () => {
 	console.log(video);
 };
 
-test();
+window.$GLOBAL_OBJECT$ = dart;

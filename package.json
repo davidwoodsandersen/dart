@@ -10,7 +10,7 @@
   "license": "ISC",
   "vars": {
     "globalVarName": "dart",
-    "fileName": "test"
+    "fileName": "dart"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -19,6 +19,7 @@
     "browserify": "^16.2.0",
     "gulp": "^3.9.1",
     "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
     "gulp-uglify": "^3.0.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
