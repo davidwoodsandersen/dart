@@ -1,5 +1,7 @@
-import video from 'modules/video';
+import video from './modules/video.js';
 
 let test = () => {
 	console.log(video);
 };
+
+test();
