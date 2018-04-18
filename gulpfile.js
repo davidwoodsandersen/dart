@@ -5,6 +5,7 @@ const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const buffer = require('vinyl-buffer');
 const source = require('vinyl-source-stream');
+const config = require('./package.json');
 
 gulp.task('default', function() {
 	var bundler = browserify('src/index.js');
@@ -16,7 +17,7 @@ gulp.task('default', function() {
 		.pipe(buffer())
 		.pipe(uglify())
 		.pipe(rename({
-			basename: 'dart',
+			basename: config.vars.fileName,
 			extname: '.js'
 		}))
 		.pipe(gulp.dest('./lib'));
