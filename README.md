@@ -1,4 +1,4 @@
-# Dart
+# :dart: Dart
 
 Dart is an all-purpose JavaScript video player.
 
