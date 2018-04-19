@@ -12,6 +12,7 @@ class Video {
 		this.id = props.id;
 		this.parent = props.parent;
 		this.source = props.source;
+		this.attributes = props.attributes;
 
 		this.element = document.createElement('video');
 
@@ -20,6 +21,8 @@ class Video {
 				this.element.setAttribute(attr, props.attributes[attr]);
 			}
 		}
+
+		this.element.setAttribute('src', this.source);
 	}
 
 	/**
@@ -34,6 +37,24 @@ class Video {
 		catch (e) {
 			throw new Error(e);
 		}
+	}
+
+	/**
+	 * @memberof Video
+	 * @method play
+	 * @description Plays the video.
+	 */
+	play() {
+		this.element.play();
+	}
+
+	/**
+	 * @memberof Video
+	 * @method pause
+	 * @description Pauses the video.
+	 */
+	pause() {
+		this.element.pause();
 	}
 }
 

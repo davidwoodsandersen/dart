@@ -36,6 +36,8 @@ Generates a new instance of the Video class.
 * [Video](#Video)
     * [new Video(props)](#new_Video_new)
     * [.init()](#Video.init)
+    * [.play()](#Video.play)
+    * [.pause()](#Video.pause)
 
 <a name="new_Video_new"></a>
 
@@ -51,5 +53,17 @@ The interface for a video player instance.
 
 ### Video.init()
 Adds the video player element to the DOM.
+
+**Kind**: static method of <code>[Video](#Video)</code>  
+<a name="Video.play"></a>
+
+### Video.play()
+Plays the video.
+
+**Kind**: static method of <code>[Video](#Video)</code>  
+<a name="Video.pause"></a>
+
+### Video.pause()
+Pauses the video.
 
 **Kind**: static method of <code>[Video](#Video)</code>  
