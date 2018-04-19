@@ -1,7 +1,9 @@
-import video from './modules/video.js';
+import Video from './modules/video.js';
 
-let dart = () => {
-	console.log(video);
-};
+class Dart {
+	create(config) {
+		return new Video(config);
+	}
+}
 
-window.$GLOBAL_OBJECT$ = dart;
+window.$GLOBAL_OBJECT$ = new Dart();
