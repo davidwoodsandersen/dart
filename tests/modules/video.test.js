@@ -66,3 +66,17 @@ test('Video.pause pauses the video file', () => {
 
 	expect(HTMLMediaElement.prototype.pause).toHaveBeenCalledTimes(1);
 });
+
+test('Video.on calls EventsManager.subscribe with both arguments', () => {
+	var video = new Video({
+		source: testLinks.video,
+		parent: document.body
+	});
+	var eventHandler = function() {};
+
+	jest.spyOn(video.eventsManager, 'subscribe');
+
+	video.on('play', eventHandler);
+
+	expect(video.eventsManager.subscribe).toBeCalledWith('play', eventHandler);
+});
