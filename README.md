@@ -13,4 +13,8 @@ Take the following steps to download:
 
 ### Documentation
 
-Documentation for the player API is programmatically generated through [JSDoc](http://usejsdoc.org/). Read it [here](docs/api.md).
+Documentation for the player API is programmatically generated through [JSDoc](http://usejsdoc.org/). Read it [here](docs/api.md). Update the docs by running `npm run docs`.
+
+### Testing
+
+Unit tests are implemented using [Jest](https://facebook.github.io/jest/). Run `npm run test` to launch the test suite.Â

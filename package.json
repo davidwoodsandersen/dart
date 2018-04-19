@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "gulp"
+    "build": "gulp",
+    "test": "jest",
+    "docs": "gulp docs"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +25,7 @@
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.6.1",
     "gulp-uglify": "^3.0.0",
+    "jest": "^22.4.3",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }
