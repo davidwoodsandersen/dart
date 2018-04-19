@@ -10,6 +10,8 @@ Take the following steps to download:
 - You can customize the file name and global variable name in [package.json](package.json).
 - Run `npm run build` to generate a compiled static asset in the `lib` folder.
 - Import the asset file into your project.
+- You can also run `npm run publish` to compile the asset and copy it directly to your project:
+	- `npm run publish ~/my/project/directory`
 
 ### Documentation
 
@@ -17,4 +19,4 @@ Documentation for the player API is programmatically generated through [JSDoc](h
 
 ### Testing
 
-Unit tests are implemented using [Jest](https://facebook.github.io/jest/). Run `npm run test` to launch the test suite.Â
+Unit tests are implemented using [Jest](https://facebook.github.io/jest/). Run `npm run test` to launch the test suite.

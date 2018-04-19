@@ -6,7 +6,8 @@
   "scripts": {
     "build": "gulp",
     "test": "jest",
-    "docs": "gulp docs"
+    "docs": "gulp docs",
+    "publish": "npm run build && node publish.js"
   },
   "author": "",
   "license": "ISC",
