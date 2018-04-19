@@ -4,6 +4,9 @@
 <dt><a href="#module_events">events</a></dt>
 <dd><p>Hosts all event-related code and the EventsManager class.</p>
 </dd>
+<dt><a href="#module_video">video</a></dt>
+<dd><p>Hosts the Video class.</p>
+</dd>
 </dl>
 
 ## Classes
@@ -22,8 +25,6 @@ Hosts all event-related code and the EventsManager class.
 * [events](#module_events)
     * [~EventsManager](#module_events..EventsManager)
         * [new EventsManager()](#new_module_events..EventsManager_new)
-    * [~Video](#module_events..Video)
-        * [new Video(props)](#new_module_events..Video_new)
     * [~validEvents](#module_events..validEvents) : <code>array</code>
     * [~isValidEvent(event)](#module_events..isValidEvent)
 
@@ -35,20 +36,6 @@ Hosts all event-related code and the EventsManager class.
 
 #### new EventsManager()
 Coordinates internal video player events.
-
-<a name="module_events..Video"></a>
-
-### events~Video
-**Kind**: inner class of <code>[events](#module_events)</code>  
-<a name="new_module_events..Video_new"></a>
-
-#### new Video(props)
-The interface for a video player instance.
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| props | <code>object</code> | Configuration options for the player. |
 
 <a name="module_events..validEvents"></a>
 
@@ -67,6 +54,30 @@ recognized by the player.
 | Param | Type | Description |
 | --- | --- | --- |
 | event | <code>string</code> | The event being assessed. |
+
+<a name="module_video"></a>
+
+## video
+Hosts the Video class.
+
+
+* [video](#module_video)
+    * [~Video](#module_video..Video)
+        * [new Video(props)](#new_module_video..Video_new)
+
+<a name="module_video..Video"></a>
+
+### video~Video
+**Kind**: inner class of <code>[video](#module_video)</code>  
+<a name="new_module_video..Video_new"></a>
+
+#### new Video(props)
+The interface for a video player instance.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| props | <code>object</code> | Configuration options for the player. |
 
 <a name="Dart"></a>
 

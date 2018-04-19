@@ -1,3 +1,8 @@
+/**
+ * @module video
+ * @description Hosts the Video class.
+ */
+
 import EventsManager from './events.js';
 
 /**
