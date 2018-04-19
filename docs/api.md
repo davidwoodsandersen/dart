@@ -4,6 +4,9 @@
 <dt><a href="#module_events">events</a></dt>
 <dd><p>Hosts all event-related code and the EventsManager class.</p>
 </dd>
+<dt><a href="#module_helpers">helpers</a></dt>
+<dd><p>Hosts all helper functions.</p>
+</dd>
 <dt><a href="#module_video">video</a></dt>
 <dd><p>Hosts the Video class.</p>
 </dd>
@@ -55,6 +58,17 @@ recognized by the player.
 | --- | --- | --- |
 | event | <code>string</code> | The event being assessed. |
 
+<a name="module_helpers"></a>
+
+## helpers
+Hosts all helper functions.
+
+<a name="module_helpers..DOMHelpers"></a>
+
+### helpers~DOMHelpers : <code>object</code>
+DOM-related helper functions.
+
+**Kind**: inner namespace of <code>[helpers](#module_helpers)</code>  
 <a name="module_video"></a>
 
 ## video
@@ -64,6 +78,7 @@ Hosts the Video class.
 * [video](#module_video)
     * [~Video](#module_video..Video)
         * [new Video(props)](#new_module_video..Video_new)
+    * [~defaultPlayerDimensions](#module_video..defaultPlayerDimensions) : <code>object</code>
 
 <a name="module_video..Video"></a>
 
@@ -79,6 +94,13 @@ The interface for a video player instance.
 | --- | --- | --- |
 | props | <code>object</code> | Configuration options for the player. |
 
+<a name="module_video..defaultPlayerDimensions"></a>
+
+### video~defaultPlayerDimensions : <code>object</code>
+The default player dimensions if neither
+"fitContainer" nor "dimensions" are passed on instantiation.
+
+**Kind**: inner constant of <code>[video](#module_video)</code>  
 <a name="Dart"></a>
 
 ## Dart
