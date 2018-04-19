@@ -7,7 +7,7 @@
  * @namespace DOMHelpers
  * @description DOM-related helper functions.
  */
-var DOMHelpers = {
+const DOMHelpers = {
 	/**
 	 * @memberof DOMHelpers
 	 * @method getWidth
