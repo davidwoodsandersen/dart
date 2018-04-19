@@ -1,4 +1,13 @@
-export default class Video {
+/**
+ * @class
+ * @description The interface for a video player instance.
+ */
+class Video {
+	/**
+	 * @memberof Video
+	 * @constructor
+	 * @param {object} props - Configuration options for the player.
+	 */
 	constructor(props) {
 		this.id = props.id;
 		this.parent = props.parent;
@@ -13,6 +22,11 @@ export default class Video {
 		}
 	}
 
+	/**
+	 * @memberof Video
+	 * @method init
+	 * @description Adds the video player element to the DOM.
+	 */
 	init() {
 		try {
 			this.parent.appendChild(this.element);
@@ -22,3 +36,5 @@ export default class Video {
 		}
 	}
 }
+
+export default Video;
