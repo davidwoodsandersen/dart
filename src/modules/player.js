@@ -1,6 +1,6 @@
 /**
- * @module video
- * @description Hosts the Video class.
+ * @module player
+ * @description Hosts the Player class.
  */
 
 import EventsManager from './events.js';
@@ -14,7 +14,7 @@ const { getWidth, getHeight } = DOMHelpers;
  * @description The default player dimensions if neither
  * "fitContainer" nor "dimensions" are passed on instantiation.
  */
-const defaultPlayerDimensions = {
+const defaultDimensions = {
 	width: 900,
 	height: 500
 };
@@ -23,9 +23,9 @@ const defaultPlayerDimensions = {
  * @class
  * @description The interface for a video player instance.
  */
-class Video {
+class Player {
 	/**
-	 * @memberof Video
+	 * @memberof Player
 	 * @constructor
 	 * @param {object} props - Configuration options for the player.
 	 */
@@ -35,7 +35,7 @@ class Video {
 		this.source = props.source;
 		this.attributes = props.attributes;
 		this.fitContainer = props.fitContainer || false;
-		this.dimensions = props.dimensions || defaultPlayerDimensions;
+		this.dimensions = props.dimensions || defaultDimensions;
 
 		this.element = document.createElement('video');
 
@@ -54,7 +54,7 @@ class Video {
 	}
 
 	/**
-	 * @memberof Video
+	 * @memberof Player
 	 * @method init
 	 * @description Adds the video player element to the DOM.
 	 */
@@ -68,7 +68,7 @@ class Video {
 	}
 
 	/**
-	 * @memberof Video
+	 * @memberof Player
 	 * @method destroy
 	 * @description Removes the video element from the DOM.
 	 */
@@ -77,7 +77,7 @@ class Video {
 	}
 
 	/**
-	 * @memberof Video
+	 * @memberof Player
 	 * @method setDimensions
 	 * @description Set the width and height of the video player.
 	 */
@@ -100,7 +100,7 @@ class Video {
 	}
 
 	/**
-	 * @memberof Video
+	 * @memberof Player
 	 * @method on
 	 * @description Bind an event listener to the video player.
 	 */
@@ -109,7 +109,7 @@ class Video {
 	}
 
 	/**
-	 * @memberof Video
+	 * @memberof Player
 	 * @method play
 	 * @description Plays the video.
 	 */
@@ -121,7 +121,7 @@ class Video {
 	}
 
 	/**
-	 * @memberof Video
+	 * @memberof Player
 	 * @method pause
 	 * @description Pauses the video.
 	 */
@@ -133,4 +133,4 @@ class Video {
 	}
 }
 
-export default Video;
+export default Player;

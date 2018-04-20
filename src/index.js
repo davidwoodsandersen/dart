@@ -1,4 +1,4 @@
-import Video from './modules/video.js';
+import Player from './modules/player.js';
 
 /**
  * @class
@@ -9,10 +9,10 @@ class Dart {
 	/**
 	 * @memberof Dart
 	 * @method create
-	 * @description Generates a new instance of the Video class.
+	 * @description Generates a new instance of the Player class.
 	 */
 	create(config) {
-		return new Video(config);
+		return new Player(config);
 	}
 }
 

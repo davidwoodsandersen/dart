@@ -7,8 +7,8 @@
 <dt><a href="#module_helpers">helpers</a></dt>
 <dd><p>Hosts all helper functions.</p>
 </dd>
-<dt><a href="#module_video">video</a></dt>
-<dd><p>Hosts the Video class.</p>
+<dt><a href="#module_player">player</a></dt>
+<dd><p>Hosts the Player class.</p>
 </dd>
 </dl>
 
@@ -69,24 +69,24 @@ Hosts all helper functions.
 DOM-related helper functions.
 
 **Kind**: inner namespace of <code>[helpers](#module_helpers)</code>  
-<a name="module_video"></a>
+<a name="module_player"></a>
 
-## video
-Hosts the Video class.
+## player
+Hosts the Player class.
 
 
-* [video](#module_video)
-    * [~Video](#module_video..Video)
-        * [new Video(props)](#new_module_video..Video_new)
-    * [~defaultPlayerDimensions](#module_video..defaultPlayerDimensions) : <code>object</code>
+* [player](#module_player)
+    * [~Player](#module_player..Player)
+        * [new Player(props)](#new_module_player..Player_new)
+    * [~defaultDimensions](#module_player..defaultDimensions) : <code>object</code>
 
-<a name="module_video..Video"></a>
+<a name="module_player..Player"></a>
 
-### video~Video
-**Kind**: inner class of <code>[video](#module_video)</code>  
-<a name="new_module_video..Video_new"></a>
+### player~Player
+**Kind**: inner class of <code>[player](#module_player)</code>  
+<a name="new_module_player..Player_new"></a>
 
-#### new Video(props)
+#### new Player(props)
 The interface for a video player instance.
 
 
@@ -94,13 +94,13 @@ The interface for a video player instance.
 | --- | --- | --- |
 | props | <code>object</code> | Configuration options for the player. |
 
-<a name="module_video..defaultPlayerDimensions"></a>
+<a name="module_player..defaultDimensions"></a>
 
-### video~defaultPlayerDimensions : <code>object</code>
+### player~defaultDimensions : <code>object</code>
 The default player dimensions if neither
 "fitContainer" nor "dimensions" are passed on instantiation.
 
-**Kind**: inner constant of <code>[video](#module_video)</code>  
+**Kind**: inner constant of <code>[player](#module_player)</code>  
 <a name="Dart"></a>
 
 ## Dart
@@ -119,6 +119,6 @@ as the value of "globalVarName" in package.json.
 <a name="Dart.create"></a>
 
 ### Dart.create()
-Generates a new instance of the Video class.
+Generates a new instance of the Player class.
 
 **Kind**: static method of <code>[Dart](#Dart)</code>  
