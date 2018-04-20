@@ -4,20 +4,8 @@
  */
 
 import EventsManager from './events.js';
-import DOMHelpers from './helpers.js';
-
-const { getWidth, getHeight } = DOMHelpers;
-
-/**
- * @constant
- * @type {object}
- * @description The default player dimensions if neither
- * "fitContainer" nor "dimensions" are passed on instantiation.
- */
-const defaultDimensions = {
-	width: 900,
-	height: 500
-};
+import Container from './container.js';
+import Video from './video.js';
 
 /**
  * @class
@@ -30,37 +18,28 @@ class Player {
 	 * @param {object} props - Configuration options for the player.
 	 */
 	constructor(props) {
-		this.id = props.id;
-		this.parent = props.parent;
-		this.source = props.source;
-		this.attributes = props.attributes;
-		this.fitContainer = props.fitContainer || false;
-		this.dimensions = props.dimensions || defaultDimensions;
+		this.videos = props.videos;
+		this.containerSettings = props.container;
 
-		this.element = document.createElement('video');
-
-		if (typeof this.attributes === 'object') {
-			for (var attr in props.attributes) {
-				this.element.setAttribute(attr, props.attributes[attr]);
-			}
-		}
-
-		this.element.setAttribute('id', this.id);
-		this.element.setAttribute('src', this.source);
-
-		this.setDimensions();
+		this.queue = [];
+		this.index = 0;
+		this.currentVideo;
 
 		this.eventsManager = new EventsManager();
+		this.container = new Container(this.containerSettings);
+
+		this.createQueue();
 	}
 
 	/**
 	 * @memberof Player
 	 * @method init
-	 * @description Adds the video player element to the DOM.
+	 * @description Initializes the video player.
 	 */
 	init() {
 		try {
-			this.parent.appendChild(this.element);
+			this.container.anchor();
+			this.next();
 		}
 		catch (e) {
 			throw new Error(e);
@@ -70,33 +49,37 @@ class Player {
 	/**
 	 * @memberof Player
 	 * @method destroy
-	 * @description Removes the video element from the DOM.
+	 * @description Destroys the video player.
 	 */
 	destroy() {
-		this.parent.removeChild(this.element);
+		this.container.remove();
 	}
 
 	/**
 	 * @memberof Player
-	 * @method setDimensions
-	 * @description Set the width and height of the video player.
+	 * @method createQueue
+	 * @description Initialize video queue.
 	 */
-	setDimensions() {
-		var width, height;
+	createQueue() {
+		for (var i = 0; i < this.videos.length; i++) {
+			let settings = this.videos[i];
 
-		if (this.fitContainer) {
-			let container = this.parent;
-
-			width = getWidth(container);
-			height = getHeight(container);
+			settings.index = i;
+			this.queue.push(
+				new Video(settings, this.eventsManager)
+			);
 		}
-		else {
-			width = this.dimensions.width;
-			height = this.dimensions.height;
-		}
+	}
 
-		this.element.setAttribute('width', `${width}px`);
-		this.element.setAttribute('height', `${height}px`);
+	/**
+	 * @memberof Player
+	 * @method next
+	 * @description Load the next video in the queue.
+	 */
+	next() {
+		this.currentVideo = this.queue[this.index];
+		this.container.loadVideo(this.currentVideo);
+		this.index++;
 	}
 
 	/**
@@ -111,25 +94,19 @@ class Player {
 	/**
 	 * @memberof Player
 	 * @method play
-	 * @description Plays the video.
+	 * @description Plays the current video.
 	 */
 	play() {
-		this.element.play();
-		this.eventsManager.publish('play', {
-			time: Date.now()
-		});
+		this.currentVideo.play();
 	}
 
 	/**
 	 * @memberof Player
 	 * @method pause
-	 * @description Pauses the video.
+	 * @description Pauses the current video.
 	 */
 	pause() {
-		this.element.pause();
-		this.eventsManager.publish('pause', {
-			time: Date.now()
-		});
+		this.currentVideo.pause();
 	}
 }
 

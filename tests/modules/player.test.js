@@ -1,82 +1,72 @@
 import Player from '../../src/modules/player.js';
 import testLinks from '../../test-links.json';
 
-test('Player constructor creates a video element', () => {
-	var player = new Player({});
-	var hasVideoElement = player.element instanceof Element;
+test('Player.constructor initializes the video queue', () => {
+	var player = new Player({
+		container: {},
+		videos: [
+			{ source: testLinks.video }
+		]
+	});
 
-	expect(hasVideoElement).toBeTruthy();
+	expect(player.queue.length).toBe(1);
 });
 
-test('Player.init sets the element "src" attribute to props.source', () => {
+test('Player.play calls Player.currentVideo.play', () => {
 	var player = new Player({
-		source: testLinks.video,
-		parent: document.body
+		container: {
+			parent: document.body
+		},
+		videos: [
+			{ source: testLinks.video }
+		]
 	});
 
 	player.init();
 
-	expect(player.element.getAttribute('src')).toEqual(testLinks.video);
-});
-
-test('Player.init anchors the video player in the DOM', () => {
-	var player = new Player({
-		source: testLinks.video,
-		parent: document.body
-	});
-
-	jest.spyOn(HTMLElement.prototype, 'appendChild')
+	jest.spyOn(player.currentVideo, 'play')
 		.mockImplementation(() => {});
 
-	player.init();
-
-	expect(HTMLElement.prototype.appendChild).toHaveBeenCalledTimes(1);
-});
-
-test('Player.play plays the video file', () => {
-	var player = new Player({
-		source: testLinks.video,
-		parent: document.body
-	});
-
-	jest.spyOn(HTMLMediaElement.prototype, 'play')
-		.mockImplementation(() => {});
-
-	player.init();
 	player.play();
 
-	expect(HTMLMediaElement.prototype.play).toHaveBeenCalledTimes(1);
+	expect(player.currentVideo.play).toHaveBeenCalled();
 });
 
-test('Player.pause pauses the video file', () => {
+test('Player.pause calls Player.currentVideo.pause', () => {
 	var player = new Player({
-		source: testLinks.video,
-		parent: document.body
+		container: {
+			parent: document.body
+		},
+		videos: [
+			{ source: testLinks.video }
+		]
 	});
 
-	jest.spyOn(HTMLMediaElement.prototype, 'play')
-		.mockImplementation(() => {});
-
-	jest.spyOn(HTMLMediaElement.prototype, 'pause')
-		.mockImplementation(() => {});
-
 	player.init();
-	player.play();
+
+	jest.spyOn(player.currentVideo, 'pause')
+		.mockImplementation(() => {});
+
 	player.pause();
 
-	expect(HTMLMediaElement.prototype.pause).toHaveBeenCalledTimes(1);
+	expect(player.currentVideo.pause).toHaveBeenCalled();
 });
 
-test('Player.on calls EventsManager.subscribe with both arguments', () => {
+test('Player.next calls Player.container.loadVideo', () => {
 	var player = new Player({
-		source: testLinks.video,
-		parent: document.body
+		container: {
+			parent: document.body
+		},
+		videos: [
+			{ source: testLinks.video }
+		]
 	});
-	var eventHandler = function() {};
 
-	jest.spyOn(player.eventsManager, 'subscribe');
+	jest.spyOn(player.container, 'loadVideo')
+		.mockImplementation(() => {});
 
-	player.on('play', eventHandler);
+	player.init();
+	player.next();
 
-	expect(player.eventsManager.subscribe).toBeCalledWith('play', eventHandler);
+	expect(player.container.loadVideo).toHaveBeenCalled();
 });

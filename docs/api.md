@@ -1,6 +1,9 @@
 ## Modules
 
 <dl>
+<dt><a href="#module_container">container</a></dt>
+<dd><p>Hosts the Container class.</p>
+</dd>
 <dt><a href="#module_events">events</a></dt>
 <dd><p>Hosts all event-related code and the EventsManager class.</p>
 </dd>
@@ -9,6 +12,9 @@
 </dd>
 <dt><a href="#module_player">player</a></dt>
 <dd><p>Hosts the Player class.</p>
+</dd>
+<dt><a href="#module_video">video</a></dt>
+<dd><p>Hosts the Video class.</p>
 </dd>
 </dl>
 
@@ -19,6 +25,38 @@
 <dd></dd>
 </dl>
 
+<a name="module_container"></a>
+
+## container
+Hosts the Container class.
+
+
+* [container](#module_container)
+    * [~Container](#module_container..Container)
+        * [new Container(props)](#new_module_container..Container_new)
+    * [~defaultDimensions](#module_container..defaultDimensions) : <code>object</code>
+
+<a name="module_container..Container"></a>
+
+### container~Container
+**Kind**: inner class of <code>[container](#module_container)</code>  
+<a name="new_module_container..Container_new"></a>
+
+#### new Container(props)
+The video player's outer HTML.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| props | <code>object</code> | Configuration for the container. |
+
+<a name="module_container..defaultDimensions"></a>
+
+### container~defaultDimensions : <code>object</code>
+The default player dimensions if neither
+"resizeToFitParent" nor "dimensions" are passed on instantiation.
+
+**Kind**: inner constant of <code>[container](#module_container)</code>  
 <a name="module_events"></a>
 
 ## events
@@ -78,7 +116,6 @@ Hosts the Player class.
 * [player](#module_player)
     * [~Player](#module_player..Player)
         * [new Player(props)](#new_module_player..Player_new)
-    * [~defaultDimensions](#module_player..defaultDimensions) : <code>object</code>
 
 <a name="module_player..Player"></a>
 
@@ -94,13 +131,11 @@ The interface for a video player instance.
 | --- | --- | --- |
 | props | <code>object</code> | Configuration options for the player. |
 
-<a name="module_player..defaultDimensions"></a>
+<a name="module_video"></a>
 
-### player~defaultDimensions : <code>object</code>
-The default player dimensions if neither
-"fitContainer" nor "dimensions" are passed on instantiation.
+## video
+Hosts the Video class.
 
-**Kind**: inner constant of <code>[player](#module_player)</code>  
 <a name="Dart"></a>
 
 ## Dart
