@@ -4,8 +4,6 @@ Dart is an all-purpose JavaScript video player.
 
 ### Usage
 
-Take the following steps to download:
-
 - Run `npm install` to install dependencies.
 - You can customize the file name and global variable name in [package.json](package.json).
 - Run `npm run build` to generate a compiled static asset in the `lib` folder.

@@ -1,5 +1,5 @@
 /**
- * @module events
+ * @module dispatcher
  * @description Hosts all event-related code and the Dispatcher class.
  */
 
