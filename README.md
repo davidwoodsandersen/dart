@@ -18,3 +18,10 @@ Documentation for the player API is programmatically generated through [JSDoc](h
 ### Testing
 
 Unit tests are implemented using [Jest](https://facebook.github.io/jest/). Run `npm run test` to launch the test suite.
+
+### Features
+
+|Description|Status|
+|-----------|------|
+|Developer mode: monitor player events in real time.|:white_check_mark:|
+|Playlists: queue multiple video files to be played.|:construction:|

@@ -27,10 +27,12 @@ class Dispatcher {
 	/**
 	 * @memberof Dispatcher
 	 * @constructor
+	 * @param {boolean} devMode - Whether the player is initialized in developer mode.
 	 * @description Creates a "registry" property for storing events
 	 * and event handler functions.
 	 */
-	constructor() {
+	constructor(devMode) {
+		this.devMode = devMode;
 		this.registry = {};
 	}
 
@@ -56,16 +58,36 @@ class Dispatcher {
 	 * @method publish
 	 * @param {string} name - The name of the event.
 	 * @param {object} metadata - Data to pass to each event handler.
-	 * @description - Trigger an event and call the corresponding handlers.
+	 * @description Trigger an event and call the corresponding handlers.
 	 */
 	publish(name, metadata) {
 		if (!isValidEvent(name)) return false;
+
+		if (this.devMode) this.printEventReport(name, metadata);
 
 		var entry = this.registry[name];
 
 		if (entry && entry.length) {
 			entry.forEach(handler => handler(metadata));
 		}
+	}
+
+	/**
+	 * @memberof Dispatcher
+	 * @method printEventReport
+	 * @param {string} name - The name of the event.
+	 * @param {object} metadata - The metadata passed with the event.
+	 * @description Print an event report to the console.
+	 */
+	printEventReport(name, metadata) {
+		console.group(`Dart Event Report: ${name}`);
+
+		console.log(`%cEvent Name: %c${name}`, 'font-weight: bold;', '');
+		console.log('%cEvent Metadata:', 'font-weight: bold;');
+
+		for (var x in metadata) console.log(`\t %c${x}: %c${metadata[x]}`, 'font-weight: bold;', '');
+
+		console.groupEnd();
 	}
 }
 
