@@ -4,7 +4,7 @@
 <dt><a href="#module_container">container</a></dt>
 <dd><p>Hosts the Container class.</p>
 </dd>
-<dt><a href="#module_events">events</a></dt>
+<dt><a href="#module_dispatcher">dispatcher</a></dt>
 <dd><p>Hosts all event-related code and the Dispatcher class.</p>
 </dd>
 <dt><a href="#module_events">events</a></dt>
@@ -61,57 +61,40 @@ The default player dimensions if neither
 "resizeToFitParent" nor "dimensions" are passed on instantiation.
 
 **Kind**: inner constant of <code>[container](#module_container)</code>  
-<a name="module_events"></a>
+<a name="module_dispatcher"></a>
 
-## events
+## dispatcher
 Hosts all event-related code and the Dispatcher class.
 
 
-* [events](#module_events)
-    * [~Dispatcher](#module_events..Dispatcher)
-        * [new Dispatcher()](#new_module_events..Dispatcher_new)
-    * [~PlayerError](#module_events..PlayerError)
-        * [new PlayerError(props, dispatcher)](#new_module_events..PlayerError_new)
-    * [~validEvents](#module_events..validEvents) : <code>array</code>
-    * [~isValidEvent(event)](#module_events..isValidEvent)
+* [dispatcher](#module_dispatcher)
+    * [~Dispatcher](#module_dispatcher..Dispatcher)
+        * [new Dispatcher()](#new_module_dispatcher..Dispatcher_new)
+    * [~validEvents](#module_dispatcher..validEvents) : <code>array</code>
+    * [~isValidEvent(event)](#module_dispatcher..isValidEvent)
 
-<a name="module_events..Dispatcher"></a>
+<a name="module_dispatcher..Dispatcher"></a>
 
-### events~Dispatcher
-**Kind**: inner class of <code>[events](#module_events)</code>  
-<a name="new_module_events..Dispatcher_new"></a>
+### dispatcher~Dispatcher
+**Kind**: inner class of <code>[dispatcher](#module_dispatcher)</code>  
+<a name="new_module_dispatcher..Dispatcher_new"></a>
 
 #### new Dispatcher()
 Coordinates internal video player events.
 
-<a name="module_events..PlayerError"></a>
+<a name="module_dispatcher..validEvents"></a>
 
-### events~PlayerError
-**Kind**: inner class of <code>[events](#module_events)</code>  
-<a name="new_module_events..PlayerError_new"></a>
-
-#### new PlayerError(props, dispatcher)
-Describes and reports internal player errors.
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| props | <code>object</code> | Error data. |
-| dispatcher | <code>object</code> | The Dispatcher instance of the video player. |
-
-<a name="module_events..validEvents"></a>
-
-### events~validEvents : <code>array</code>
+### dispatcher~validEvents : <code>array</code>
 The official list of valid video player events.
 
-**Kind**: inner constant of <code>[events](#module_events)</code>  
-<a name="module_events..isValidEvent"></a>
+**Kind**: inner constant of <code>[dispatcher](#module_dispatcher)</code>  
+<a name="module_dispatcher..isValidEvent"></a>
 
-### events~isValidEvent(event)
+### dispatcher~isValidEvent(event)
 - Determines if the submitted event is officially
 recognized by the player.
 
-**Kind**: inner method of <code>[events](#module_events)</code>  
+**Kind**: inner method of <code>[dispatcher](#module_dispatcher)</code>  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -124,21 +107,8 @@ Hosts all error-related code and the PlayerError class.
 
 
 * [events](#module_events)
-    * [~Dispatcher](#module_events..Dispatcher)
-        * [new Dispatcher()](#new_module_events..Dispatcher_new)
     * [~PlayerError](#module_events..PlayerError)
         * [new PlayerError(props, dispatcher)](#new_module_events..PlayerError_new)
-    * [~validEvents](#module_events..validEvents) : <code>array</code>
-    * [~isValidEvent(event)](#module_events..isValidEvent)
-
-<a name="module_events..Dispatcher"></a>
-
-### events~Dispatcher
-**Kind**: inner class of <code>[events](#module_events)</code>  
-<a name="new_module_events..Dispatcher_new"></a>
-
-#### new Dispatcher()
-Coordinates internal video player events.
 
 <a name="module_events..PlayerError"></a>
 
@@ -154,24 +124,6 @@ Describes and reports internal player errors.
 | --- | --- | --- |
 | props | <code>object</code> | Error data. |
 | dispatcher | <code>object</code> | The Dispatcher instance of the video player. |
-
-<a name="module_events..validEvents"></a>
-
-### events~validEvents : <code>array</code>
-The official list of valid video player events.
-
-**Kind**: inner constant of <code>[events](#module_events)</code>  
-<a name="module_events..isValidEvent"></a>
-
-### events~isValidEvent(event)
-- Determines if the submitted event is officially
-recognized by the player.
-
-**Kind**: inner method of <code>[events](#module_events)</code>  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| event | <code>string</code> | The event being assessed. |
 
 <a name="module_helpers"></a>
 
