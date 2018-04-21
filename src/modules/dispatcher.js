@@ -3,17 +3,7 @@
  * @description Hosts all event-related code and the Dispatcher class.
  */
 
-/**
- * @constant
- * @type {array}
- * @description The official list of valid video player events.
- */
-const validEvents = [
-	'load',
-	'play',
-	'pause',
-	'error'
-];
+import validEvents from '../constants/events.js';
 
 /**
  * @function isValidEvent

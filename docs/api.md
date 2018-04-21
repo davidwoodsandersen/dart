@@ -28,6 +28,17 @@
 <dd></dd>
 </dl>
 
+## Constants
+
+<dl>
+<dt><a href="#events">events</a> : <code>array</code></dt>
+<dd><p>The official list of valid video player events.</p>
+</dd>
+<dt><a href="#selectors">selectors</a> : <code>array</code></dt>
+<dd><p>CSS selectors for the video player</p>
+</dd>
+</dl>
+
 <a name="module_container"></a>
 
 ## container
@@ -38,6 +49,7 @@ Hosts the Container class.
     * [~Container](#module_container..Container)
         * [new Container(props, dispatcher)](#new_module_container..Container_new)
     * [~defaultDimensions](#module_container..defaultDimensions) : <code>object</code>
+    * [~isValidEvent(event)](#module_container..isValidEvent)
 
 <a name="module_container..Container"></a>
 
@@ -61,6 +73,18 @@ The default player dimensions if neither
 "resizeToFitParent" nor "dimensions" are passed on instantiation.
 
 **Kind**: inner constant of <code>[container](#module_container)</code>  
+<a name="module_container..isValidEvent"></a>
+
+### container~isValidEvent(event)
+- Determines if the submitted event is officially
+recognized by the player.
+
+**Kind**: inner method of <code>[container](#module_container)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| event | <code>string</code> | The event being assessed. |
+
 <a name="module_dispatcher"></a>
 
 ## dispatcher
@@ -70,8 +94,6 @@ Hosts all event-related code and the Dispatcher class.
 * [dispatcher](#module_dispatcher)
     * [~Dispatcher](#module_dispatcher..Dispatcher)
         * [new Dispatcher()](#new_module_dispatcher..Dispatcher_new)
-    * [~validEvents](#module_dispatcher..validEvents) : <code>array</code>
-    * [~isValidEvent(event)](#module_dispatcher..isValidEvent)
 
 <a name="module_dispatcher..Dispatcher"></a>
 
@@ -85,24 +107,6 @@ instance for the video player gets initialized as a property of the
 Player instance, then passed to sub-components of the player on
 their instantiation. This way, events emitted on sub-components can
 bubble up to the player's interface.
-
-<a name="module_dispatcher..validEvents"></a>
-
-### dispatcher~validEvents : <code>array</code>
-The official list of valid video player events.
-
-**Kind**: inner constant of <code>[dispatcher](#module_dispatcher)</code>  
-<a name="module_dispatcher..isValidEvent"></a>
-
-### dispatcher~isValidEvent(event)
-- Determines if the submitted event is officially
-recognized by the player.
-
-**Kind**: inner method of <code>[dispatcher](#module_dispatcher)</code>  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| event | <code>string</code> | The event being assessed. |
 
 <a name="module_errors"></a>
 
@@ -210,3 +214,15 @@ as the value of "globalVarName" in package.json.
 Generates a new instance of the Player class.
 
 **Kind**: static method of <code>[Dart](#Dart)</code>  
+<a name="events"></a>
+
+## events : <code>array</code>
+The official list of valid video player events.
+
+**Kind**: global constant  
+<a name="selectors"></a>
+
+## selectors : <code>array</code>
+CSS selectors for the video player
+
+**Kind**: global constant  
