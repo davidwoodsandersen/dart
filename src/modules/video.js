@@ -3,12 +3,16 @@
  * @description Hosts the Video class.
  */
 
+/**
+ * @class
+ * @description Video instances within the player.
+ */
 class Video {
 	/**
 	 * @memberof Video
 	 * @constructor
 	 * @param {object} props - Configuration for the video.
-	 * @param {function} dispatcher - The EventsManager instance of the video player.
+	 * @param {object} dispatcher - The EventsManager instance of the video player.
 	 */
 	constructor(props, dispatcher) {
 		this.source = props.source;

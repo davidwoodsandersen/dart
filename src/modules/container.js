@@ -3,7 +3,8 @@
  * @description Hosts the Container class.
  */
 
-import DOMHelpers from './helpers.js';
+import { DOMHelpers } from './helpers.js';
+import PlayerError from './errors.js';
 import selectors from '../constants/selectors';
 
 const { getWidth, getHeight } = DOMHelpers;
@@ -28,9 +29,19 @@ class Container {
 	 * @memberof Container
 	 * @constructor
 	 * @param {object} props - Configuration for the container.
+	 * @param {object} dispatcher - The EventsManager instance of the video player.
 	 */
-	constructor(props) {
+	constructor(props, dispatcher) {
+		this.dispatcher = dispatcher;
+
 		this.id = props.id;
+
+		if (!this.id) {
+			new PlayerError({
+				message: 'The container must have an ID.'
+			}, this.dispatcher).report();
+		}
+
 		this.parent = props.parent;
 		this.fullscreen = props.fullscreen;
 		this.resizeToFitParent = props.resizeToFitParent;

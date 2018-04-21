@@ -26,7 +26,6 @@ class Player {
 		this.currentVideo;
 
 		this.eventsManager = new EventsManager();
-		this.container = new Container(this.containerSettings);
 
 		this.createQueue();
 	}
@@ -38,6 +37,7 @@ class Player {
 	 */
 	init() {
 		try {
+			this.container = new Container(this.containerSettings, this.eventsManager);
 			this.container.anchor();
 			this.next();
 		}

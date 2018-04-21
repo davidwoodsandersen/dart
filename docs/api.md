@@ -5,6 +5,9 @@
 <dd><p>Hosts the Container class.</p>
 </dd>
 <dt><a href="#module_events">events</a></dt>
+<dd><p>Hosts all error-related code and the PlayerError class.</p>
+</dd>
+<dt><a href="#module_events">events</a></dt>
 <dd><p>Hosts all event-related code and the EventsManager class.</p>
 </dd>
 <dt><a href="#module_helpers">helpers</a></dt>
@@ -33,7 +36,7 @@ Hosts the Container class.
 
 * [container](#module_container)
     * [~Container](#module_container..Container)
-        * [new Container(props)](#new_module_container..Container_new)
+        * [new Container(props, dispatcher)](#new_module_container..Container_new)
     * [~defaultDimensions](#module_container..defaultDimensions) : <code>object</code>
 
 <a name="module_container..Container"></a>
@@ -42,13 +45,14 @@ Hosts the Container class.
 **Kind**: inner class of <code>[container](#module_container)</code>  
 <a name="new_module_container..Container_new"></a>
 
-#### new Container(props)
+#### new Container(props, dispatcher)
 The video player's outer HTML.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | props | <code>object</code> | Configuration for the container. |
+| dispatcher | <code>object</code> | The EventsManager instance of the video player. |
 
 <a name="module_container..defaultDimensions"></a>
 
@@ -60,14 +64,87 @@ The default player dimensions if neither
 <a name="module_events"></a>
 
 ## events
-Hosts all event-related code and the EventsManager class.
+Hosts all error-related code and the PlayerError class.
 
 
 * [events](#module_events)
+    * [~PlayerError](#module_events..PlayerError)
+        * [new PlayerError(props, dispatcher)](#new_module_events..PlayerError_new)
     * [~EventsManager](#module_events..EventsManager)
         * [new EventsManager()](#new_module_events..EventsManager_new)
     * [~validEvents](#module_events..validEvents) : <code>array</code>
     * [~isValidEvent(event)](#module_events..isValidEvent)
+
+<a name="module_events..PlayerError"></a>
+
+### events~PlayerError
+**Kind**: inner class of <code>[events](#module_events)</code>  
+<a name="new_module_events..PlayerError_new"></a>
+
+#### new PlayerError(props, dispatcher)
+Describes and reports internal player errors.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| props | <code>object</code> | Error data. |
+| dispatcher | <code>object</code> | The EventsManager instance of the video player. |
+
+<a name="module_events..EventsManager"></a>
+
+### events~EventsManager
+**Kind**: inner class of <code>[events](#module_events)</code>  
+<a name="new_module_events..EventsManager_new"></a>
+
+#### new EventsManager()
+Coordinates internal video player events.
+
+<a name="module_events..validEvents"></a>
+
+### events~validEvents : <code>array</code>
+The official list of valid video player events.
+
+**Kind**: inner constant of <code>[events](#module_events)</code>  
+<a name="module_events..isValidEvent"></a>
+
+### events~isValidEvent(event)
+- Determines if the submitted event is officially
+recognized by the player.
+
+**Kind**: inner method of <code>[events](#module_events)</code>  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| event | <code>string</code> | The event being assessed. |
+
+<a name="module_events"></a>
+
+## events
+Hosts all event-related code and the EventsManager class.
+
+
+* [events](#module_events)
+    * [~PlayerError](#module_events..PlayerError)
+        * [new PlayerError(props, dispatcher)](#new_module_events..PlayerError_new)
+    * [~EventsManager](#module_events..EventsManager)
+        * [new EventsManager()](#new_module_events..EventsManager_new)
+    * [~validEvents](#module_events..validEvents) : <code>array</code>
+    * [~isValidEvent(event)](#module_events..isValidEvent)
+
+<a name="module_events..PlayerError"></a>
+
+### events~PlayerError
+**Kind**: inner class of <code>[events](#module_events)</code>  
+<a name="new_module_events..PlayerError_new"></a>
+
+#### new PlayerError(props, dispatcher)
+Describes and reports internal player errors.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| props | <code>object</code> | Error data. |
+| dispatcher | <code>object</code> | The EventsManager instance of the video player. |
 
 <a name="module_events..EventsManager"></a>
 
@@ -135,6 +212,26 @@ The interface for a video player instance.
 
 ## video
 Hosts the Video class.
+
+
+* [video](#module_video)
+    * [~Video](#module_video..Video)
+        * [new Video(props, dispatcher)](#new_module_video..Video_new)
+
+<a name="module_video..Video"></a>
+
+### video~Video
+**Kind**: inner class of <code>[video](#module_video)</code>  
+<a name="new_module_video..Video_new"></a>
+
+#### new Video(props, dispatcher)
+Video instances within the player.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| props | <code>object</code> | Configuration for the video. |
+| dispatcher | <code>object</code> | The EventsManager instance of the video player. |
 
 <a name="Dart"></a>
 

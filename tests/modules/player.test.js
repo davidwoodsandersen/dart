@@ -62,10 +62,11 @@ test('Player.next calls Player.container.loadVideo', () => {
 		]
 	});
 
+	player.init();
+
 	jest.spyOn(player.container, 'loadVideo')
 		.mockImplementation(() => {});
 
-	player.init();
 	player.next();
 
 	expect(player.container.loadVideo).toHaveBeenCalled();

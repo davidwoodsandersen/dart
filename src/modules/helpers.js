@@ -27,7 +27,6 @@ const DOMHelpers = {
 	getHeight(element) {
 		return parseFloat(window.getComputedStyle(element).height);
 	}
-}
+};
 
-export default DOMHelpers;
-
+export { DOMHelpers };

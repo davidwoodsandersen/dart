@@ -11,7 +11,8 @@
 const validEvents = [
 	'load',
 	'play',
-	'pause'
+	'pause',
+	'error'
 ];
 
 /**
