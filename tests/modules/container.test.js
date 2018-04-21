@@ -42,7 +42,8 @@ test('Container.setDimensions applies Container.dimensions.{width, height} to Co
 test('Container.loadVideo appends a video element to Container.element', () => {
 	var videoStub = {
 		element: document.createElement('video'),
-		resize: () => {}
+		resize: () => {},
+		initEvents: () => {}
 	};
 	var dispatcher = { publish: () => {} };
 	var container = new Container({}, dispatcher);

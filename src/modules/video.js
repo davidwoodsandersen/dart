@@ -26,14 +26,32 @@ class Video {
 
 	/**
 	 * @memberof Video
+	 * @method initEvents
+	 * @description Add event listeners to the video element.
+	 */
+	initEvents() {
+		var dispatcher = this.dispatcher;
+
+		this.element.addEventListener('playing', () => {
+			dispatcher.publish('play', {
+				time: Date.now()
+			});
+		}, true);
+
+		this.element.addEventListener('pause', () => {
+			dispatcher.publish('pause', {
+				time: Date.now()
+			});
+		}, true);
+	}
+
+	/**
+	 * @memberof Video
 	 * @method play
 	 * @description Play the video.
 	 */
 	play() {
 		this.element.play();
-		this.dispatcher.publish('play', {
-			time: Date.now()
-		});
 	}
 
 	/**
@@ -43,9 +61,6 @@ class Video {
 	 */
 	pause() {
 		this.element.pause();
-		this.dispatcher.publish('pause', {
-			time: Date.now()
-		});
 	}
 
 	/**

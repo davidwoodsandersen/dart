@@ -107,6 +107,7 @@ class Container {
 		this.element.appendChild(video.element);
 
 		video.resize();
+		video.initEvents();
 	}
 }
 
