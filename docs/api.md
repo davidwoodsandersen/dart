@@ -93,7 +93,7 @@ Hosts all event-related code and the Dispatcher class.
 
 * [dispatcher](#module_dispatcher)
     * [~Dispatcher](#module_dispatcher..Dispatcher)
-        * [new Dispatcher()](#new_module_dispatcher..Dispatcher_new)
+        * [new Dispatcher(devMode)](#new_module_dispatcher..Dispatcher_new)
 
 <a name="module_dispatcher..Dispatcher"></a>
 
@@ -101,12 +101,17 @@ Hosts all event-related code and the Dispatcher class.
 **Kind**: inner class of <code>[dispatcher](#module_dispatcher)</code>  
 <a name="new_module_dispatcher..Dispatcher_new"></a>
 
-#### new Dispatcher()
+#### new Dispatcher(devMode)
 Coordinates internal video player events. The Dispatcher
 instance for the video player gets initialized as a property of the
 Player instance, then passed to sub-components of the player on
 their instantiation. This way, events emitted on sub-components can
 bubble up to the player's interface.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| devMode | <code>boolean</code> | Whether the player is initialized in developer mode. |
 
 <a name="module_errors"></a>
 
