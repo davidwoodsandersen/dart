@@ -20,6 +20,7 @@ class Player {
 	constructor(props) {
 		this.devMode = props.devMode;
 		this.videos = props.videos;
+		this.playlist = props.playlist;
 		this.containerSettings = props.container;
 
 		this.queue = [];
@@ -40,6 +41,13 @@ class Player {
 		this.container = new Container(this.containerSettings, this.dispatcher);
 		this.container.anchor();
 		this.next();
+
+		if (this.playlist) {
+			this.on('videoEnd', () => {
+				this.next();
+				this.play();
+			});
+		}
 	}
 
 	/**
