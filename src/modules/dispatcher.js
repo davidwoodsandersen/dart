@@ -1,6 +1,6 @@
 /**
  * @module events
- * @description Hosts all event-related code and the EventsManager class.
+ * @description Hosts all event-related code and the Dispatcher class.
  */
 
 /**
@@ -29,9 +29,9 @@ function isValidEvent(event) {
  * @class
  * @description Coordinates internal video player events.
  */
-class EventsManager {
+class Dispatcher {
 	/**
-	 * @memberof EventsManager
+	 * @memberof Dispatcher
 	 * @constructor
 	 * @description Creates a "registry" property for storing events
 	 * and event handler functions.
@@ -41,7 +41,7 @@ class EventsManager {
 	}
 
 	/**
-	 * @memberof EventsManager
+	 * @memberof Dispatcher
 	 * @method subscribe
 	 * @param {string} name - The name of the event.
 	 * @param {function} handler - The function to call when the event fires.
@@ -58,7 +58,7 @@ class EventsManager {
 	}
 
 	/**
-	 * @memberof EventsManager
+	 * @memberof Dispatcher
 	 * @method publish
 	 * @param {string} name - The name of the event.
 	 * @param {object} metadata - Data to pass to each event handler.
@@ -75,4 +75,4 @@ class EventsManager {
 	}
 }
 
-export default EventsManager;
+export default Dispatcher;

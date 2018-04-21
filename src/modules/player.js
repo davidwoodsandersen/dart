@@ -3,7 +3,7 @@
  * @description Hosts the Player class.
  */
 
-import EventsManager from './events.js';
+import Dispatcher from './dispatcher.js';
 import Container from './container.js';
 import Video from './video.js';
 
@@ -25,7 +25,7 @@ class Player {
 		this.index = 0;
 		this.currentVideo;
 
-		this.eventsManager = new EventsManager();
+		this.dispatcher = new Dispatcher();
 
 		this.createQueue();
 	}
@@ -37,7 +37,7 @@ class Player {
 	 */
 	init() {
 		try {
-			this.container = new Container(this.containerSettings, this.eventsManager);
+			this.container = new Container(this.containerSettings, this.dispatcher);
 			this.container.anchor();
 			this.next();
 		}
@@ -66,7 +66,7 @@ class Player {
 
 			settings.index = i;
 			this.queue.push(
-				new Video(settings, this.eventsManager)
+				new Video(settings, this.dispatcher)
 			);
 		}
 	}
@@ -88,7 +88,7 @@ class Player {
 	 * @description Bind an event listener to the video player.
 	 */
 	on(event, handler) {
-		this.eventsManager.subscribe(event, handler);
+		this.dispatcher.subscribe(event, handler);
 	}
 
 	/**

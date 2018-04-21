@@ -12,7 +12,7 @@ class PlayerError {
 	 * @memberof PlayerError
 	 * @constructor
 	 * @param {object} props - Error data.
-	 * @param {object} dispatcher - The EventsManager instance of the video player.
+	 * @param {object} dispatcher - The Dispatcher instance of the video player.
 	 */
 	constructor(props, dispatcher) {
 		this.dispatcher = dispatcher;
@@ -24,7 +24,7 @@ class PlayerError {
 	/**
 	 * @memberof PlayerError
 	 * @method report
-	 * @description Emit the event through the EventsManager.
+	 * @description Emit the event through the Dispatcher.
 	 */
 	report() {
 		var eventData = {};

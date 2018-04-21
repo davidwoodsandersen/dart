@@ -12,7 +12,7 @@ class Video {
 	 * @memberof Video
 	 * @constructor
 	 * @param {object} props - Configuration for the video.
-	 * @param {object} dispatcher - The EventsManager instance of the video player.
+	 * @param {object} dispatcher - The Dispatcher instance of the video player.
 	 */
 	constructor(props, dispatcher) {
 		this.source = props.source;
