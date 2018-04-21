@@ -7,7 +7,7 @@
 <dt><a href="#module_dispatcher">dispatcher</a></dt>
 <dd><p>Hosts all event-related code and the Dispatcher class.</p>
 </dd>
-<dt><a href="#module_events">events</a></dt>
+<dt><a href="#module_errors">errors</a></dt>
 <dd><p>Hosts all error-related code and the PlayerError class.</p>
 </dd>
 <dt><a href="#module_helpers">helpers</a></dt>
@@ -100,21 +100,21 @@ recognized by the player.
 | --- | --- | --- |
 | event | <code>string</code> | The event being assessed. |
 
-<a name="module_events"></a>
+<a name="module_errors"></a>
 
-## events
+## errors
 Hosts all error-related code and the PlayerError class.
 
 
-* [events](#module_events)
-    * [~PlayerError](#module_events..PlayerError)
-        * [new PlayerError(props, dispatcher)](#new_module_events..PlayerError_new)
+* [errors](#module_errors)
+    * [~PlayerError](#module_errors..PlayerError)
+        * [new PlayerError(props, dispatcher)](#new_module_errors..PlayerError_new)
 
-<a name="module_events..PlayerError"></a>
+<a name="module_errors..PlayerError"></a>
 
-### events~PlayerError
-**Kind**: inner class of <code>[events](#module_events)</code>  
-<a name="new_module_events..PlayerError_new"></a>
+### errors~PlayerError
+**Kind**: inner class of <code>[errors](#module_errors)</code>  
+<a name="new_module_errors..PlayerError_new"></a>
 
 #### new PlayerError(props, dispatcher)
 Describes and reports internal player errors.

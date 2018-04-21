@@ -1,5 +1,5 @@
 /**
- * @module events
+ * @module errors
  * @description Hosts all error-related code and the PlayerError class.
  */
 
