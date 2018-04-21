@@ -37,14 +37,9 @@ class Player {
 	 * @description Initializes the video player.
 	 */
 	init() {
-		try {
-			this.container = new Container(this.containerSettings, this.dispatcher);
-			this.container.anchor();
-			this.next();
-		}
-		catch (e) {
-			throw new Error(e);
-		}
+		this.container = new Container(this.containerSettings, this.dispatcher);
+		this.container.anchor();
+		this.next();
 	}
 
 	/**
