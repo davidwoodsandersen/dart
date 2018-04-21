@@ -4,8 +4,11 @@
 <dt><a href="#module_container">container</a></dt>
 <dd><p>Hosts the Container class.</p>
 </dd>
-<dt><a href="#module_events">events</a></dt>
-<dd><p>Hosts all event-related code and the EventsManager class.</p>
+<dt><a href="#module_dispatcher">dispatcher</a></dt>
+<dd><p>Hosts all event-related code and the Dispatcher class.</p>
+</dd>
+<dt><a href="#module_errors">errors</a></dt>
+<dd><p>Hosts all error-related code and the PlayerError class.</p>
 </dd>
 <dt><a href="#module_helpers">helpers</a></dt>
 <dd><p>Hosts all helper functions.</p>
@@ -25,6 +28,17 @@
 <dd></dd>
 </dl>
 
+## Constants
+
+<dl>
+<dt><a href="#events">events</a> : <code>array</code></dt>
+<dd><p>The official list of valid video player events.</p>
+</dd>
+<dt><a href="#selectors">selectors</a> : <code>array</code></dt>
+<dd><p>CSS selectors for the video player</p>
+</dd>
+</dl>
+
 <a name="module_container"></a>
 
 ## container
@@ -33,8 +47,9 @@ Hosts the Container class.
 
 * [container](#module_container)
     * [~Container](#module_container..Container)
-        * [new Container(props)](#new_module_container..Container_new)
+        * [new Container(props, dispatcher)](#new_module_container..Container_new)
     * [~defaultDimensions](#module_container..defaultDimensions) : <code>object</code>
+    * [~isValidEvent(event)](#module_container..isValidEvent)
 
 <a name="module_container..Container"></a>
 
@@ -42,13 +57,14 @@ Hosts the Container class.
 **Kind**: inner class of <code>[container](#module_container)</code>  
 <a name="new_module_container..Container_new"></a>
 
-#### new Container(props)
+#### new Container(props, dispatcher)
 The video player's outer HTML.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
 | props | <code>object</code> | Configuration for the container. |
+| dispatcher | <code>object</code> | The Dispatcher instance of the video player. |
 
 <a name="module_container..defaultDimensions"></a>
 
@@ -57,44 +73,65 @@ The default player dimensions if neither
 "resizeToFitParent" nor "dimensions" are passed on instantiation.
 
 **Kind**: inner constant of <code>[container](#module_container)</code>  
-<a name="module_events"></a>
+<a name="module_container..isValidEvent"></a>
 
-## events
-Hosts all event-related code and the EventsManager class.
-
-
-* [events](#module_events)
-    * [~EventsManager](#module_events..EventsManager)
-        * [new EventsManager()](#new_module_events..EventsManager_new)
-    * [~validEvents](#module_events..validEvents) : <code>array</code>
-    * [~isValidEvent(event)](#module_events..isValidEvent)
-
-<a name="module_events..EventsManager"></a>
-
-### events~EventsManager
-**Kind**: inner class of <code>[events](#module_events)</code>  
-<a name="new_module_events..EventsManager_new"></a>
-
-#### new EventsManager()
-Coordinates internal video player events.
-
-<a name="module_events..validEvents"></a>
-
-### events~validEvents : <code>array</code>
-The official list of valid video player events.
-
-**Kind**: inner constant of <code>[events](#module_events)</code>  
-<a name="module_events..isValidEvent"></a>
-
-### events~isValidEvent(event)
+### container~isValidEvent(event)
 - Determines if the submitted event is officially
 recognized by the player.
 
-**Kind**: inner method of <code>[events](#module_events)</code>  
+**Kind**: inner method of <code>[container](#module_container)</code>  
 
 | Param | Type | Description |
 | --- | --- | --- |
 | event | <code>string</code> | The event being assessed. |
+
+<a name="module_dispatcher"></a>
+
+## dispatcher
+Hosts all event-related code and the Dispatcher class.
+
+
+* [dispatcher](#module_dispatcher)
+    * [~Dispatcher](#module_dispatcher..Dispatcher)
+        * [new Dispatcher()](#new_module_dispatcher..Dispatcher_new)
+
+<a name="module_dispatcher..Dispatcher"></a>
+
+### dispatcher~Dispatcher
+**Kind**: inner class of <code>[dispatcher](#module_dispatcher)</code>  
+<a name="new_module_dispatcher..Dispatcher_new"></a>
+
+#### new Dispatcher()
+Coordinates internal video player events. The Dispatcher
+instance for the video player gets initialized as a property of the
+Player instance, then passed to sub-components of the player on
+their instantiation. This way, events emitted on sub-components can
+bubble up to the player's interface.
+
+<a name="module_errors"></a>
+
+## errors
+Hosts all error-related code and the PlayerError class.
+
+
+* [errors](#module_errors)
+    * [~PlayerError](#module_errors..PlayerError)
+        * [new PlayerError(props, dispatcher)](#new_module_errors..PlayerError_new)
+
+<a name="module_errors..PlayerError"></a>
+
+### errors~PlayerError
+**Kind**: inner class of <code>[errors](#module_errors)</code>  
+<a name="new_module_errors..PlayerError_new"></a>
+
+#### new PlayerError(props, dispatcher)
+Describes and reports internal player errors.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| props | <code>object</code> | Error data. |
+| dispatcher | <code>object</code> | The Dispatcher instance of the video player. |
 
 <a name="module_helpers"></a>
 
@@ -136,6 +173,26 @@ The interface for a video player instance.
 ## video
 Hosts the Video class.
 
+
+* [video](#module_video)
+    * [~Video](#module_video..Video)
+        * [new Video(props, dispatcher)](#new_module_video..Video_new)
+
+<a name="module_video..Video"></a>
+
+### video~Video
+**Kind**: inner class of <code>[video](#module_video)</code>  
+<a name="new_module_video..Video_new"></a>
+
+#### new Video(props, dispatcher)
+Video instances within the player.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| props | <code>object</code> | Configuration for the video. |
+| dispatcher | <code>object</code> | The Dispatcher instance of the video player. |
+
 <a name="Dart"></a>
 
 ## Dart
@@ -157,3 +214,15 @@ as the value of "globalVarName" in package.json.
 Generates a new instance of the Player class.
 
 **Kind**: static method of <code>[Dart](#Dart)</code>  
+<a name="events"></a>
+
+## events : <code>array</code>
+The official list of valid video player events.
+
+**Kind**: global constant  
+<a name="selectors"></a>
+
+## selectors : <code>array</code>
+CSS selectors for the video player
+
+**Kind**: global constant  

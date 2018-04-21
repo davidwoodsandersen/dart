@@ -2,7 +2,8 @@ import Container from '../../src/modules/container.js';
 
 test('Container.anchor appends Container.element to Container.parent', () => {
 	var input = { parent: document.body };
-	var container = new Container(input);
+	var dispatcher = { publish: () => {} };
+	var container = new Container(input, dispatcher);
 
 	container.anchor();
 
@@ -11,7 +12,8 @@ test('Container.anchor appends Container.element to Container.parent', () => {
 
 test('Container.remove calls removeChild and passes Container.element', () => {
 	var input = { parent: document.body };
-	var container = new Container(input);
+	var dispatcher = { publish: () => {} };
+	var container = new Container(input, dispatcher);
 
 	jest.spyOn(Node.prototype, 'removeChild')
 		.mockImplementation(() => {});
@@ -28,7 +30,8 @@ test('Container.setDimensions applies Container.dimensions.{width, height} to Co
 			height: 500
 		}
 	};
-	var container = new Container(input);
+	var dispatcher = { publish: () => {} };
+	var container = new Container(input, dispatcher);
 
 	container.setDimensions();
 
@@ -41,7 +44,8 @@ test('Container.loadVideo appends a video element to Container.element', () => {
 		element: document.createElement('video'),
 		resize: () => {}
 	};
-	var container = new Container({});
+	var dispatcher = { publish: () => {} };
+	var container = new Container({}, dispatcher);
 
 	container.loadVideo(videoStub);
 

@@ -1,18 +1,9 @@
 /**
- * @module events
- * @description Hosts all event-related code and the EventsManager class.
+ * @module dispatcher
+ * @description Hosts all event-related code and the Dispatcher class.
  */
 
-/**
- * @constant
- * @type {array}
- * @description The official list of valid video player events.
- */
-const validEvents = [
-	'load',
-	'play',
-	'pause'
-];
+import validEvents from '../constants/events.js';
 
 /**
  * @function isValidEvent
@@ -26,11 +17,15 @@ function isValidEvent(event) {
 
 /**
  * @class
- * @description Coordinates internal video player events.
+ * @description Coordinates internal video player events. The Dispatcher
+ * instance for the video player gets initialized as a property of the
+ * Player instance, then passed to sub-components of the player on
+ * their instantiation. This way, events emitted on sub-components can
+ * bubble up to the player's interface.
  */
-class EventsManager {
+class Dispatcher {
 	/**
-	 * @memberof EventsManager
+	 * @memberof Dispatcher
 	 * @constructor
 	 * @description Creates a "registry" property for storing events
 	 * and event handler functions.
@@ -40,7 +35,7 @@ class EventsManager {
 	}
 
 	/**
-	 * @memberof EventsManager
+	 * @memberof Dispatcher
 	 * @method subscribe
 	 * @param {string} name - The name of the event.
 	 * @param {function} handler - The function to call when the event fires.
@@ -57,7 +52,7 @@ class EventsManager {
 	}
 
 	/**
-	 * @memberof EventsManager
+	 * @memberof Dispatcher
 	 * @method publish
 	 * @param {string} name - The name of the event.
 	 * @param {object} metadata - Data to pass to each event handler.
@@ -74,4 +69,4 @@ class EventsManager {
 	}
 }
 
-export default EventsManager;
+export default Dispatcher;

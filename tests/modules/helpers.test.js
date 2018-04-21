@@ -1,4 +1,4 @@
-import DOMHelpers from '../../src/modules/helpers.js';
+import { DOMHelpers } from '../../src/modules/helpers.js';
 
 test('DOMHelpers.getWidth returns the width of an element', () => {
 	var testElement = document.createElement('div');
