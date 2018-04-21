@@ -32,15 +32,21 @@ class Video {
 	initEvents() {
 		var dispatcher = this.dispatcher;
 
+		this.element.addEventListener('ended', () => {
+			dispatcher.publish('videoEnd', {
+				timestamp: Date.now()
+			});
+		}, true);
+
 		this.element.addEventListener('playing', () => {
 			dispatcher.publish('play', {
-				time: Date.now()
+				timestamp: Date.now()
 			});
 		}, true);
 
 		this.element.addEventListener('pause', () => {
 			dispatcher.publish('pause', {
-				time: Date.now()
+				timestamp: Date.now()
 			});
 		}, true);
 	}

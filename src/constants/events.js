@@ -7,5 +7,6 @@ export default [
 	'load',
 	'play',
 	'pause',
-	'error'
+	'error',
+	'videoEnd'
 ];
