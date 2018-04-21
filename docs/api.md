@@ -80,7 +80,11 @@ Hosts all event-related code and the Dispatcher class.
 <a name="new_module_dispatcher..Dispatcher_new"></a>
 
 #### new Dispatcher()
-Coordinates internal video player events.
+Coordinates internal video player events. The Dispatcher
+instance for the video player gets initialized as a property of the
+Player instance, then passed to sub-components of the player on
+their instantiation. This way, events emitted on sub-components can
+bubble up to the player's interface.
 
 <a name="module_dispatcher..validEvents"></a>
 

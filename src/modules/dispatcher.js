@@ -27,7 +27,11 @@ function isValidEvent(event) {
 
 /**
  * @class
- * @description Coordinates internal video player events.
+ * @description Coordinates internal video player events. The Dispatcher
+ * instance for the video player gets initialized as a property of the
+ * Player instance, then passed to sub-components of the player on
+ * their instantiation. This way, events emitted on sub-components can
+ * bubble up to the player's interface.
  */
 class Dispatcher {
 	/**
