@@ -37,11 +37,27 @@
 <dt><a href="#events">events</a> : <code>array</code></dt>
 <dd><p>The official list of valid video player events.</p>
 </dd>
+<dt><a href="#playIcon">playIcon</a> : <code>string</code></dt>
+<dd><p>The SVG markup for the &quot;play&quot; button. Taken from
+the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https://feathericons.com/</a>.</p>
+</dd>
+<dt><a href="#pauseIcon">pauseIcon</a> : <code>string</code></dt>
+<dd><p>The SVG markup for the &quot;pause&quot; button. Taken from
+the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https://feathericons.com/</a>.</p>
+</dd>
+<dt><a href="#previousIcon">previousIcon</a> : <code>string</code></dt>
+<dd><p>The SVG markup for the &quot;previous&quot; button. Taken from
+the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https://feathericons.com/</a>.</p>
+</dd>
+<dt><a href="#nextIcon">nextIcon</a> : <code>string</code></dt>
+<dd><p>The SVG markup for the &quot;next&quot; button. Taken from
+the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https://feathericons.com/</a>.</p>
+</dd>
 <dt><a href="#layout">layout</a> : <code>string</code></dt>
 <dd><p>The CSS defaults for the video player.</p>
 </dd>
-<dt><a href="#selectors">selectors</a> : <code>array</code></dt>
-<dd><p>CSS selectors for the video player</p>
+<dt><a href="#selectors">selectors</a> : <code>object</code></dt>
+<dd><p>CSS selectors for the video player.</p>
 </dd>
 </dl>
 
@@ -256,6 +272,34 @@ Generates a new instance of the Player class.
 The official list of valid video player events.
 
 **Kind**: global constant  
+<a name="playIcon"></a>
+
+## playIcon : <code>string</code>
+The SVG markup for the "play" button. Taken from
+the "Feather" collection at https://feathericons.com/.
+
+**Kind**: global constant  
+<a name="pauseIcon"></a>
+
+## pauseIcon : <code>string</code>
+The SVG markup for the "pause" button. Taken from
+the "Feather" collection at https://feathericons.com/.
+
+**Kind**: global constant  
+<a name="previousIcon"></a>
+
+## previousIcon : <code>string</code>
+The SVG markup for the "previous" button. Taken from
+the "Feather" collection at https://feathericons.com/.
+
+**Kind**: global constant  
+<a name="nextIcon"></a>
+
+## nextIcon : <code>string</code>
+The SVG markup for the "next" button. Taken from
+the "Feather" collection at https://feathericons.com/.
+
+**Kind**: global constant  
 <a name="layout"></a>
 
 ## layout : <code>string</code>
@@ -264,7 +308,7 @@ The CSS defaults for the video player.
 **Kind**: global constant  
 <a name="selectors"></a>
 
-## selectors : <code>array</code>
-CSS selectors for the video player
+## selectors : <code>object</code>
+CSS selectors for the video player.
 
 **Kind**: global constant  

@@ -26,63 +26,47 @@ export default `
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	height: 35px;
-	background-color: rgba(0, 0, 0, .7);
+	height: 50px;
+	background-image: linear-gradient(
+		to top,
+		rgba(0, 0, 0, 1),
+		rgba(0, 0, 0, 0)
+	);
+}
+
+#$video_id$ .${selectors.CONTROLS_BUTTON_CLASS} {
+	position: absolute;
+	bottom: 10px;
+	width: 25px;
+	height: 25px;
+	color: rgb(255, 255, 255);
+	cursor: pointer;
+	-webkit-transition: transform .3s, bottom .3s;
+	transition: transform .3s, bottom .3s;
+}
+
+#$video_id$ .${selectors.CONTROLS_BUTTON_CLASS}:hover {
+	-webkit-transform: scale(1.2);
+	transform: scale(1.2);
+}
+
+#$video_id$ .${selectors.CONTROLS_BUTTON_CLASS}:active {
+	bottom: 8px;
 }
 
 #$video_id$ .${selectors.CONTROLS_PLAY_BUTTON} {
-	position: absolute;
-	bottom: 5px;
 	left: 10px;
-	width: 25px;
-	height: 25px;
-	color: rgb(255, 255, 255);
-	cursor: pointer;
-}
-
-#$video_id$ .${selectors.CONTROLS_PLAY_BUTTON}:before {
-	content: "\u25B6";
 }
 
 #$video_id$ .${selectors.CONTROLS_PAUSE_BUTTON} {
-	position: absolute;
-	bottom: 5px;
 	left: 45px;
-	width: 25px;
-	height: 25px;
-	color: rgb(255, 255, 255);
-	cursor: pointer;
-}
-
-#$video_id$ .${selectors.CONTROLS_PAUSE_BUTTON}:before {
-	content: "\u23F8";
 }
 
 #$video_id$ .${selectors.CONTROLS_NEXT_BUTTON} {
-	position: absolute;
-	bottom: 5px;
 	right: 10px;
-	width: 25px;
-	height: 25px;
-	color: rgb(255, 255, 255);
-	cursor: pointer;
-}
-
-#$video_id$ .${selectors.CONTROLS_NEXT_BUTTON}:before {
-	content: "\u23E9";
 }
 
 #$video_id$ .${selectors.CONTROLS_PREVIOUS_BUTTON} {
-	position: absolute;
-	bottom: 5px;
 	right: 45px;
-	width: 25px;
-	height: 25px;
-	color: rgb(255, 255, 255);
-	cursor: pointer;
-}
-
-#$video_id$ .${selectors.CONTROLS_PREVIOUS_BUTTON}:before {
-	content: "\u23EA";
 }
 `;

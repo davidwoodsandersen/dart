@@ -4,6 +4,7 @@
  */
 
 import selectors from '../constants/selectors.js';
+import { playIcon, pauseIcon, previousIcon, nextIcon } from '../constants/icons.js';
 
 /**
  * @class
@@ -35,19 +36,35 @@ class Controls {
 		this.container.className = selectors.CONTROLS_CONTAINER_CLASS;
 
 		var playButton = document.createElement('div');
-		playButton.className = selectors.CONTROLS_PLAY_BUTTON;
+		playButton.className = (
+			selectors.CONTROLS_BUTTON_CLASS + ' ' +
+			selectors.CONTROLS_PLAY_BUTTON
+		);
+		playButton.innerHTML = playIcon;
 		playButton.onclick = () => { this.player.play() };
 
 		var pauseButton = document.createElement('div');
-		pauseButton.className = selectors.CONTROLS_PAUSE_BUTTON;
+		pauseButton.className = (
+			selectors.CONTROLS_BUTTON_CLASS + ' ' +
+			selectors.CONTROLS_PAUSE_BUTTON
+		);
+		pauseButton.innerHTML = pauseIcon;
 		pauseButton.onclick = () => { this.player.pause() };
 
 		var nextButton = document.createElement('div');
-		nextButton.className = selectors.CONTROLS_NEXT_BUTTON;
+		nextButton.className = (
+			selectors.CONTROLS_BUTTON_CLASS + ' ' +
+			selectors.CONTROLS_NEXT_BUTTON
+		);
+		nextButton.innerHTML = nextIcon;
 		nextButton.onclick = () => { this.player.next() };
 
 		var previousButton = document.createElement('div');
-		previousButton.className = selectors.CONTROLS_PREVIOUS_BUTTON;
+		previousButton.className = (
+			selectors.CONTROLS_BUTTON_CLASS + ' ' +
+			selectors.CONTROLS_PREVIOUS_BUTTON
+		);
+		previousButton.innerHTML = previousIcon;
 		previousButton.onclick = () => { this.player.previous() };
 
 		this.container.appendChild(playButton);
