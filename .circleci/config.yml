@@ -3,7 +3,6 @@
 version: 2
 jobs:
   build:
-    working_directory: /build
     docker:
       - image: circleci/node:9.4
     steps:
