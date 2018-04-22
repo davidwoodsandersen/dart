@@ -43,14 +43,16 @@ test('Video.pause calls HTMLVideoElement.prototype.pause', function() {
 	expect(HTMLVideoElement.prototype.pause).toHaveBeenCalled();
 });
 
-test('Video.resize applies the parent node dimensions to the video element', () => {
+test('Video.resize applies the container dimensions to the video element', () => {
 	var parentNode = document.createElement('div');
 	parentNode.style.width = '500px';
 	parentNode.style.height = '500px';
 
+	var videoContainer = document.createElement('div');
 	var video = new Video({});
 
-	parentNode.appendChild(video.element);
+	parentNode.appendChild(videoContainer);
+	videoContainer.appendChild(video.element);
 
 	video.resize();
 

@@ -4,6 +4,9 @@
 <dt><a href="#module_container">container</a></dt>
 <dd><p>Hosts the Container class.</p>
 </dd>
+<dt><a href="#module_controls">controls</a></dt>
+<dd><p>Hosts all player-controls-related code and the Controls class.</p>
+</dd>
 <dt><a href="#module_dispatcher">dispatcher</a></dt>
 <dd><p>Hosts all event-related code and the Dispatcher class.</p>
 </dd>
@@ -34,8 +37,27 @@
 <dt><a href="#events">events</a> : <code>array</code></dt>
 <dd><p>The official list of valid video player events.</p>
 </dd>
-<dt><a href="#selectors">selectors</a> : <code>array</code></dt>
-<dd><p>CSS selectors for the video player</p>
+<dt><a href="#playIcon">playIcon</a> : <code>string</code></dt>
+<dd><p>The SVG markup for the &quot;play&quot; button. Taken from
+the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https://feathericons.com/</a>.</p>
+</dd>
+<dt><a href="#pauseIcon">pauseIcon</a> : <code>string</code></dt>
+<dd><p>The SVG markup for the &quot;pause&quot; button. Taken from
+the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https://feathericons.com/</a>.</p>
+</dd>
+<dt><a href="#previousIcon">previousIcon</a> : <code>string</code></dt>
+<dd><p>The SVG markup for the &quot;previous&quot; button. Taken from
+the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https://feathericons.com/</a>.</p>
+</dd>
+<dt><a href="#nextIcon">nextIcon</a> : <code>string</code></dt>
+<dd><p>The SVG markup for the &quot;next&quot; button. Taken from
+the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https://feathericons.com/</a>.</p>
+</dd>
+<dt><a href="#layout">layout</a> : <code>string</code></dt>
+<dd><p>The CSS defaults for the video player.</p>
+</dd>
+<dt><a href="#selectors">selectors</a> : <code>object</code></dt>
+<dd><p>CSS selectors for the video player.</p>
 </dd>
 </dl>
 
@@ -49,7 +71,6 @@ Hosts the Container class.
     * [~Container](#module_container..Container)
         * [new Container(props, dispatcher)](#new_module_container..Container_new)
     * [~defaultDimensions](#module_container..defaultDimensions) : <code>object</code>
-    * [~isValidEvent(event)](#module_container..isValidEvent)
 
 <a name="module_container..Container"></a>
 
@@ -73,13 +94,39 @@ The default player dimensions if neither
 "resizeToFitParent" nor "dimensions" are passed on instantiation.
 
 **Kind**: inner constant of <code>[container](#module_container)</code>  
-<a name="module_container..isValidEvent"></a>
+<a name="module_controls"></a>
 
-### container~isValidEvent(event)
+## controls
+Hosts all player-controls-related code and the Controls class.
+
+
+* [controls](#module_controls)
+    * [~Controls](#module_controls..Controls)
+        * [new Controls(actions, parentNode)](#new_module_controls..Controls_new)
+    * [~isValidEvent(event)](#module_controls..isValidEvent)
+
+<a name="module_controls..Controls"></a>
+
+### controls~Controls
+**Kind**: inner class of <code>[controls](#module_controls)</code>  
+<a name="new_module_controls..Controls_new"></a>
+
+#### new Controls(actions, parentNode)
+Facilitates user interaction with the video player.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| actions | <code>object</code> | Actions from the player API. |
+| parentNode | <code>object</code> | The element to append the controls to. |
+
+<a name="module_controls..isValidEvent"></a>
+
+### controls~isValidEvent(event)
 - Determines if the submitted event is officially
 recognized by the player.
 
-**Kind**: inner method of <code>[container](#module_container)</code>  
+**Kind**: inner method of <code>[controls](#module_controls)</code>  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -225,9 +272,43 @@ Generates a new instance of the Player class.
 The official list of valid video player events.
 
 **Kind**: global constant  
+<a name="playIcon"></a>
+
+## playIcon : <code>string</code>
+The SVG markup for the "play" button. Taken from
+the "Feather" collection at https://feathericons.com/.
+
+**Kind**: global constant  
+<a name="pauseIcon"></a>
+
+## pauseIcon : <code>string</code>
+The SVG markup for the "pause" button. Taken from
+the "Feather" collection at https://feathericons.com/.
+
+**Kind**: global constant  
+<a name="previousIcon"></a>
+
+## previousIcon : <code>string</code>
+The SVG markup for the "previous" button. Taken from
+the "Feather" collection at https://feathericons.com/.
+
+**Kind**: global constant  
+<a name="nextIcon"></a>
+
+## nextIcon : <code>string</code>
+The SVG markup for the "next" button. Taken from
+the "Feather" collection at https://feathericons.com/.
+
+**Kind**: global constant  
+<a name="layout"></a>
+
+## layout : <code>string</code>
+The CSS defaults for the video player.
+
+**Kind**: global constant  
 <a name="selectors"></a>
 
-## selectors : <code>array</code>
-CSS selectors for the video player
+## selectors : <code>object</code>
+CSS selectors for the video player.
 
 **Kind**: global constant  

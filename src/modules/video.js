@@ -105,8 +105,8 @@ class Video {
 	 * match the container element.
 	 */
 	resize() {
-		this.element.style.width = this.element.parentNode.style.width;
-		this.element.style.height = this.element.parentNode.style.height;
+		this.element.style.width = this.element.parentNode.parentNode.style.width;
+		this.element.style.height = this.element.parentNode.parentNode.style.height;
 	}
 }
 
