@@ -39,3 +39,7 @@ gulp.task('docs', function() {
 		.pipe(jsdoc())
 		.pipe(gulp.dest('./docs'));
 });
+
+gulp.task('watch', function() {
+	gulp.watch(['./src/*.js', './src/**/*.js'], ['docs', 'default']);
+});

@@ -6,7 +6,8 @@
   "scripts": {
     "build": "gulp",
     "test": "jest",
-    "docs": "gulp docs"
+    "docs": "gulp docs",
+    "dev": "gulp watch"
   },
   "author": "",
   "license": "ISC",
