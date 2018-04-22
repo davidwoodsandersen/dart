@@ -18,7 +18,7 @@ class Player {
 	 * @param {object} props - Configuration options for the player.
 	 */
 	constructor(props) {
-		this.devMode = props.devMode;
+		this.debug = props.debug;
 		this.videos = props.videos;
 		this.playlist = props.playlist;
 		this.containerSettings = props.container;
@@ -27,7 +27,7 @@ class Player {
 		this.index = -1;
 		this.currentVideo;
 
-		this.dispatcher = new Dispatcher(this.devMode);
+		this.dispatcher = new Dispatcher(this.debug);
 
 		this.createQueue();
 	}

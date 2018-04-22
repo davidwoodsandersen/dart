@@ -27,12 +27,12 @@ class Dispatcher {
 	/**
 	 * @memberof Dispatcher
 	 * @constructor
-	 * @param {boolean} devMode - Whether the player is initialized in developer mode.
+	 * @param {boolean} debug - Whether the player is initialized in developer mode.
 	 * @description Creates a "registry" property for storing events
 	 * and event handler functions.
 	 */
-	constructor(devMode) {
-		this.devMode = devMode;
+	constructor(debug) {
+		this.debug = debug;
 		this.registry = {};
 	}
 
@@ -63,7 +63,7 @@ class Dispatcher {
 	publish(name, metadata) {
 		if (!isValidEvent(name)) return false;
 
-		if (this.devMode) this.printEventReport(name, metadata);
+		if (this.debug) this.printEventReport(name, metadata);
 
 		var entry = this.registry[name];
 
