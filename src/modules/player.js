@@ -88,10 +88,12 @@ class Player {
 	 * @description Load the next video in the queue.
 	 */
 	next() {
-		this.currentVideo = this.queue[this.index];
-		this.container.loadVideo(this.currentVideo);
-		this.index++;
-		this.play();
+		if (this.index < this.queue.length) {
+			this.currentVideo = this.queue[this.index];
+			this.container.loadVideo(this.currentVideo);
+			this.index++;
+			this.play();
+		}
 	}
 
 	/**
@@ -100,7 +102,7 @@ class Player {
 	 * @description Load the previous video in the queue.
 	 */
 	previous() {
-		if (this.index > 0) {
+		if (this.index > 1) {
 			this.index--;
 			this.currentVideo = this.queue[this.index];
 			this.container.loadVideo(this.currentVideo);
