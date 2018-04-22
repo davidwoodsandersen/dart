@@ -7,16 +7,11 @@ jobs:
       - image: circleci/node:9.4
     steps:
       - checkout
-      # Download and cache dependencies:
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "package.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
       - run: npm install
+      - run: npm install -g jest
       - run:
           name: run tests
-          command: npm run test --ci
+          command: jest --ci --testResultsProcessor="jest-junit"
       - store_artifacts:
           path: test-results.xml
           prefix: tests
