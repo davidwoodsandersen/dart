@@ -22,6 +22,8 @@ class Video {
 
 		this.element = document.createElement('video');
 		this.element.setAttribute('src', this.source);
+
+		this.initEvents();
 	}
 
 	/**
