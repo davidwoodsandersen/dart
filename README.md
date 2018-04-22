@@ -5,11 +5,10 @@ Dart is an all-purpose JavaScript video player.
 ### Usage
 
 - Run `npm install` to install dependencies.
-- You can customize the file name and global variable name in [package.json](package.json).
+- You can customize the file name, output path and global variable name in [package.json](package.json).
 - Run `npm run build` to generate a compiled static asset in the `lib` folder.
 - Import the asset file into your project.
-- You can also run `npm run publish` to compile the asset and copy it directly to your project:
-	- `npm run publish ~/my/project/directory`
+- You can also run `npm run dev` to automate the build during development.
 
 ### Documentation
 
@@ -25,3 +24,4 @@ Unit tests are implemented using [Jest](https://facebook.github.io/jest/). Run `
 |-----------|------|
 |Debug mode: monitor player events in real time.|:white_check_mark:|
 |Playlists: queue multiple video files to be played.|:white_check_mark:|
+|Custom themes: design your own controls UI|:construction:|
