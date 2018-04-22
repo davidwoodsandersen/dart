@@ -24,4 +24,4 @@ Unit tests are implemented using [Jest](https://facebook.github.io/jest/). Run `
 |Description|Status|
 |-----------|------|
 |Developer mode: monitor player events in real time.|:white_check_mark:|
-|Playlists: queue multiple video files to be played.|:construction:|
+|Playlists: queue multiple video files to be played.|:white_check_mark:|
