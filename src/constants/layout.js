@@ -13,12 +13,26 @@ export default `
 	background-color: rgb(0, 0, 0);
 }
 
-#$video_id$ .${selectors.VIDEO_CONTAINER_CLASS} {
+#$video_id$ .${selectors.VIDEO_CONTAINER_CLASS},
+#$video_id$ .${selectors.LOADING_SCREEN_CLASS} {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
+}
+
+#$video_id$ .${selectors.LOADING_SCREEN_CLASS} {
+	display: none;
+	color: rgb(255, 255, 255);
+}
+
+#$video_id$ .${selectors.LOADING_SCREEN_CLASS} > svg {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translateX(-50%) translateY(-50%) scale(1.5);
+	transform: translateX(-50%) translateY(-50%) scale(1.5);
 }
 
 #$video_id$ .${selectors.CONTROLS_CONTAINER_CLASS} {

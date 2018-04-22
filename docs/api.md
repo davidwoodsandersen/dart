@@ -53,6 +53,10 @@ the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https:
 <dd><p>The SVG markup for the &quot;next&quot; button. Taken from
 the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https://feathericons.com/</a>.</p>
 </dd>
+<dt><a href="#loadingIcon">loadingIcon</a> : <code>string</code></dt>
+<dd><p>The SVG markup for the loading icon. Taken from
+Sam Herbet&#39;s collection here: <a href="http://samherbert.net/svg-loaders/">http://samherbert.net/svg-loaders/</a></p>
+</dd>
 <dt><a href="#layout">layout</a> : <code>string</code></dt>
 <dd><p>The CSS defaults for the video player.</p>
 </dd>
@@ -298,6 +302,13 @@ the "Feather" collection at https://feathericons.com/.
 ## nextIcon : <code>string</code>
 The SVG markup for the "next" button. Taken from
 the "Feather" collection at https://feathericons.com/.
+
+**Kind**: global constant  
+<a name="loadingIcon"></a>
+
+## loadingIcon : <code>string</code>
+The SVG markup for the loading icon. Taken from
+Sam Herbet's collection here: http://samherbert.net/svg-loaders/
 
 **Kind**: global constant  
 <a name="layout"></a>
