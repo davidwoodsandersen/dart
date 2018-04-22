@@ -24,7 +24,7 @@ class Player {
 		this.containerSettings = props.container;
 
 		this.queue = [];
-		this.index = 0;
+		this.index = -1;
 		this.currentVideo;
 
 		this.dispatcher = new Dispatcher(this.devMode);
@@ -88,10 +88,10 @@ class Player {
 	 * @description Load the next video in the queue.
 	 */
 	next() {
-		if (this.index < this.queue.length) {
+		if (this.index < this.queue.length - 1) {
+			this.index++;
 			this.currentVideo = this.queue[this.index];
 			this.container.loadVideo(this.currentVideo);
-			this.index++;
 			this.play();
 		}
 	}
@@ -102,7 +102,7 @@ class Player {
 	 * @description Load the previous video in the queue.
 	 */
 	previous() {
-		if (this.index > 1) {
+		if (this.index > 0) {
 			this.index--;
 			this.currentVideo = this.queue[this.index];
 			this.container.loadVideo(this.currentVideo);
