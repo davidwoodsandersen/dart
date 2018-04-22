@@ -1,4 +1,5 @@
 const gulp = require('gulp');
+const path = require('path');
 const babelify = require('babelify');
 const browserify = require('browserify');
 const uglify = require('gulp-uglify');
@@ -11,6 +12,8 @@ const source = require('vinyl-source-stream');
 const config = require('./package.json');
 
 gulp.task('default', function() {
+	var outputPath = path.resolve(__dirname, config.vars.outputPath);
+	var fileName = config.vars.fileName;
 	var bundler = browserify('src/index.js');
 
 	bundler.transform(babelify);
@@ -22,10 +25,12 @@ gulp.task('default', function() {
 		.pipe(uglify())
 		.pipe(replace('$GLOBAL_OBJECT$', () => config.vars.globalVarName))
 		.pipe(rename({
-			basename: config.vars.fileName,
+			basename: fileName,
 			extname: '.js'
 		}))
-		.pipe(gulp.dest('./lib'));
+		.pipe(gulp.dest(outputPath));
+
+		console.log(`${fileName}.js created at ${outputPath}`);
 });
 
 gulp.task('docs', function() {

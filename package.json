@@ -6,14 +6,14 @@
   "scripts": {
     "build": "gulp",
     "test": "jest",
-    "docs": "gulp docs",
-    "publish": "npm run build && node publish.js"
+    "docs": "gulp docs"
   },
   "author": "",
   "license": "ISC",
   "vars": {
     "globalVarName": "dart",
-    "fileName": "dart"
+    "fileName": "dart",
+    "outputPath": "./lib"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
