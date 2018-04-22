@@ -19,6 +19,7 @@ class Video {
 		this.title = props.title;
 
 		this.dispatcher = dispatcher;
+		this.hasBeenStarted = false;
 
 		this.element = document.createElement('video');
 		this.element.setAttribute('src', this.source);
@@ -35,9 +36,13 @@ class Video {
 		var dispatcher = this.dispatcher;
 
 		this.element.addEventListener('ended', () => {
-			dispatcher.publish('videoEnd', {
-				timestamp: Date.now()
-			});
+			let eventData = {};
+
+			eventData.source = this.source;
+			eventData.title = this.title;
+			eventData.timestamp = Date.now();
+
+			dispatcher.publish('videoEnd', eventData);
 		}, true);
 
 		this.element.addEventListener('playing', () => {
@@ -60,6 +65,18 @@ class Video {
 	 */
 	play() {
 		this.element.play();
+
+		if (!this.hasBeenStarted) {
+			this.hasBeenStarted = true;
+
+			let eventData = {};
+
+			eventData.source = this.source;
+			eventData.title = this.title;
+			eventData.timestamp = Date.now();
+
+			this.dispatcher.publish('videoStart', eventData);
+		}
 	}
 
 	/**
@@ -69,6 +86,16 @@ class Video {
 	 */
 	pause() {
 		this.element.pause();
+	}
+
+	/**
+	 * @memberof Video
+	 * @method reset
+	 * @description Reset the video to its initial state.
+	 */
+	reset() {
+		this.element.currentTime = 0;
+		this.hasBeenStarted = false;
 	}
 
 	/**

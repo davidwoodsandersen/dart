@@ -92,6 +92,7 @@ class Player {
 			this.index++;
 			this.currentVideo = this.queue[this.index];
 			this.container.loadVideo(this.currentVideo);
+			this.currentVideo.reset();
 			this.play();
 		}
 	}
@@ -106,6 +107,7 @@ class Player {
 			this.index--;
 			this.currentVideo = this.queue[this.index];
 			this.container.loadVideo(this.currentVideo);
+			this.currentVideo.reset();
 			this.play();
 		}
 	}
