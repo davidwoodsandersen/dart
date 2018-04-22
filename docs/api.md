@@ -4,6 +4,9 @@
 <dt><a href="#module_container">container</a></dt>
 <dd><p>Hosts the Container class.</p>
 </dd>
+<dt><a href="#module_controls">controls</a></dt>
+<dd><p>Hosts all player-controls-related code and the Controls class.</p>
+</dd>
 <dt><a href="#module_dispatcher">dispatcher</a></dt>
 <dd><p>Hosts all event-related code and the Dispatcher class.</p>
 </dd>
@@ -49,7 +52,6 @@ Hosts the Container class.
     * [~Container](#module_container..Container)
         * [new Container(props, dispatcher)](#new_module_container..Container_new)
     * [~defaultDimensions](#module_container..defaultDimensions) : <code>object</code>
-    * [~isValidEvent(event)](#module_container..isValidEvent)
 
 <a name="module_container..Container"></a>
 
@@ -73,13 +75,38 @@ The default player dimensions if neither
 "resizeToFitParent" nor "dimensions" are passed on instantiation.
 
 **Kind**: inner constant of <code>[container](#module_container)</code>  
-<a name="module_container..isValidEvent"></a>
+<a name="module_controls"></a>
 
-### container~isValidEvent(event)
+## controls
+Hosts all player-controls-related code and the Controls class.
+
+
+* [controls](#module_controls)
+    * [~Controls](#module_controls..Controls)
+        * [new Controls(player)](#new_module_controls..Controls_new)
+    * [~isValidEvent(event)](#module_controls..isValidEvent)
+
+<a name="module_controls..Controls"></a>
+
+### controls~Controls
+**Kind**: inner class of <code>[controls](#module_controls)</code>  
+<a name="new_module_controls..Controls_new"></a>
+
+#### new Controls(player)
+Facilitates user interaction with the video player.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| player | <code>object</code> | The Player instance. |
+
+<a name="module_controls..isValidEvent"></a>
+
+### controls~isValidEvent(event)
 - Determines if the submitted event is officially
 recognized by the player.
 
-**Kind**: inner method of <code>[container](#module_container)</code>  
+**Kind**: inner method of <code>[controls](#module_controls)</code>  
 
 | Param | Type | Description |
 | --- | --- | --- |

@@ -5,6 +5,7 @@
 
 import Dispatcher from './dispatcher.js';
 import Container from './container.js';
+import Controls from './controls.js';
 import Video from './video.js';
 
 /**
@@ -18,6 +19,7 @@ class Player {
 	 * @param {object} props - Configuration options for the player.
 	 */
 	constructor(props) {
+		this.controls = props.controls;
 		this.debug = props.debug;
 		this.videos = props.videos;
 		this.playlist = props.playlist;
@@ -40,6 +42,11 @@ class Player {
 	init() {
 		this.container = new Container(this.containerSettings, this.dispatcher);
 		this.container.anchor();
+
+		if (this.controls) {
+			this.controls = new Controls(this);
+			this.controls.anchor();
+		}
 
 		if (this.playlist) {
 			this.on('videoEnd', () => {
