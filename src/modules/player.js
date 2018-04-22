@@ -44,7 +44,7 @@ class Player {
 		this.container.anchor();
 
 		if (this.controls) {
-			this.controls = new Controls(this);
+			this.controls = new Controls(this, this.container.element);
 			this.controls.anchor();
 		}
 
@@ -134,7 +134,7 @@ class Player {
 	 * @description Plays the current video.
 	 */
 	play() {
-		this.currentVideo.play();
+		this.currentVideo ? this.currentVideo.play() : this.start();
 	}
 
 	/**

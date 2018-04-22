@@ -86,7 +86,7 @@ Hosts all player-controls-related code and the Controls class.
 
 * [controls](#module_controls)
     * [~Controls](#module_controls..Controls)
-        * [new Controls(player)](#new_module_controls..Controls_new)
+        * [new Controls(actions, parentNode)](#new_module_controls..Controls_new)
     * [~isValidEvent(event)](#module_controls..isValidEvent)
 
 <a name="module_controls..Controls"></a>
@@ -95,13 +95,14 @@ Hosts all player-controls-related code and the Controls class.
 **Kind**: inner class of <code>[controls](#module_controls)</code>  
 <a name="new_module_controls..Controls_new"></a>
 
-#### new Controls(player)
+#### new Controls(actions, parentNode)
 Facilitates user interaction with the video player.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| player | <code>object</code> | The Player instance. |
+| actions | <code>object</code> | Actions from the player API. |
+| parentNode | <code>object</code> | The element to append the controls to. |
 
 <a name="module_controls..isValidEvent"></a>
 

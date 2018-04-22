@@ -13,12 +13,14 @@ class Controls {
 	/**
 	 * @memberof Controls
 	 * @constructor
-	 * @param {object} player - The Player instance.
-	 * @description The Player instance is passed directly
-	 * to the controls for easy access to the top-level API.
+	 * @param {object} actions - Actions from the player API.
+	 * @param {object} parentNode - The element to append the controls to.
+	 * @description Methods from the Player instance are passed
+	 * on an as-needed basis.
 	 */
-	constructor(player) {
+	constructor(player, parentNode) {
 		this.player = player;
+		this.parent = parentNode;
 
 		this.build();
 	}
@@ -34,19 +36,19 @@ class Controls {
 
 		var playButton = document.createElement('div');
 		playButton.className = selectors.CONTROLS_PLAY_BUTTON;
-		playButton.onclick = () => player.play();
+		playButton.onclick = () => { this.player.play() };
 
 		var pauseButton = document.createElement('div');
 		pauseButton.className = selectors.CONTROLS_PAUSE_BUTTON;
-		pauseButton.onclick = () => player.pause();
+		pauseButton.onclick = () => { this.player.pause() };
 
 		var nextButton = document.createElement('div');
 		nextButton.className = selectors.CONTROLS_NEXT_BUTTON;
-		nextButton.onclick = () => player.next();
+		nextButton.onclick = () => { this.player.next() };
 
 		var previousButton = document.createElement('div');
 		previousButton.className = selectors.CONTROLS_PREVIOUS_BUTTON;
-		previousButton.onclick = () => player.previous();
+		previousButton.onclick = () => { this.player.previous() };
 
 		this.container.appendChild(playButton);
 		this.container.appendChild(pauseButton);
@@ -60,9 +62,7 @@ class Controls {
 	 * @description Insert the controls into the player container element.
 	 */
 	anchor() {
-		var container = this.player.container.element;
-
-		container.appendChild(this.container);
+		this.parent.appendChild(this.container);
 	}
 }
 
