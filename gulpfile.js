@@ -7,6 +7,7 @@ const rename = require('gulp-rename');
 const replace = require('gulp-replace');
 const concat = require('gulp-concat');
 const jsdoc = require('gulp-jsdoc-to-markdown');
+const jest = require('gulp-jest');
 const buffer = require('vinyl-buffer');
 const source = require('vinyl-source-stream');
 const config = require('./package.json');
@@ -40,6 +41,18 @@ gulp.task('docs', function() {
 		.pipe(gulp.dest('./docs'));
 });
 
+gulp.task('test', function() {
+	var jestConfig = {
+		preprocessorIgnorePatterns: [
+			'<rootDir>/lib/',
+			'<rootDir>/node_modules/',
+		],
+		automock: false
+	};
+
+	gulp.src('./tests').pipe(jest.default(jestConfig));
+});
+
 gulp.task('watch', function() {
-	gulp.watch(['./src/*.js', './src/**/*.js'], ['docs', 'default']);
+	gulp.watch(['./src/*.js', './src/**/*.js'], ['test', 'docs', 'default']);
 });

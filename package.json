@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "gulp",
-    "test": "jest",
+    "test": "gulp test",
     "docs": "gulp docs",
     "dev": "gulp watch"
   },
@@ -23,11 +23,13 @@
     "browserify": "^16.2.0",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
+    "gulp-jest": "^4.0.2",
     "gulp-jsdoc-to-markdown": "^1.2.2",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.6.1",
     "gulp-uglify": "^3.0.0",
     "jest": "^22.4.3",
+    "jest-cli": "^22.4.3",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }
