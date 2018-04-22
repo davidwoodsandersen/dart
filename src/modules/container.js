@@ -5,7 +5,8 @@
 
 import { DOMHelpers } from './helpers.js';
 import PlayerError from './errors.js';
-import selectors from '../constants/selectors';
+import selectors from '../constants/selectors.js';
+import layout from '../constants/layout.js';
 
 const { getWidth, getHeight } = DOMHelpers;
 
@@ -48,11 +49,28 @@ class Container {
 		this.dimensions = props.dimensions || defaultDimensions;
 
 		this.element = document.createElement('div');
+		this.element.setAttribute('id', this.id);
 		this.element.className = selectors.CONTAINER_CLASS;
-		this.element.style.backgroundColor = '#000';
-		this.element.style.display = 'inline-block';
 
+		this.videoContainer = document.createElement('div');
+		this.videoContainer.className = selectors.VIDEO_CONTAINER_CLASS;
+
+		this.element.appendChild(this.videoContainer);
+
+		this.injectStyles();
 		this.setDimensions();
+	}
+
+	/**
+	 * @memberof Container
+	 * @method injectStyles
+	 * @description Insert layout CSS into the video container.
+	 */
+	injectStyles() {
+		var styleTag = document.createElement('style');
+		styleTag.textContent = layout.replace(/\$video_id\$/g, this.id);
+
+		this.element.appendChild(styleTag);
 	}
 
 	/**
@@ -103,8 +121,8 @@ class Container {
 	 * @description Append a video element to the container.
 	 */
 	loadVideo(video) {
-		this.element.innerHTML = '';
-		this.element.appendChild(video.element);
+		this.videoContainer.innerHTML = '';
+		this.videoContainer.appendChild(video.element);
 
 		video.resize();
 	}

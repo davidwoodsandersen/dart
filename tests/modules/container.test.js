@@ -39,7 +39,7 @@ test('Container.setDimensions applies Container.dimensions.{width, height} to Co
 	expect(container.element.style.height).toEqual('500px');
 });
 
-test('Container.loadVideo appends a video element to Container.element', () => {
+test('Container.loadVideo appends a video element to Container.videoContainer', () => {
 	var videoStub = {
 		element: document.createElement('video'),
 		resize: () => {},
@@ -50,5 +50,5 @@ test('Container.loadVideo appends a video element to Container.element', () => {
 
 	container.loadVideo(videoStub);
 
-	expect(videoStub.element.parentNode).toEqual(container.element);
+	expect(videoStub.element.parentNode).toEqual(container.videoContainer);
 });

@@ -37,6 +37,9 @@
 <dt><a href="#events">events</a> : <code>array</code></dt>
 <dd><p>The official list of valid video player events.</p>
 </dd>
+<dt><a href="#layout">layout</a> : <code>string</code></dt>
+<dd><p>The CSS defaults for the video player.</p>
+</dd>
 <dt><a href="#selectors">selectors</a> : <code>array</code></dt>
 <dd><p>CSS selectors for the video player</p>
 </dd>
@@ -250,6 +253,12 @@ Generates a new instance of the Player class.
 
 ## events : <code>array</code>
 The official list of valid video player events.
+
+**Kind**: global constant  
+<a name="layout"></a>
+
+## layout : <code>string</code>
+The CSS defaults for the video player.
 
 **Kind**: global constant  
 <a name="selectors"></a>

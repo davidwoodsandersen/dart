@@ -5,6 +5,7 @@
  */
 export default {
 	CONTAINER_CLASS: 'dart-video',
+	VIDEO_CONTAINER_CLASS: 'dart-video-container',
 	CONTROLS_CONTAINER_CLASS: 'dart-controls-container',
 	CONTROLS_PLAY_BUTTON: 'dart-controls-play',
 	CONTROLS_PAUSE_BUTTON: 'dart-controls-pause',
