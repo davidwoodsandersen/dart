@@ -12,7 +12,7 @@ test('Player.constructor initializes the video queue', () => {
 	expect(player.queue.length).toBe(1);
 });
 
-test('Player.play calls Player.currentVideo.play', () => {
+test('Player.start calls Player.next', () => {
 	var player = new Player({
 		container: {
 			parent: document.body
@@ -24,12 +24,12 @@ test('Player.play calls Player.currentVideo.play', () => {
 
 	player.init();
 
-	jest.spyOn(player.currentVideo, 'play')
+	jest.spyOn(player, 'next')
 		.mockImplementation(() => {});
 
-	player.play();
+	player.start();
 
-	expect(player.currentVideo.play).toHaveBeenCalled();
+	expect(player.next).toHaveBeenCalled();
 });
 
 test('Player.pause calls Player.currentVideo.pause', () => {
@@ -43,6 +43,7 @@ test('Player.pause calls Player.currentVideo.pause', () => {
 	});
 
 	player.init();
+	player.start();
 
 	jest.spyOn(player.currentVideo, 'pause')
 		.mockImplementation(() => {});

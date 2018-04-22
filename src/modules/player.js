@@ -40,14 +40,21 @@ class Player {
 	init() {
 		this.container = new Container(this.containerSettings, this.dispatcher);
 		this.container.anchor();
-		this.next();
 
 		if (this.playlist) {
 			this.on('videoEnd', () => {
 				this.next();
-				this.play();
 			});
 		}
+	}
+
+	/**
+	 * @memberof Player
+	 * @method start
+	 * @description Plays the first video for the first time.
+	 */
+	start() {
+		this.next();
 	}
 
 	/**
@@ -84,6 +91,21 @@ class Player {
 		this.currentVideo = this.queue[this.index];
 		this.container.loadVideo(this.currentVideo);
 		this.index++;
+		this.play();
+	}
+
+	/**
+	 * @memberof Player
+	 * @method previous
+	 * @description Load the previous video in the queue.
+	 */
+	previous() {
+		if (this.index > 0) {
+			this.index--;
+			this.currentVideo = this.queue[this.index];
+			this.container.loadVideo(this.currentVideo);
+			this.play();
+		}
 	}
 
 	/**
