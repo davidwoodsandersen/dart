@@ -98,7 +98,7 @@ class Player {
 		if (this.index < this.queue.length - 1) {
 			this.index++;
 			this.currentVideo = this.queue[this.index];
-			// this.container.loadVideo(this.currentVideo);
+			this.container.loadVideo(this.currentVideo);
 			this.currentVideo.reset();
 			this.play();
 		}
