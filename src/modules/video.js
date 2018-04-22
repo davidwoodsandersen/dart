@@ -19,9 +19,43 @@ class Video {
 		this.title = props.title;
 
 		this.dispatcher = dispatcher;
+		this.hasBeenStarted = false;
 
 		this.element = document.createElement('video');
 		this.element.setAttribute('src', this.source);
+
+		this.initEvents();
+	}
+
+	/**
+	 * @memberof Video
+	 * @method initEvents
+	 * @description Add event listeners to the video element.
+	 */
+	initEvents() {
+		var dispatcher = this.dispatcher;
+
+		this.element.addEventListener('ended', () => {
+			let eventData = {};
+
+			eventData.source = this.source;
+			eventData.title = this.title;
+			eventData.timestamp = Date.now();
+
+			dispatcher.publish('videoEnd', eventData);
+		}, true);
+
+		this.element.addEventListener('playing', () => {
+			dispatcher.publish('play', {
+				timestamp: Date.now()
+			});
+		}, true);
+
+		this.element.addEventListener('pause', () => {
+			dispatcher.publish('pause', {
+				timestamp: Date.now()
+			});
+		}, true);
 	}
 
 	/**
@@ -31,9 +65,18 @@ class Video {
 	 */
 	play() {
 		this.element.play();
-		this.dispatcher.publish('play', {
-			time: Date.now()
-		});
+
+		if (!this.hasBeenStarted) {
+			this.hasBeenStarted = true;
+
+			let eventData = {};
+
+			eventData.source = this.source;
+			eventData.title = this.title;
+			eventData.timestamp = Date.now();
+
+			this.dispatcher.publish('videoStart', eventData);
+		}
 	}
 
 	/**
@@ -43,9 +86,16 @@ class Video {
 	 */
 	pause() {
 		this.element.pause();
-		this.dispatcher.publish('pause', {
-			time: Date.now()
-		});
+	}
+
+	/**
+	 * @memberof Video
+	 * @method reset
+	 * @description Reset the video to its initial state.
+	 */
+	reset() {
+		this.element.currentTime = 0;
+		this.hasBeenStarted = false;
 	}
 
 	/**

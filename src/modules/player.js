@@ -20,10 +20,11 @@ class Player {
 	constructor(props) {
 		this.devMode = props.devMode;
 		this.videos = props.videos;
+		this.playlist = props.playlist;
 		this.containerSettings = props.container;
 
 		this.queue = [];
-		this.index = 0;
+		this.index = -1;
 		this.currentVideo;
 
 		this.dispatcher = new Dispatcher(this.devMode);
@@ -37,14 +38,23 @@ class Player {
 	 * @description Initializes the video player.
 	 */
 	init() {
-		try {
-			this.container = new Container(this.containerSettings, this.dispatcher);
-			this.container.anchor();
-			this.next();
+		this.container = new Container(this.containerSettings, this.dispatcher);
+		this.container.anchor();
+
+		if (this.playlist) {
+			this.on('videoEnd', () => {
+				this.next();
+			});
 		}
-		catch (e) {
-			throw new Error(e);
-		}
+	}
+
+	/**
+	 * @memberof Player
+	 * @method start
+	 * @description Plays the first video for the first time.
+	 */
+	start() {
+		this.next();
 	}
 
 	/**
@@ -78,9 +88,28 @@ class Player {
 	 * @description Load the next video in the queue.
 	 */
 	next() {
-		this.currentVideo = this.queue[this.index];
-		this.container.loadVideo(this.currentVideo);
-		this.index++;
+		if (this.index < this.queue.length - 1) {
+			this.index++;
+			this.currentVideo = this.queue[this.index];
+			this.container.loadVideo(this.currentVideo);
+			this.currentVideo.reset();
+			this.play();
+		}
+	}
+
+	/**
+	 * @memberof Player
+	 * @method previous
+	 * @description Load the previous video in the queue.
+	 */
+	previous() {
+		if (this.index > 0) {
+			this.index--;
+			this.currentVideo = this.queue[this.index];
+			this.container.loadVideo(this.currentVideo);
+			this.currentVideo.reset();
+			this.play();
+		}
 	}
 
 	/**
