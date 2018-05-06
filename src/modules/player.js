@@ -3,10 +3,14 @@
  * @description Hosts the Player class.
  */
 
+import MasterInterval from './interval.js';
 import Dispatcher from './dispatcher.js';
 import Container from './container.js';
 import Controls from './controls.js';
 import Video from './video.js';
+import readyStates from '../constants/readystates.js';
+
+const { HAVE_ENOUGH_DATA, HAVE_FUTURE_DATA } = readyStates;
 
 /**
  * @class
@@ -28,6 +32,7 @@ class Player {
 		this.queue = [];
 		this.index = -1;
 		this.currentVideo;
+		this.masterInterval;
 
 		this.dispatcher = new Dispatcher(this.debug);
 
@@ -42,6 +47,22 @@ class Player {
 	init() {
 		this.container = new Container(this.containerSettings, this.dispatcher);
 		this.container.anchor();
+
+		var _this = this;
+
+		this.masterInterval = new MasterInterval({
+			checkReadyState() {
+				var currentVideo = _this.currentVideo;
+				var loadingScreen = _this.container.loadingScreen;
+
+				if (currentVideo) {
+					let state = currentVideo.getReadyState();
+					let canPlay = state === HAVE_ENOUGH_DATA || state === HAVE_FUTURE_DATA;
+
+					canPlay ? loadingScreen.hide() : loadingScreen.show();
+				}
+			}
+		});
 
 		if (this.controls) {
 			this.controls = new Controls(this, this.container.element);
@@ -61,6 +82,7 @@ class Player {
 	 * @description Plays the first video for the first time.
 	 */
 	start() {
+		if (!this.masterInterval.isRunning) this.masterInterval.run();
 		this.next();
 	}
 
@@ -70,6 +92,7 @@ class Player {
 	 * @description Destroys the video player.
 	 */
 	destroy() {
+		this.masterInterval.destroy();
 		this.container.remove();
 	}
 
@@ -134,6 +157,7 @@ class Player {
 	 * @description Plays the current video.
 	 */
 	play() {
+		if (!this.masterInterval.isRunning) this.masterInterval.run();
 		this.currentVideo ? this.currentVideo.play() : this.start();
 	}
 
