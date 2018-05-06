@@ -27,6 +27,10 @@ export default `
 	color: rgb(255, 255, 255);
 }
 
+#$video_id$ .${selectors.LOADING_SCREEN_CLASS}.${selectors.LOADING_SCREEN_ACTIVE_CLASS} {
+	display: block;
+}
+
 #$video_id$ .${selectors.LOADING_SCREEN_CLASS} > svg {
 	position: absolute;
 	top: 50%;

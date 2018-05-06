@@ -59,6 +59,12 @@ class Container {
 		this.loadingScreen = document.createElement('div');
 		this.loadingScreen.className = selectors.LOADING_SCREEN_CLASS;
 		this.loadingScreen.innerHTML = loadingIcon;
+		this.loadingScreen.show = () => {
+			this.loadingScreen.className = selectors.LOADING_SCREEN_CLASS + ' ' + selectors.LOADING_SCREEN_ACTIVE_CLASS;
+		};
+		this.loadingScreen.hide = () => {
+			this.loadingScreen.className = selectors.LOADING_SCREEN_CLASS;
+		};
 
 		this.element.appendChild(this.videoContainer);
 		this.element.appendChild(this.loadingScreen);

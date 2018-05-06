@@ -7,6 +7,7 @@ export default {
 	CONTAINER_CLASS: 'dart-video',
 	VIDEO_CONTAINER_CLASS: 'dart-video-container',
 	LOADING_SCREEN_CLASS: 'dart-video-loading',
+	LOADING_SCREEN_ACTIVE_CLASS: 'dart-video-loading-active',
 	CONTROLS_CONTAINER_CLASS: 'dart-controls-container',
 	CONTROLS_BUTTON_CLASS: 'dart-controls-button',
 	CONTROLS_PLAY_BUTTON: 'dart-controls-play',
