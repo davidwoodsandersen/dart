@@ -108,6 +108,15 @@ class Video {
 		this.element.style.width = this.element.parentNode.parentNode.style.width;
 		this.element.style.height = this.element.parentNode.parentNode.style.height;
 	}
+
+	/**
+	 * @memberof Video
+	 * @method getReadyState
+	 * @description Get the current ready state of the video.
+	 */
+	getReadyState() {
+		return this.element.readyState;
+	}
 }
 
 export default Video;

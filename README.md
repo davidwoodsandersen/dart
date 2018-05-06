@@ -1,4 +1,4 @@
-# :dart: Dart
+# :dart: Dart [![CircleCI](https://circleci.com/gh/davidwoodsandersen/dart.svg?style=shield)](https://circleci.com/gh/davidwoodsandersen/dart)
 
 Dart is an all-purpose JavaScript video player.
 

@@ -16,6 +16,9 @@
 <dt><a href="#module_helpers">helpers</a></dt>
 <dd><p>Hosts all helper functions.</p>
 </dd>
+<dt><a href="#module_interval">interval</a></dt>
+<dd><p>Hosts the MasterInterval class.</p>
+</dd>
 <dt><a href="#module_player">player</a></dt>
 <dd><p>Hosts the Player class.</p>
 </dd>
@@ -53,8 +56,15 @@ the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https:
 <dd><p>The SVG markup for the &quot;next&quot; button. Taken from
 the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https://feathericons.com/</a>.</p>
 </dd>
+<dt><a href="#loadingIcon">loadingIcon</a> : <code>string</code></dt>
+<dd><p>The SVG markup for the loading icon. Taken from
+Sam Herbet&#39;s collection here: <a href="http://samherbert.net/svg-loaders/">http://samherbert.net/svg-loaders/</a></p>
+</dd>
 <dt><a href="#layout">layout</a> : <code>string</code></dt>
 <dd><p>The CSS defaults for the video player.</p>
+</dd>
+<dt><a href="#readyStates">readyStates</a> : <code>object</code></dt>
+<dd><p>Aliases for the video element ready states.</p>
 </dd>
 <dt><a href="#selectors">selectors</a> : <code>object</code></dt>
 <dd><p>CSS selectors for the video player.</p>
@@ -196,6 +206,30 @@ Hosts all helper functions.
 DOM-related helper functions.
 
 **Kind**: inner namespace of <code>[helpers](#module_helpers)</code>  
+<a name="module_interval"></a>
+
+## interval
+Hosts the MasterInterval class.
+
+
+* [interval](#module_interval)
+    * [~MasterInterval](#module_interval..MasterInterval)
+        * [new MasterInterval(actions)](#new_module_interval..MasterInterval_new)
+
+<a name="module_interval..MasterInterval"></a>
+
+### interval~MasterInterval
+**Kind**: inner class of <code>[interval](#module_interval)</code>  
+<a name="new_module_interval..MasterInterval_new"></a>
+
+#### new MasterInterval(actions)
+Handles all interval-based checks.
+
+
+| Param | Type | Description |
+| --- | --- | --- |
+| actions | <code>array</code> | An array of functions to call. |
+
 <a name="module_player"></a>
 
 ## player
@@ -300,10 +334,23 @@ The SVG markup for the "next" button. Taken from
 the "Feather" collection at https://feathericons.com/.
 
 **Kind**: global constant  
+<a name="loadingIcon"></a>
+
+## loadingIcon : <code>string</code>
+The SVG markup for the loading icon. Taken from
+Sam Herbet's collection here: http://samherbert.net/svg-loaders/
+
+**Kind**: global constant  
 <a name="layout"></a>
 
 ## layout : <code>string</code>
 The CSS defaults for the video player.
+
+**Kind**: global constant  
+<a name="readyStates"></a>
+
+## readyStates : <code>object</code>
+Aliases for the video element ready states.
 
 **Kind**: global constant  
 <a name="selectors"></a>
