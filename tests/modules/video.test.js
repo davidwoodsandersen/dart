@@ -17,6 +17,16 @@ test('When a video is instantiated, the "source" input becomes the src attribute
 	expect(video.element.getAttribute('src')).toEqual(input.source);
 });
 
+test('When a video is instantiated, its dispatcher events are initialized', () => {
+	jest.spyOn(Video.prototype, 'initEvents')
+		.mockImplementation(() => {});
+
+	var input = { source: testLinks.video };
+	var video = new Video(input);
+
+	expect(video.initEvents).toHaveBeenCalled();
+});
+
 test('The video\'s "play" method calls HTMLVideoElement.prototype.play', function() {
 	var input = { source: testLinks.video };
 	var video = new Video(input, { publish: () => {} });
@@ -56,4 +66,32 @@ test('The video\'s "resize" method applies the container dimensions to the video
 
 	expect(video.element.style.width).toBe('500px');
 	expect(video.element.style.height).toBe('500px');
+});
+
+test('The video\'s "reset" method sets the video back to its beginning', () => {
+	var input = { source: testLinks.video };
+	var video = new Video(input, { publish: () => {} });
+
+	video.element.currentTime = 100;
+	video.hasBeenStarted = true;
+
+	video.reset();
+
+	expect(video.element.currentTime).toBe(0);
+	expect(video.hasBeenStarted).toBe(false);
+});
+
+test('The video\'s "getReadyState" method returns the element\'s ready state', () => {
+	var input = { source: testLinks.video };
+	var video = new Video(input, { publish: () => {} });
+
+	// Stub video element:
+	video.element = {};
+	video.element.readyState = 4;
+
+	expect(video.getReadyState()).toBe(4);
+
+	video.element.readyState = 1;
+
+	expect(video.getReadyState()).toBe(1);
 });
