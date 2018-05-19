@@ -51,6 +51,18 @@ test('When a player is initialized, its master interval is created', () => {
 	expect(player.masterInterval instanceof MasterInterval).toBe(true);
 });
 
+test('Once a player is started, its master interval should be running', () => {
+	var player = new Player({
+		container: { parent: document.body },
+		videos: [{ source: testLinks.video }]
+	});
+
+	player.init();
+	player.start();
+
+	expect(player.masterInterval.isRunning).toBe(true);
+});
+
 test('When a player is destroyed, its master interval no longer runs', () => {
 	var player = new Player({
 		container: { parent: document.body },
@@ -64,7 +76,7 @@ test('When a player is destroyed, its master interval no longer runs', () => {
 	expect(player.masterInterval.isRunning).toBe(false);
 });
 
-test('When player.next is called, the next video in the queue is played', () => {
+test('When Player.next is called, the next video in the queue is played', () => {
 	var player = new Player({
 		container: { parent: document.body },
 		videos: [{ source: testLinks.video }, { source: testLinks.video }]
@@ -75,8 +87,35 @@ test('When player.next is called, the next video in the queue is played', () => 
 	player.next();
 
 	// Player.index starts at -1, and player.start() calls next()
-	// for the first time. Therefore after the second call to next(),
-	// player.index should be 1 and the second video should be played.
+	// for the first time. Therefore:
+	// player.start() <- index should be 0
+	// player.next() <- index should be 1
+	expect(player.index).toBe(1);
+	expect(player.currentVideo).toBe(player.queue[1]);
+});
+
+test('When Player.previous is called, the previous video in the queue is played', () => {
+	var player = new Player({
+		container: { parent: document.body },
+		videos: [
+			{ source: testLinks.video },
+			{ source: testLinks.video },
+			{ source: testLinks.video }
+		]
+	});
+
+	player.init();
+	player.start();
+	player.next();
+	player.next();
+	player.previous();
+
+	// Player.index starts at -1, and player.start() calls next()
+	// for the first time. Therefore:
+	// player.start() <- index should be 0
+	// player.next() <- index should be 1
+	// player.next() <- index should be 2
+	// player.previous() <- index should be 1
 	expect(player.index).toBe(1);
 	expect(player.currentVideo).toBe(player.queue[1]);
 });
