@@ -1,4 +1,7 @@
+import setUp from '../setup.js';
 import Container from '../../src/modules/container.js';
+
+beforeEach(setUp);
 
 test('Container.anchor appends Container.element to Container.parent', () => {
 	var input = { parent: document.body };

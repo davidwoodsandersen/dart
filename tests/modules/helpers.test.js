@@ -1,4 +1,7 @@
+import setUp from '../setup.js';
 import { DOMHelpers } from '../../src/modules/helpers.js';
+
+beforeEach(setUp);
 
 test('DOMHelpers.getWidth returns the width of an element', () => {
 	var testElement = document.createElement('div');

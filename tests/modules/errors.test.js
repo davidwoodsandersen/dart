@@ -1,4 +1,7 @@
+import setUp from '../setup.js';
 import PlayerError from '../../src/modules/errors.js';
+
+beforeEach(setUp);
 
 test('PlayerError.report calls the dispatcher', () => {
 	var dispatcher = { publish: () => {} };

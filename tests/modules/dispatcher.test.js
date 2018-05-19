@@ -1,4 +1,7 @@
+import setUp from '../setup.js';
 import Dispatcher from '../../src/modules/dispatcher.js';
+
+beforeEach(setUp);
 
 test('Dispatcher.subscribe adds an entry to this.registry', () => {
 	var dispatcher = new Dispatcher();

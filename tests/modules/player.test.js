@@ -1,7 +1,10 @@
+import setUp from '../setup.js';
 import Player from '../../src/modules/player.js';
 import Dispatcher from '../../src/modules/dispatcher.js';
 import MasterInterval from '../../src/modules/interval.js';
 import testLinks from '../../test-links.json';
+
+beforeEach(setUp);
 
 test('When a player is instantiated, the video queue is created', () => {
 	var player1 = new Player({

@@ -1,5 +1,8 @@
+import setUp from '../setup.js';
 import Video from '../../src/modules/video.js';
 import testLinks from '../../test-links.json';
+
+beforeEach(setUp);
 
 test('Video.constructor assigns a video element to Video.element', () => {
 	var video = new Video({});
