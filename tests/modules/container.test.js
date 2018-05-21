@@ -3,7 +3,7 @@ import Container from '../../src/modules/container.js';
 
 beforeEach(setUp);
 
-test('Container.anchor appends Container.element to Container.parent', () => {
+test('The "anchor" method appends the container element to the parent element', () => {
 	var input = { parent: document.body };
 	var dispatcher = { publish: () => {} };
 	var container = new Container(input, dispatcher);
@@ -13,7 +13,7 @@ test('Container.anchor appends Container.element to Container.parent', () => {
 	expect(container.element.parentNode).toEqual(input.parent);
 });
 
-test('Container.remove calls removeChild and passes Container.element', () => {
+test('The "remove" method removes the container element from the DOM', () => {
 	var input = { parent: document.body };
 	var dispatcher = { publish: () => {} };
 	var container = new Container(input, dispatcher);
@@ -26,7 +26,7 @@ test('Container.remove calls removeChild and passes Container.element', () => {
 	expect(Node.prototype.removeChild).toHaveBeenCalledWith(container.element);
 });
 
-test('Container.setDimensions applies Container.dimensions.{width, height} to Container.element', () => {
+test('The "setDimensions" method applies the input dimensions to the container element', () => {
 	var input = {
 		dimensions: {
 			width: 500,
@@ -42,7 +42,7 @@ test('Container.setDimensions applies Container.dimensions.{width, height} to Co
 	expect(container.element.style.height).toEqual('500px');
 });
 
-test('Container.loadVideo appends a video element to Container.videoContainer', () => {
+test('The "loadVideo" method appends a video element to the container', () => {
 	var videoStub = {
 		element: document.createElement('video'),
 		resize: () => {},
