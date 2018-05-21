@@ -5,6 +5,36 @@ import Container from '../../src/modules/container.js';
 beforeEach(setUp);
 afterEach(tearDown);
 
+test('When the container is instantiated, the layout styles are injected', () => {
+	jest.spyOn(Container.prototype, 'injectStyles')
+		.mockImplementation(() => {});
+
+	var input = { parent: document.body };
+	var dispatcher = { publish: () => {} };
+	var container = new Container(input, dispatcher);
+
+	expect(container.injectStyles).toHaveBeenCalled();
+});
+
+test('When the container is instantiated, the player dimensions are set', () => {
+	jest.spyOn(Container.prototype, 'setDimensions')
+		.mockImplementation(() => {});
+
+	var input = { parent: document.body };
+	var dispatcher = { publish: () => {} };
+	var container = new Container(input, dispatcher);
+
+	expect(container.setDimensions).toHaveBeenCalled();
+});
+
+test('When the container is instantiated, the player loading screen is created', () => {
+	var input = { parent: document.body };
+	var dispatcher = { publish: () => {} };
+	var container = new Container(input, dispatcher);
+
+	expect(container.loadingScreen instanceof Node).toBe(true);
+});
+
 test('The "anchor" method appends the container element to the parent element', () => {
 	var input = { parent: document.body };
 	var dispatcher = { publish: () => {} };
