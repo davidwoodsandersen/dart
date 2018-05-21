@@ -1,8 +1,10 @@
 import setUp from '../setup.js';
+import tearDown from '../teardown.js';
 import Video from '../../src/modules/video.js';
 import testLinks from '../../test-links.json';
 
 beforeEach(setUp);
+afterEach(tearDown);
 
 test('When a video is instantiated, it creates a new HTMLVideoElement', () => {
 	var video = new Video({});

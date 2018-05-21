@@ -1,7 +1,9 @@
 import setUp from '../setup.js';
+import tearDown from '../teardown.js';
 import Container from '../../src/modules/container.js';
 
 beforeEach(setUp);
+afterEach(tearDown);
 
 test('The "anchor" method appends the container element to the parent element', () => {
 	var input = { parent: document.body };

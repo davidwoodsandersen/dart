@@ -5,4 +5,4 @@ export default function setUp() {
 
 	jest.spyOn(HTMLVideoElement.prototype, 'pause')
 		.mockImplementation(() => {});
-}
+};

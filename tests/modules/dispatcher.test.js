@@ -1,7 +1,9 @@
 import setUp from '../setup.js';
+import tearDown from '../teardown.js';
 import Dispatcher from '../../src/modules/dispatcher.js';
 
 beforeEach(setUp);
+afterEach(tearDown);
 
 test('The dispatcher\'s "subscribe" method adds an entry to the registry', () => {
 	var dispatcher = new Dispatcher();
@@ -14,9 +16,7 @@ test('The dispatcher\'s "subscribe" method adds an entry to the registry', () =>
 
 test('The dispatcher\'s "publish" method calls the associated handlers', () => {
 	var dispatcher = new Dispatcher();
-	var test = {
-		eventHandler: function() {}
-	};
+	var test = { eventHandler: function() {} };
 
 	jest.spyOn(test, 'eventHandler');
 

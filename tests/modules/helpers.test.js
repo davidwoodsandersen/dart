@@ -1,7 +1,9 @@
 import setUp from '../setup.js';
+import tearDown from '../teardown.js';
 import { DOMHelpers } from '../../src/modules/helpers.js';
 
 beforeEach(setUp);
+afterEach(tearDown);
 
 test('The "getWidth" DOM helper returns the width of an element', () => {
 	var testElement = document.createElement('div');
