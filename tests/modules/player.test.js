@@ -1,74 +1,123 @@
+import setUp from '../setup.js';
+import tearDown from '../teardown.js';
 import Player from '../../src/modules/player.js';
+import Dispatcher from '../../src/modules/dispatcher.js';
+import MasterInterval from '../../src/modules/interval.js';
 import testLinks from '../../test-links.json';
 
-test('Player.constructor initializes the video queue', () => {
+beforeEach(setUp);
+afterEach(tearDown);
+
+test('When a player is instantiated, the video queue is created', () => {
+	var player1 = new Player({
+		container: {},
+		videos: [{ source: testLinks.video }]
+	});
+
+	expect(player1.queue.length).toBe(1);
+
+	var player2 = new Player({
+		container: {},
+		videos: [{ source: testLinks.video }, { source: testLinks.video }]
+	});
+
+	expect(player2.queue.length).toBe(2);
+});
+
+test('When a player is instantiated, it instantiates a dispatcher', () => {
 	var player = new Player({
 		container: {},
-		videos: [
-			{ source: testLinks.video }
-		]
+		videos: [{ source: testLinks.video }]
 	});
 
-	expect(player.queue.length).toBe(1);
+	expect(player.dispatcher instanceof Dispatcher).toBe(true);
 });
 
-test('Player.start calls Player.next', () => {
+test('When a player is instantiated, its master interval is not yet created', () => {
 	var player = new Player({
-		container: {
-			parent: document.body
-		},
-		videos: [
-			{ source: testLinks.video }
-		]
+		container: {},
+		videos: [{ source: testLinks.video }]
+	});
+
+	expect(typeof player.masterInterval).toBe('undefined');
+});
+
+test('When a player is initialized, its master interval is created', () => {
+	var player = new Player({
+		container: { parent: document.body },
+		videos: [{ source: testLinks.video }]
 	});
 
 	player.init();
 
-	jest.spyOn(player, 'next')
-		.mockImplementation(() => {});
-
-	player.start();
-
-	expect(player.next).toHaveBeenCalled();
+	expect(player.masterInterval instanceof MasterInterval).toBe(true);
 });
 
-test('Player.pause calls Player.currentVideo.pause', () => {
+test('Once a player is started, its master interval should be running', () => {
 	var player = new Player({
-		container: {
-			parent: document.body
-		},
-		videos: [
-			{ source: testLinks.video }
-		]
+		container: { parent: document.body },
+		videos: [{ source: testLinks.video }]
 	});
 
 	player.init();
 	player.start();
 
-	jest.spyOn(player.currentVideo, 'pause')
-		.mockImplementation(() => {});
-
-	player.pause();
-
-	expect(player.currentVideo.pause).toHaveBeenCalled();
+	expect(player.masterInterval.isRunning).toBe(true);
 });
 
-test('Player.next calls Player.container.loadVideo', () => {
+test('When a player is destroyed, its master interval no longer runs', () => {
 	var player = new Player({
-		container: {
-			parent: document.body
-		},
-		videos: [
-			{ source: testLinks.video }
-		]
+		container: { parent: document.body },
+		videos: [{ source: testLinks.video }]
 	});
 
 	player.init();
+	player.start();
+	player.destroy();
 
-	jest.spyOn(player.container, 'loadVideo')
-		.mockImplementation(() => {});
+	expect(player.masterInterval.isRunning).toBe(false);
+});
 
+test('When Player.next is called, the next video in the queue is played', () => {
+	var player = new Player({
+		container: { parent: document.body },
+		videos: [{ source: testLinks.video }, { source: testLinks.video }]
+	});
+
+	player.init();
+	player.start();
 	player.next();
 
-	expect(player.container.loadVideo).toHaveBeenCalled();
+	// Player.index starts at -1, and player.start() calls next()
+	// for the first time. Therefore:
+	// player.start() <- index should be 0
+	// player.next() <- index should be 1
+	expect(player.index).toBe(1);
+	expect(player.currentVideo).toBe(player.queue[1]);
+});
+
+test('When Player.previous is called, the previous video in the queue is played', () => {
+	var player = new Player({
+		container: { parent: document.body },
+		videos: [
+			{ source: testLinks.video },
+			{ source: testLinks.video },
+			{ source: testLinks.video }
+		]
+	});
+
+	player.init();
+	player.start();
+	player.next();
+	player.next();
+	player.previous();
+
+	// Player.index starts at -1, and player.start() calls next()
+	// for the first time. Therefore:
+	// player.start() <- index should be 0
+	// player.next() <- index should be 1
+	// player.next() <- index should be 2
+	// player.previous() <- index should be 1
+	expect(player.index).toBe(1);
+	expect(player.currentVideo).toBe(player.queue[1]);
 });

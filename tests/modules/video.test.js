@@ -1,25 +1,37 @@
+import setUp from '../setup.js';
+import tearDown from '../teardown.js';
 import Video from '../../src/modules/video.js';
 import testLinks from '../../test-links.json';
 
-test('Video.constructor assigns a video element to Video.element', () => {
-	var video = new Video({});
-	var isVideoElement = video.element instanceof HTMLVideoElement;
+beforeEach(setUp);
+afterEach(tearDown);
 
-	expect(isVideoElement).toBeTruthy();
+test('When a video is instantiated, it creates a new HTMLVideoElement', () => {
+	var video = new Video({});
+
+	expect(video.element instanceof HTMLVideoElement).toBe(true);
 });
 
-test('Video props.source input becomes source attribute of video element', () => {
+test('When a video is instantiated, the "source" input becomes the src attribute of the element', () => {
 	var input = { source: testLinks.video };
 	var video = new Video(input);
 
 	expect(video.element.getAttribute('src')).toEqual(input.source);
 });
 
-test('Video.play calls HTMLVideoElement.prototype.play', function() {
+test('When a video is instantiated, its dispatcher events are initialized', () => {
+	jest.spyOn(Video.prototype, 'initEvents')
+		.mockImplementation(() => {});
+
 	var input = { source: testLinks.video };
-	var video = new Video(input, {
-		publish: () => {}
-	});
+	var video = new Video(input);
+
+	expect(video.initEvents).toHaveBeenCalled();
+});
+
+test('The video\'s "play" method calls HTMLVideoElement.prototype.play', function() {
+	var input = { source: testLinks.video };
+	var video = new Video(input, { publish: () => {} });
 
 	jest.spyOn(HTMLVideoElement.prototype, 'play')
 		.mockImplementation(() => {});
@@ -29,11 +41,9 @@ test('Video.play calls HTMLVideoElement.prototype.play', function() {
 	expect(HTMLVideoElement.prototype.play).toHaveBeenCalled();
 });
 
-test('Video.pause calls HTMLVideoElement.prototype.pause', function() {
+test('The video\'s "pause" method calls HTMLVideoElement.prototype.pause', function() {
 	var input = { source: testLinks.video };
-	var video = new Video(input, {
-		publish: () => {}
-	});
+	var video = new Video(input, { publish: () => {} });
 
 	jest.spyOn(HTMLVideoElement.prototype, 'pause')
 		.mockImplementation(() => {});
@@ -43,7 +53,7 @@ test('Video.pause calls HTMLVideoElement.prototype.pause', function() {
 	expect(HTMLVideoElement.prototype.pause).toHaveBeenCalled();
 });
 
-test('Video.resize applies the container dimensions to the video element', () => {
+test('The video\'s "resize" method applies the container dimensions to the video element', () => {
 	var parentNode = document.createElement('div');
 	parentNode.style.width = '500px';
 	parentNode.style.height = '500px';
@@ -58,4 +68,32 @@ test('Video.resize applies the container dimensions to the video element', () =>
 
 	expect(video.element.style.width).toBe('500px');
 	expect(video.element.style.height).toBe('500px');
+});
+
+test('The video\'s "reset" method sets the video back to its beginning', () => {
+	var input = { source: testLinks.video };
+	var video = new Video(input, { publish: () => {} });
+
+	video.element.currentTime = 100;
+	video.hasBeenStarted = true;
+
+	video.reset();
+
+	expect(video.element.currentTime).toBe(0);
+	expect(video.hasBeenStarted).toBe(false);
+});
+
+test('The video\'s "getReadyState" method returns the element\'s ready state', () => {
+	var input = { source: testLinks.video };
+	var video = new Video(input, { publish: () => {} });
+
+	// Stub video element:
+	video.element = {};
+	video.element.readyState = 4;
+
+	expect(video.getReadyState()).toBe(4);
+
+	video.element.readyState = 1;
+
+	expect(video.getReadyState()).toBe(1);
 });

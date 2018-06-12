@@ -1,6 +1,11 @@
+import setUp from '../setup.js';
+import tearDown from '../teardown.js';
 import { DOMHelpers } from '../../src/modules/helpers.js';
 
-test('DOMHelpers.getWidth returns the width of an element', () => {
+beforeEach(setUp);
+afterEach(tearDown);
+
+test('The "getWidth" DOM helper returns the width of an element', () => {
 	var testElement = document.createElement('div');
 	testElement.style.width = '500px';
 
@@ -9,7 +14,7 @@ test('DOMHelpers.getWidth returns the width of an element', () => {
 	expect(computedWidth).toBe(500);
 });
 
-test('DOMHelpers.getHeight returns the height of an element', () => {
+test('The "getHeight" DOM helper returns the height of an element', () => {
 	var testElement = document.createElement('div');
 	testElement.style.height = '500px';
 

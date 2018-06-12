@@ -1,6 +1,11 @@
+import setUp from '../setup.js';
+import tearDown from '../teardown.js';
 import PlayerError from '../../src/modules/errors.js';
 
-test('PlayerError.report calls the dispatcher', () => {
+beforeEach(setUp);
+afterEach(tearDown);
+
+test('The PlayerError "report" method triggers a dispatcher "error" event', () => {
 	var dispatcher = { publish: () => {} };
 	var error = new PlayerError({}, dispatcher);
 

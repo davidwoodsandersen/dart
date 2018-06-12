@@ -1,6 +1,11 @@
+import setUp from '../setup.js';
+import tearDown from '../teardown.js';
 import Dispatcher from '../../src/modules/dispatcher.js';
 
-test('Dispatcher.subscribe adds an entry to this.registry', () => {
+beforeEach(setUp);
+afterEach(tearDown);
+
+test('The dispatcher\'s "subscribe" method adds an entry to the registry', () => {
 	var dispatcher = new Dispatcher();
 	var eventHandler = function() {};
 
@@ -9,11 +14,9 @@ test('Dispatcher.subscribe adds an entry to this.registry', () => {
 	expect(dispatcher.registry['play'][0]).toEqual(eventHandler);
 });
 
-test('Dispatcher.publish calls the associated handlers', () => {
+test('The dispatcher\'s "publish" method calls the associated handlers', () => {
 	var dispatcher = new Dispatcher();
-	var test = {
-		eventHandler: function() {}
-	};
+	var test = { eventHandler: function() {} };
 
 	jest.spyOn(test, 'eventHandler');
 
@@ -23,7 +26,7 @@ test('Dispatcher.publish calls the associated handlers', () => {
 	expect(test.eventHandler).toHaveBeenCalledTimes(1);
 });
 
-test('Invalid events are not added to this.registry', () => {
+test('Invalid events are not added to the registry', () => {
 	var dispatcher = new Dispatcher();
 
 	dispatcher.subscribe('fakeEvent', function() {});
@@ -31,4 +34,18 @@ test('Invalid events are not added to this.registry', () => {
 	var addedToRegistry = 'fakeEvent' in dispatcher.registry;
 
 	expect(addedToRegistry).toBeFalsy();
+});
+
+test('The dispatcher\'s "printEventReport" method logs data to the console', () => {
+	var dispatcher = new Dispatcher();
+
+	jest.spyOn(console, 'group').mockImplementation(() => {});
+	jest.spyOn(console, 'groupEnd').mockImplementation(() => {});
+	jest.spyOn(console, 'log').mockImplementation(() => {});
+
+	dispatcher.printEventReport('test', {});
+
+	expect(console.group).toHaveBeenCalled();
+	expect(console.groupEnd).toHaveBeenCalled();
+	expect(console.log).toHaveBeenCalled();
 });
