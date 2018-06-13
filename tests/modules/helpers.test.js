@@ -22,3 +22,23 @@ test('The "getHeight" DOM helper returns the height of an element', () => {
 
 	expect(computedWidth).toBe(500);
 });
+
+test('The "createElement" DOM helper returns an HTML element', () => {
+	var testElement = DOMHelpers.createElement('div', {});
+
+	expect(testElement instanceof Node).toBe(true);
+});
+
+test('The properties passed to "createElement" are assigned to the element', () => {
+	var testElement = DOMHelpers.createElement('div', {
+		testFlag: 1
+	});
+
+	expect('testFlag' in testElement).toBe(true);
+});
+
+test('The type of element returned by "createElement" matches the type argument', () => {
+	var testElement = DOMHelpers.createElement('li', {});
+
+	expect(testElement.nodeName).toBe('LI');
+});

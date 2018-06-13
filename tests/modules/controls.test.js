@@ -59,3 +59,27 @@ test('When the controls are built, the previous button is added to the container
 
 	expect(previousButtonInContainer).toBe(true);
 });
+
+test('The "createButton" method returns an HTML element', () => {
+	var testButton = Controls.prototype.createButton({});
+
+	expect(testButton instanceof Node).toBe(true);
+});
+
+test('The "createButton" method assigns the correct classes', () => {
+	var testClasses = 'testclass1 testclass2';
+	var testButton = Controls.prototype.createButton({
+		classes: testClasses
+	});
+
+	expect(testButton.getAttribute('class')).toBe(testClasses);
+});
+
+test('The "createButton" method assigns the correct action', () => {
+	var testAction = () => { return 1; };
+	var testButton = Controls.prototype.createButton({
+		action: testAction
+	});
+
+	expect(testButton.onclick).toBe(testAction);
+});
