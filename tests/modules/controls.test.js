@@ -77,3 +77,13 @@ test('The "createButton" method assigns an onclick action', () => {
 
 	expect(typeof testButton.onclick).toBe('function');
 });
+
+test('The "addControl" method appends an element to the controls container', () => {
+	var parent = document.createElement('div');
+	var testElement = document.createElement('div');
+	var controls = new Controls({}, parent);
+
+	controls.addControl(testElement);
+
+	expect(testElement.parentElement).toBe(controls.container);
+});
