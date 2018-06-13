@@ -18,7 +18,7 @@ test('Controls are built on instantiation', () => {
 
 test('When the controls are built, the play button is added to the container', () => {
 	var parent = document.createElement('div');
-	var controls = new Controls(null, parent);
+	var controls = new Controls({}, parent);
 
 	controls.anchor();
 
@@ -29,7 +29,7 @@ test('When the controls are built, the play button is added to the container', (
 
 test('When the controls are built, the pause button is added to the container', () => {
 	var parent = document.createElement('div');
-	var controls = new Controls(null, parent);
+	var controls = new Controls({}, parent);
 
 	controls.anchor();
 
@@ -40,7 +40,7 @@ test('When the controls are built, the pause button is added to the container', 
 
 test('When the controls are built, the next button is added to the container', () => {
 	var parent = document.createElement('div');
-	var controls = new Controls(null, parent);
+	var controls = new Controls({ isPlaylist: true }, parent);
 
 	controls.anchor();
 
@@ -51,7 +51,7 @@ test('When the controls are built, the next button is added to the container', (
 
 test('When the controls are built, the previous button is added to the container', () => {
 	var parent = document.createElement('div');
-	var controls = new Controls(null, parent);
+	var controls = new Controls({ isPlaylist: true }, parent);
 
 	controls.anchor();
 

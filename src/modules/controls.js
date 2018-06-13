@@ -25,6 +25,8 @@ class Controls {
 	constructor(player, parentNode) {
 		this.player = player;
 		this.parent = parentNode;
+		this.container = document.createElement('div');
+		this.container.className = selectors.CONTROLS_CONTAINER_CLASS;
 
 		this.build(player);
 	}
@@ -36,9 +38,6 @@ class Controls {
 	 * @description Create and organize the controls HTML.
 	 */
 	build(player) {
-		this.container = document.createElement('div');
-		this.container.className = selectors.CONTROLS_CONTAINER_CLASS;
-
 		var playButton = this.createButton({
 			classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PLAY_BUTTON}`,
 			html: playIcon,
@@ -51,22 +50,35 @@ class Controls {
 			action: () => { player.pause() }
 		});
 
-		var nextButton = this.createButton({
-			classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_NEXT_BUTTON}`,
-			html: nextIcon,
-			action: () => { player.next() }
-		});
+		this.addControl(playButton);
+		this.addControl(pauseButton);
 
-		var previousButton = this.createButton({
-			classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PREVIOUS_BUTTON}`,
-			html: previousIcon,
-			action: () => { player.previous() }
-		});
+		if (player.isPlaylist) {
+			let nextButton = this.createButton({
+				classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_NEXT_BUTTON}`,
+				html: nextIcon,
+				action: () => { player.next() }
+			});
 
-		this.container.appendChild(playButton);
-		this.container.appendChild(pauseButton);
-		this.container.appendChild(nextButton);
-		this.container.appendChild(previousButton);
+			let previousButton = this.createButton({
+				classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PREVIOUS_BUTTON}`,
+				html: previousIcon,
+				action: () => { player.previous() }
+			});
+
+			this.addControl(nextButton);
+			this.addControl(previousButton);
+		}
+	}
+
+	/**
+	 * @memberof Controls
+	 * @method addControl
+	 * @param {object} control - A DOM node to append to the container.
+	 * @description - Add a specific control to the controls UI.
+	 */
+	addControl(control) {
+		this.container.appendChild(control);
 	}
 
 	/**

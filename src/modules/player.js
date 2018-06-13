@@ -26,9 +26,9 @@ class Player {
 		this.controls = props.controls;
 		this.debug = props.debug;
 		this.videos = props.videos;
-		this.playlist = props.playlist;
 		this.containerSettings = props.container;
 
+		this.isPlaylist = this.videos.length > 1;
 		this.queue = [];
 		this.index = -1;
 		this.currentVideo;
@@ -69,7 +69,7 @@ class Player {
 			this.controls.anchor();
 		}
 
-		if (this.playlist) {
+		if (this.isPlaylist) {
 			this.on('videoEnd', () => {
 				this.next();
 			});
