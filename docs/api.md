@@ -63,6 +63,14 @@ the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https:
 <dd><p>The SVG markup for the loading icon. Taken from
 Sam Herbet&#39;s collection here: <a href="http://samherbert.net/svg-loaders/">http://samherbert.net/svg-loaders/</a></p>
 </dd>
+<dt><a href="#volumeIcon">volumeIcon</a> : <code>string</code></dt>
+<dd><p>The SVG markup for the volume icon. Taken from
+the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https://feathericons.com/</a>.</p>
+</dd>
+<dt><a href="#mutedIcon">mutedIcon</a> : <code>string</code></dt>
+<dd><p>The SVG markup for the muted icon. Taken from
+the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https://feathericons.com/</a>.</p>
+</dd>
 <dt><a href="#layout">layout</a> : <code>string</code></dt>
 <dd><p>The CSS layout defaults for the video player.</p>
 </dd>
@@ -348,6 +356,20 @@ the "Feather" collection at https://feathericons.com/.
 ## loadingIcon : <code>string</code>
 The SVG markup for the loading icon. Taken from
 Sam Herbet's collection here: http://samherbert.net/svg-loaders/
+
+**Kind**: global constant  
+<a name="volumeIcon"></a>
+
+## volumeIcon : <code>string</code>
+The SVG markup for the volume icon. Taken from
+the "Feather" collection at https://feathericons.com/.
+
+**Kind**: global constant  
+<a name="mutedIcon"></a>
+
+## mutedIcon : <code>string</code>
+The SVG markup for the muted icon. Taken from
+the "Feather" collection at https://feathericons.com/.
 
 **Kind**: global constant  
 <a name="layout"></a>

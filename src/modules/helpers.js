@@ -11,14 +11,20 @@ const DOMHelpers = {
 	/**
 	 * @memberof DOMHelpers
 	 * @method createElement
-	 * @param {string} type - The DOM element type (e.g. 'div', 'ul', etc.).
-	 * @param {object} properties - The object properties for the element.
-	 * @description Create an HTML element with custom properties.
+	 * @param {object} config - Configuration for the DOM element.
+	 * @description Create an HTML element with custom properties and attributes.
 	 */
-	createElement(type, properties) {
+	createElement(config) {
+		var { type, properties, attributes } = config;
 		var element = document.createElement(type);
 
-		for (var prop in properties) element[prop] = properties[prop];
+		if (properties) {
+			for (var prop in properties) element[prop] = properties[prop];
+		}
+
+		if (attributes) {
+			for (var attr in attributes) element.setAttribute(attr, attributes[attr]);
+		}
 
 		return element;
 	},

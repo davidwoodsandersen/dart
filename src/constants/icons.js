@@ -48,10 +48,32 @@ const loadingIcon = `
 <svg width="38" height="38" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff"><g fill="none" fill-rule="evenodd"><g transform="translate(1 1)" stroke-width="2"><circle stroke-opacity=".5" cx="18" cy="18" r="18"/><path d="M36 18c0-9.94-8.06-18-18-18"><animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/></path></g></g></svg>
 `;
 
+/**
+ * @constant volumeIcon
+ * @type {string}
+ * @description The SVG markup for the volume icon. Taken from
+ * the "Feather" collection at https://feathericons.com/.
+ */
+const volumeIcon = `
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-volume-2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+`;
+
+/**
+ * @constant mutedIcon
+ * @type {string}
+ * @description The SVG markup for the muted icon. Taken from
+ * the "Feather" collection at https://feathericons.com/.
+ */
+const mutedIcon = `
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-volume-x"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+`;
+
 export {
 	playIcon,
 	pauseIcon,
 	previousIcon,
 	nextIcon,
-	loadingIcon
+	loadingIcon,
+	volumeIcon,
+	mutedIcon
 };

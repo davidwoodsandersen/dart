@@ -28,6 +28,7 @@ class Player {
 		this.videos = props.videos;
 		this.containerSettings = props.container;
 
+		this.volume = props.muted ? 0 : 1;
 		this.isPlaylist = this.videos.length > 1;
 		this.queue = [];
 		this.index = -1;

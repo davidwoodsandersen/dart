@@ -24,21 +24,31 @@ test('The "getHeight" DOM helper returns the height of an element', () => {
 });
 
 test('The "createElement" DOM helper returns an HTML element', () => {
-	var testElement = DOMHelpers.createElement('div', {});
+	var testElement = DOMHelpers.createElement({ type: 'div' });
 
 	expect(testElement instanceof Node).toBe(true);
 });
 
 test('The properties passed to "createElement" are assigned to the element', () => {
-	var testElement = DOMHelpers.createElement('div', {
-		testFlag: 1
+	var testElement = DOMHelpers.createElement({
+		type: 'div',
+		properties: { testFlag: 1 }
 	});
 
 	expect('testFlag' in testElement).toBe(true);
 });
 
+test('The HTML attributes passed to "createElement" are assigned to the element', () => {
+	var testElement = DOMHelpers.createElement({
+		type: 'div',
+		attributes: { 'data-test-attr': '1' }
+	});
+
+	expect(testElement.getAttribute('data-test-attr')).toBe('1');
+});
+
 test('The type of element returned by "createElement" matches the type argument', () => {
-	var testElement = DOMHelpers.createElement('li', {});
+	var testElement = DOMHelpers.createElement({ type: 'li' });
 
 	expect(testElement.nodeName).toBe('LI');
 });
