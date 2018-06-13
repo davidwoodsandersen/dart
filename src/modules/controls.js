@@ -39,34 +39,50 @@ class Controls {
 		this.container = document.createElement('div');
 		this.container.className = selectors.CONTROLS_CONTAINER_CLASS;
 
-		var playButton = createElement('div', {
-			className: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PLAY_BUTTON}`,
-			innerHTML: playIcon,
-			onclick: () => { player.play() }
+		var playButton = this.createButton({
+			classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PLAY_BUTTON}`,
+			html: playIcon,
+			action: () => { player.play() }
 		});
 
-		var pauseButton = createElement('div', {
-			className: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PAUSE_BUTTON}`,
-			innerHTML: pauseIcon,
-			onclick: () => { player.pause() }
+		var pauseButton = this.createButton({
+			classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PAUSE_BUTTON}`,
+			html: pauseIcon,
+			action: () => { player.pause() }
 		});
 
-		var nextButton = createElement('div', {
-			className: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_NEXT_BUTTON}`,
-			innerHTML: nextIcon,
-			onclick: () => { player.next() }
+		var nextButton = this.createButton({
+			classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_NEXT_BUTTON}`,
+			html: nextIcon,
+			action: () => { player.next() }
 		});
 
-		var previousButton = createElement('div', {
-			className: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PREVIOUS_BUTTON}`,
-			innerHTML: previousIcon,
-			onclick: () => { player.previous() }
+		var previousButton = this.createButton({
+			classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PREVIOUS_BUTTON}`,
+			html: previousIcon,
+			action: () => { player.previous() }
 		});
 
 		this.container.appendChild(playButton);
 		this.container.appendChild(pauseButton);
 		this.container.appendChild(nextButton);
 		this.container.appendChild(previousButton);
+	}
+
+	/**
+	 * @memberof Controls
+	 * @method createButton
+	 * @param {object} config - The configuration for the button.
+	 * @description - Creates and returns a button for the controls.
+	 */
+	createButton(config) {
+		var { classes, html, action } = config;
+
+		return createElement('div', {
+			className: classes,
+			innerHTML: html,
+			onclick: action
+		});
 	}
 
 	/**
