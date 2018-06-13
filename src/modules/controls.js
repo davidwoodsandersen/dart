@@ -4,7 +4,6 @@
  */
 
 import selectors from '../constants/selectors.js';
-import { playIcon, pauseIcon, previousIcon, nextIcon } from '../constants/icons.js';
 import { DOMHelpers } from './helpers.js';
 
 const { createElement } = DOMHelpers;
@@ -40,13 +39,11 @@ class Controls {
 	build(player) {
 		var playButton = this.createButton({
 			classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PLAY_BUTTON}`,
-			html: playIcon,
 			action: () => { player.play() }
 		});
 
 		var pauseButton = this.createButton({
 			classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PAUSE_BUTTON}`,
-			html: pauseIcon,
 			action: () => { player.pause() }
 		});
 
@@ -56,13 +53,11 @@ class Controls {
 		if (player.isPlaylist) {
 			let nextButton = this.createButton({
 				classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_NEXT_BUTTON}`,
-				html: nextIcon,
 				action: () => { player.next() }
 			});
 
 			let previousButton = this.createButton({
 				classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PREVIOUS_BUTTON}`,
-				html: previousIcon,
 				action: () => { player.previous() }
 			});
 
@@ -88,11 +83,10 @@ class Controls {
 	 * @description - Creates and returns a button for the controls.
 	 */
 	createButton(config) {
-		var { classes, html, action } = config;
+		var { classes, action } = config;
 
 		return createElement('div', {
 			className: classes,
-			innerHTML: html,
 			onclick: action
 		});
 	}

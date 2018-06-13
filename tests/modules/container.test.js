@@ -6,14 +6,14 @@ beforeEach(setUp);
 afterEach(tearDown);
 
 test('When the container is instantiated, the layout styles are injected', () => {
-	jest.spyOn(Container.prototype, 'injectStyles')
+	jest.spyOn(Container.prototype, 'injectCss')
 		.mockImplementation(() => {});
 
 	var input = { parent: document.body };
 	var dispatcher = { publish: () => {} };
 	var container = new Container(input, dispatcher);
 
-	expect(container.injectStyles).toHaveBeenCalled();
+	expect(container.injectCss).toHaveBeenCalled();
 });
 
 test('When the container is instantiated, the player dimensions are set', () => {

@@ -5,9 +5,9 @@
 
 import { DOMHelpers } from './helpers.js';
 import PlayerError from './errors.js';
-import { loadingIcon } from '../constants/icons.js';
 import selectors from '../constants/selectors.js';
 import layout from '../constants/layout.js';
+import defaultStyles from '../constants/defaultStyles.js';
 
 const { getWidth, getHeight } = DOMHelpers;
 
@@ -58,7 +58,6 @@ class Container {
 
 		this.loadingScreen = document.createElement('div');
 		this.loadingScreen.className = selectors.LOADING_SCREEN_CLASS;
-		this.loadingScreen.innerHTML = loadingIcon;
 		this.loadingScreen.show = () => {
 			this.loadingScreen.className = selectors.LOADING_SCREEN_CLASS + ' ' + selectors.LOADING_SCREEN_ACTIVE_CLASS;
 		};
@@ -69,18 +68,19 @@ class Container {
 		this.element.appendChild(this.videoContainer);
 		this.element.appendChild(this.loadingScreen);
 
-		this.injectStyles();
+		this.injectCss(layout);
+		this.injectCss(defaultStyles);
 		this.setDimensions();
 	}
 
 	/**
 	 * @memberof Container
-	 * @method injectStyles
-	 * @description Insert layout CSS into the video container.
+	 * @method injectCss
+	 * @description Insert CSS into the video container.
 	 */
-	injectStyles() {
+	injectCss(css) {
 		var styleTag = document.createElement('style');
-		styleTag.textContent = layout.replace(/\$video_id\$/g, this.id);
+		styleTag.textContent = css.replace(/\$video_id\$/g, this.id);
 
 		this.element.appendChild(styleTag);
 	}

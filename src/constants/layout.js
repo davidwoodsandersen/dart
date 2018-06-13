@@ -1,7 +1,7 @@
 /**
  * @constant layout
  * @type {string}
- * @description The CSS defaults for the video player.
+ * @description The CSS layout defaults for the video player.
  */
 
 import selectors from './selectors.js';
@@ -31,10 +31,14 @@ export default `
 	display: block;
 }
 
-#$video_id$ .${selectors.LOADING_SCREEN_CLASS} > svg {
+#$video_id$ .${selectors.LOADING_SCREEN_CLASS}:before {
+	content: '';
 	position: absolute;
 	top: 50%;
 	left: 50%;
+	width: 40px;
+	height: 40px;
+	background-size: contain;
 	-webkit-transform: translateX(-50%) translateY(-50%) scale(1.5);
 	transform: translateX(-50%) translateY(-50%) scale(1.5);
 }
@@ -61,6 +65,16 @@ export default `
 	cursor: pointer;
 	-webkit-transition: transform .3s, bottom .3s;
 	transition: transform .3s, bottom .3s;
+}
+
+#$video_id$ .${selectors.CONTROLS_BUTTON_CLASS}:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: contain;
 }
 
 #$video_id$ .${selectors.CONTROLS_BUTTON_CLASS}:hover {

@@ -37,6 +37,9 @@
 ## Constants
 
 <dl>
+<dt><a href="#defaultStyles">defaultStyles</a> : <code>string</code></dt>
+<dd><p>The default styles for the video player.</p>
+</dd>
 <dt><a href="#events">events</a> : <code>array</code></dt>
 <dd><p>The official list of valid video player events.</p>
 </dd>
@@ -61,7 +64,7 @@ the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https:
 Sam Herbet&#39;s collection here: <a href="http://samherbert.net/svg-loaders/">http://samherbert.net/svg-loaders/</a></p>
 </dd>
 <dt><a href="#layout">layout</a> : <code>string</code></dt>
-<dd><p>The CSS defaults for the video player.</p>
+<dd><p>The CSS layout defaults for the video player.</p>
 </dd>
 <dt><a href="#readyStates">readyStates</a> : <code>object</code></dt>
 <dd><p>Aliases for the video element ready states.</p>
@@ -300,6 +303,12 @@ as the value of "globalVarName" in package.json.
 Generates a new instance of the Player class.
 
 **Kind**: static method of <code>[Dart](#Dart)</code>  
+<a name="defaultStyles"></a>
+
+## defaultStyles : <code>string</code>
+The default styles for the video player.
+
+**Kind**: global constant  
 <a name="events"></a>
 
 ## events : <code>array</code>
@@ -344,7 +353,7 @@ Sam Herbet's collection here: http://samherbert.net/svg-loaders/
 <a name="layout"></a>
 
 ## layout : <code>string</code>
-The CSS defaults for the video player.
+The CSS layout defaults for the video player.
 
 **Kind**: global constant  
 <a name="readyStates"></a>
