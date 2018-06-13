@@ -67,19 +67,13 @@ test('The "createButton" method returns an HTML element', () => {
 });
 
 test('The "createButton" method assigns the correct classes', () => {
-	var testClasses = 'testclass1 testclass2';
-	var testButton = Controls.prototype.createButton({
-		classes: testClasses
-	});
+	var testButton = Controls.prototype.createButton('play');
 
-	expect(testButton.getAttribute('class')).toBe(testClasses);
+	expect(testButton.getAttribute('class').split(' ')).toContain(`${selectors.CONTROLS_PLAY_BUTTON}`);
 });
 
-test('The "createButton" method assigns the correct action', () => {
-	var testAction = () => { return 1; };
-	var testButton = Controls.prototype.createButton({
-		action: testAction
-	});
+test('The "createButton" method assigns an onclick action', () => {
+	var testButton = Controls.prototype.createButton('play');
 
-	expect(testButton.onclick).toBe(testAction);
+	expect(typeof testButton.onclick).toBe('function');
 });

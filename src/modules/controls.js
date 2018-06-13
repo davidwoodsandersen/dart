@@ -33,36 +33,15 @@ class Controls {
 	/**
 	 * @memberof Controls
 	 * @method build
-	 * @param {object} player - The player instance to bind the controls to.
 	 * @description Create and organize the controls HTML.
 	 */
-	build(player) {
-		var playButton = this.createButton({
-			classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PLAY_BUTTON}`,
-			action: () => { player.play() }
-		});
+	build() {
+		this.addControl(this.createButton('play'));
+		this.addControl(this.createButton('pause'));
 
-		var pauseButton = this.createButton({
-			classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PAUSE_BUTTON}`,
-			action: () => { player.pause() }
-		});
-
-		this.addControl(playButton);
-		this.addControl(pauseButton);
-
-		if (player.isPlaylist) {
-			let nextButton = this.createButton({
-				classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_NEXT_BUTTON}`,
-				action: () => { player.next() }
-			});
-
-			let previousButton = this.createButton({
-				classes: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PREVIOUS_BUTTON}`,
-				action: () => { player.previous() }
-			});
-
-			this.addControl(nextButton);
-			this.addControl(previousButton);
+		if (this.player.isPlaylist) {
+			this.addControl(this.createButton('next'));
+			this.addControl(this.createButton('previous'));
 		}
 	}
 
@@ -79,16 +58,36 @@ class Controls {
 	/**
 	 * @memberof Controls
 	 * @method createButton
-	 * @param {object} config - The configuration for the button.
+	 * @param {object} type - The type of button to create.
 	 * @description - Creates and returns a button for the controls.
 	 */
-	createButton(config) {
-		var { classes, action } = config;
+	createButton(type) {
+		var _this = this;
 
-		return createElement('div', {
-			className: classes,
-			onclick: action
-		});
+		switch (type) {
+			case 'play':
+				return createElement('div', {
+					className: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PLAY_BUTTON}`,
+					onclick: () => { _this.player.play() }
+				});
+			case 'pause':
+				return createElement('div', {
+					className: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PAUSE_BUTTON}`,
+					onclick: () => { _this.player.pause() }
+				});
+			case 'next':
+				return createElement('div', {
+					className: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_NEXT_BUTTON}`,
+					onclick: () => { _this.player.next() }
+				});
+			case 'previous':
+				return createElement('div', {
+					className: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_PREVIOUS_BUTTON}`,
+					onclick: () => { _this.player.previous() }
+				});
+			default:
+				return createElement('div', {});
+		}
 	}
 
 	/**
