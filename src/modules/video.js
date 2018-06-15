@@ -60,6 +60,18 @@ class Video {
 
 	/**
 	 * @memberof Video
+	 * @method setVolume
+	 * @description Set the volume of the video.
+	 */
+	setVolume(volume) {
+		if (volume < 0) volume = 0;
+		if (volume > 1) volume = 1;
+
+		this.element.volume = volume;
+	}
+
+	/**
+	 * @memberof Video
 	 * @method play
 	 * @description Play the video.
 	 */

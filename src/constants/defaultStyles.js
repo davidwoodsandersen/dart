@@ -10,8 +10,7 @@ import {
 	pauseIcon,
 	previousIcon,
 	nextIcon,
-	loadingIcon,
-	volumeIcon
+	loadingIcon
 } from './icons.js';
 
 export default `
@@ -35,18 +34,14 @@ export default `
 	background-image: url("data:image/svg+xml;base64,${btoa(loadingIcon)}");
 }
 
-#$video_id$ .${selectors.CONTROLS_VOLUME_BUTTON} {
-	background-image: url("data:image/svg+xml;base64,${btoa(volumeIcon)}");
-}
-
-#$video_id$ .${selectors.CONTROLS_VOLUME_BUTTON} input[type=range]::-webkit-slider-runnable-track {
+#$video_id$ .${selectors.CONTROLS_VOLUME_SLIDER}::-webkit-slider-runnable-track {
 	width: 100%;
 	height: 4px;
 	cursor: pointer;
 	background: rgba(255, 255, 255, .4);
 }
 
-#$video_id$ .${selectors.CONTROLS_VOLUME_BUTTON} input[type=range]::-webkit-slider-thumb {
+#$video_id$ .${selectors.CONTROLS_VOLUME_SLIDER}::-webkit-slider-thumb {
 	width: 11px;
 	height: 11px;
 	border: none;

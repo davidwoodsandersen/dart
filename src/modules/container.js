@@ -76,6 +76,7 @@ class Container {
 	/**
 	 * @memberof Container
 	 * @method injectCss
+	 * @param {string} css - The CSS to be injected.
 	 * @description Insert CSS into the video container.
 	 */
 	injectCss(css) {

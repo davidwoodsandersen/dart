@@ -16,7 +16,7 @@ class Controls {
 	/**
 	 * @memberof Controls
 	 * @constructor
-	 * @param {object} actions - Actions from the player API.
+	 * @param {object} player - The video player instance.
 	 * @param {object} parentNode - The element to append the controls to.
 	 * @description Methods from the Player instance are passed
 	 * on an as-needed basis.
@@ -38,12 +38,13 @@ class Controls {
 	build() {
 		this.addControl(this.createButton('play'));
 		this.addControl(this.createButton('pause'));
-		this.addControl(this.createVolumeControl());
 
 		if (this.player.isPlaylist) {
 			this.addControl(this.createButton('next'));
 			this.addControl(this.createButton('previous'));
 		}
+
+		this.addControl(this.createVolumeSlider());
 	}
 
 	/**
@@ -58,25 +59,29 @@ class Controls {
 
 	/**
 	 * @memberof Controls
-	 * @method createVolumeControl
-	 * @description Creates the volume control.
+	 * @method createVolumeSlider
+	 * @description Creates the volume slider. The input range is 0-100, but
+	 * the value is converted to range 0-1 before being assigned to the player.
 	 */
-	createVolumeControl() {
-		var volumeControl = createElement({
-			type: 'div',
+	createVolumeSlider() {
+		var _this = this;
+		var slider = createElement({
+			type: 'input',
+			attributes: { type: 'range', min: '0', max: '100' },
 			properties: {
-				className: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_VOLUME_BUTTON}`
+				className: `${selectors.CONTROLS_BUTTON_CLASS} ${selectors.CONTROLS_VOLUME_SLIDER}`,
+				value: (_this.player.volume * 100),
+				onchange: () => {
+					var input = (slider.value / 100).toFixed(1);
+
+					if (input !== _this.player.volume) {
+						_this.player.updateVolume(input);
+					}
+				}
 			}
 		});
 
-		var slider = createElement({
-			type: 'input',
-			attributes: { type: 'range', min: '0', max: '100' }
-		});
-
-		volumeControl.appendChild(slider);
-
-		return volumeControl;
+		return slider;
 	}
 
 	/**

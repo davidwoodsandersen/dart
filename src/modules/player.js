@@ -28,7 +28,8 @@ class Player {
 		this.videos = props.videos;
 		this.containerSettings = props.container;
 
-		this.volume = props.muted ? 0 : 1;
+		this.volume = typeof props.volume === 'number' ? props.volume : 1;
+
 		this.isPlaylist = this.videos.length > 1;
 		this.queue = [];
 		this.index = -1;
@@ -124,6 +125,7 @@ class Player {
 			this.currentVideo = this.queue[this.index];
 			this.container.loadVideo(this.currentVideo);
 			this.currentVideo.reset();
+			this.currentVideo.setVolume(this.volume);
 			this.play();
 		}
 	}
@@ -139,8 +141,21 @@ class Player {
 			this.currentVideo = this.queue[this.index];
 			this.container.loadVideo(this.currentVideo);
 			this.currentVideo.reset();
+			this.currentVideo.setVolume(this.volume);
 			this.play();
 		}
+	}
+
+	/**
+	 * @memberof Player
+	 * @method updateVolume
+	 * @description Update the volume of the current video. Other videos
+	 * in the playlist will grab the canonical volume from the player
+	 * on initialization.
+	 */
+	updateVolume(volume) {
+		this.volume = volume;
+		this.currentVideo.setVolume(volume);
 	}
 
 	/**

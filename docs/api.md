@@ -63,14 +63,6 @@ the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https:
 <dd><p>The SVG markup for the loading icon. Taken from
 Sam Herbet&#39;s collection here: <a href="http://samherbert.net/svg-loaders/">http://samherbert.net/svg-loaders/</a></p>
 </dd>
-<dt><a href="#volumeIcon">volumeIcon</a> : <code>string</code></dt>
-<dd><p>The SVG markup for the volume icon. Taken from
-the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https://feathericons.com/</a>.</p>
-</dd>
-<dt><a href="#mutedIcon">mutedIcon</a> : <code>string</code></dt>
-<dd><p>The SVG markup for the muted icon. Taken from
-the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https://feathericons.com/</a>.</p>
-</dd>
 <dt><a href="#layout">layout</a> : <code>string</code></dt>
 <dd><p>The CSS layout defaults for the video player.</p>
 </dd>
@@ -123,7 +115,7 @@ Hosts all player-controls-related code and the Controls class.
 
 * [controls](#module_controls)
     * [~Controls](#module_controls..Controls)
-        * [new Controls(actions, parentNode)](#new_module_controls..Controls_new)
+        * [new Controls(player, parentNode)](#new_module_controls..Controls_new)
     * [~isValidEvent(event)](#module_controls..isValidEvent)
 
 <a name="module_controls..Controls"></a>
@@ -132,13 +124,13 @@ Hosts all player-controls-related code and the Controls class.
 **Kind**: inner class of <code>[controls](#module_controls)</code>  
 <a name="new_module_controls..Controls_new"></a>
 
-#### new Controls(actions, parentNode)
+#### new Controls(player, parentNode)
 Facilitates user interaction with the video player.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| actions | <code>object</code> | Actions from the player API. |
+| player | <code>object</code> | The video player instance. |
 | parentNode | <code>object</code> | The element to append the controls to. |
 
 <a name="module_controls..isValidEvent"></a>
@@ -356,20 +348,6 @@ the "Feather" collection at https://feathericons.com/.
 ## loadingIcon : <code>string</code>
 The SVG markup for the loading icon. Taken from
 Sam Herbet's collection here: http://samherbert.net/svg-loaders/
-
-**Kind**: global constant  
-<a name="volumeIcon"></a>
-
-## volumeIcon : <code>string</code>
-The SVG markup for the volume icon. Taken from
-the "Feather" collection at https://feathericons.com/.
-
-**Kind**: global constant  
-<a name="mutedIcon"></a>
-
-## mutedIcon : <code>string</code>
-The SVG markup for the muted icon. Taken from
-the "Feather" collection at https://feathericons.com/.
 
 **Kind**: global constant  
 <a name="layout"></a>

@@ -75,7 +75,7 @@ export default `
 	background-size: contain;
 }
 
-#$video_id$ .${selectors.CONTROLS_BUTTON_CLASS}:not(.${selectors.CONTROLS_VOLUME_BUTTON}):active {
+#$video_id$ .${selectors.CONTROLS_BUTTON_CLASS}:not(.${selectors.CONTROLS_VOLUME_SLIDER}):active {
 	bottom: 8px;
 }
 
@@ -95,30 +95,24 @@ export default `
 	right: 45px;
 }
 
-#$video_id$ .${selectors.CONTROLS_VOLUME_BUTTON} {
+#$video_id$ .${selectors.CONTROLS_VOLUME_SLIDER} {
 	left: 80px;
-}
-
-#$video_id$ .${selectors.CONTROLS_VOLUME_BUTTON} input[type="range"] {
+	bottom: 8px;
 	-webkit-appearance: none;
 	position: absolute;
-	top: 50%;
-	left: calc(100% + 10px);
 	width: 70px;
 	background-color: transparent;
-	transform: translateY(-50%);
-	-webkit-transform: translateY(-50%);
 }
 
-#$video_id$ .${selectors.CONTROLS_VOLUME_BUTTON} input[type="range"]:focus {
+#$video_id$ .${selectors.CONTROLS_VOLUME_SLIDER}:focus {
 	outline: none;
 }
 
-#$video_id$ .${selectors.CONTROLS_VOLUME_BUTTON} input[type=range]::-webkit-slider-runnable-track {
+#$video_id$ .${selectors.CONTROLS_VOLUME_SLIDER}::-webkit-slider-runnable-track {
 	cursor: pointer;
 }
 
-#$video_id$ .${selectors.CONTROLS_VOLUME_BUTTON} input[type=range]::-webkit-slider-thumb {
+#$video_id$ .${selectors.CONTROLS_VOLUME_SLIDER}::-webkit-slider-thumb {
 	-webkit-appearance: none;
 }
 `;
