@@ -18,7 +18,7 @@ test('When the master interval is instantiated, the isRunning flag is set to fal
 });
 
 test('Once the master interval\'s "run" method is called, the interval is running', () => {
-	var interval = new MasterInterval({});
+	var interval = new MasterInterval();
 
 	interval.run();
 
@@ -27,7 +27,7 @@ test('Once the master interval\'s "run" method is called, the interval is runnin
 });
 
 test('Once the master interval\'s "run" method is called, the isRunning flag is set to true', () => {
-	var interval = new MasterInterval({});
+	var interval = new MasterInterval();
 
 	interval.run();
 
@@ -35,7 +35,7 @@ test('Once the master interval\'s "run" method is called, the isRunning flag is 
 });
 
 test('Once the master interval\'s "destroy" method is called, the interval is cleared', () => {
-	var interval = new MasterInterval({});
+	var interval = new MasterInterval();
 
 	jest.spyOn(window, 'clearInterval');
 
@@ -46,7 +46,7 @@ test('Once the master interval\'s "destroy" method is called, the interval is cl
 });
 
 test('Once the master interval\'s "destroy" method is called, the isRunning flag is set to false', () => {
-	var interval = new MasterInterval({});
+	var interval = new MasterInterval();
 
 	interval.run();
 	interval.destroy();

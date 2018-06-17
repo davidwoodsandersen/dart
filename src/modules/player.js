@@ -47,35 +47,44 @@ class Player {
 	 * @description Initializes the video player.
 	 */
 	init() {
-		this.container = new Container(this.containerSettings, this.dispatcher);
-		this.container.anchor();
-
 		var _this = this;
 
-		this.masterInterval = new MasterInterval({
-			checkReadyState() {
-				var currentVideo = _this.currentVideo;
-				var loadingScreen = _this.container.loadingScreen;
-
-				if (currentVideo) {
-					let state = currentVideo.getReadyState();
-					let canPlay = state === HAVE_ENOUGH_DATA || state === HAVE_FUTURE_DATA;
-
-					canPlay ? loadingScreen.hide() : loadingScreen.show();
-				}
-			}
-		});
+		this.container = new Container(this.containerSettings, this.dispatcher);
+		this.container.anchor();
 
 		if (this.controls) {
 			this.controls = new Controls(this, this.container.element);
 			this.controls.anchor();
 		}
 
+		this.masterInterval = new MasterInterval();
+
+		this.masterInterval.register('checkReadyState', () => {
+			var currentVideo = _this.currentVideo;
+			var loadingScreen = _this.container.loadingScreen;
+
+			if (currentVideo) {
+				let state = currentVideo.getReadyState();
+				let canPlay = state === HAVE_ENOUGH_DATA || state === HAVE_FUTURE_DATA;
+
+				canPlay ? loadingScreen.hide() : loadingScreen.show();
+			}
+		});
+
 		if (this.isPlaylist) {
 			this.on('videoEnd', () => {
 				this.next();
 			});
 		}
+	}
+
+	/**
+	 * @memberof Player
+	 * @method hasActiveVideo
+	 * @description Returns true if the player has a current video established.
+	 */
+	hasActiveVideo() {
+		return this.currentVideo && this.currentVideo.element;
 	}
 
 	/**
@@ -156,6 +165,33 @@ class Player {
 	updateVolume(volume) {
 		this.volume = volume;
 		this.currentVideo.setVolume(volume);
+	}
+
+	/**
+	 * @memberof Player
+	 * @method getCurrentTime
+	 * @description Get the current time of the current video.
+	 */
+	getCurrentTime() {
+		return this.currentVideo.element.currentTime;
+	}
+
+	/**
+	 * @memberof Player
+	 * @method setCurrentTime
+	 * @description Set the current time of the current video.
+	 */
+	setCurrentTime(time) {
+		this.currentVideo.element.currentTime = time;
+	}
+
+	/**
+	 * @memberof Player
+	 * @method getCurrentDuration
+	 * @description Get the duration of the current video.
+	 */
+	getCurrentDuration() {
+		return this.currentVideo.element.duration;
 	}
 
 	/**

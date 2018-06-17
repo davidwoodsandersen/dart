@@ -11,12 +11,22 @@ class MasterInterval {
 	/**
 	 * @memberof MasterInterval
 	 * @constructor
-	 * @param {array} actions - An array of functions to call.
 	 */
 	constructor(actions) {
 		this.interval;
-		this.actions = actions;
+		this.actions = {};
 		this.isRunning = false;
+	}
+
+	/**
+	 * @memberof MasterInterval
+	 * @method register
+	 * @param {string} name - The name of the action.
+	 * @param {function} action - The action to be run on the interval.
+	 * @description Register an action to be run on the interval.
+	 */
+	register(name, action) {
+		this.actions[name] = action;
 	}
 
 	/**
