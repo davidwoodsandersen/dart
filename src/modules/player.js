@@ -84,7 +84,7 @@ class Player {
 	 * @description Returns true if the player has a current video established.
 	 */
 	hasActiveVideo() {
-		return this.currentVideo && this.currentVideo.element;
+		return !!(this.currentVideo && this.currentVideo.element);
 	}
 
 	/**
