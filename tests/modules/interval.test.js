@@ -17,6 +17,12 @@ test('When the master interval is instantiated, the isRunning flag is set to fal
 	expect(interval.isRunning).toBe(false);
 });
 
+test('When the master interval is instantiated, the "actions" property is set as an object', () => {
+	var interval = new MasterInterval();
+
+	expect(typeof interval.actions).toBe('object');
+});
+
 test('Once the master interval\'s "run" method is called, the interval is running', () => {
 	var interval = new MasterInterval();
 
@@ -52,4 +58,12 @@ test('Once the master interval\'s "destroy" method is called, the isRunning flag
 	interval.destroy();
 
 	expect(interval.isRunning).toBe(false);
+});
+
+test('When the "register" method is called, the name and action passed to it are registered on the actions property', () => {
+	var interval = new MasterInterval();
+
+	interval.register('testAction', () => {});
+
+	expect('testAction' in interval.actions).toBe(true);
 });
