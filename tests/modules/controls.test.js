@@ -96,3 +96,17 @@ test('The "addControl" method appends an element to the controls container', () 
 
 	expect(testElement.parentElement).toBe(controls.container);
 });
+
+test('The "createVolumeSlider" method returns an input element of type "range"', () => {
+	var controls = createMockControls();
+	var testVolumeSlider = controls.createVolumeSlider();
+
+	expect(testVolumeSlider.type).toBe('range');
+});
+
+test('The volume slider is created with an "onchange" property', () => {
+	var controls = createMockControls();
+	var testVolumeSlider = controls.createVolumeSlider();
+
+	expect(typeof testVolumeSlider.onchange).toBe('function');
+});
