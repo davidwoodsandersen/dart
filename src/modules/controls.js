@@ -4,9 +4,10 @@
  */
 
 import selectors from '../constants/selectors.js';
-import { DOMHelpers } from './helpers.js';
+import { DOMHelpers, mathHelpers } from './helpers.js';
 
 const { createElement } = DOMHelpers;
+const { getPercentage, getPercentageOf } = mathHelpers;
 
 /**
  * @class
@@ -100,9 +101,9 @@ class Controls {
 					if (_this.player.hasActiveVideo()) {
 						var offset = e.offsetX;
 						var elementWidth = e.target.offsetWidth;
-						var position = (offset / elementWidth).toFixed(2);
 						var videoDuration = _this.player.getCurrentDuration();
-						var newTime = (videoDuration * position).toFixed(0);
+						var percentage = getPercentage(offset, elementWidth);
+						var newTime = getPercentageOf(videoDuration, percentage);
 
 						_this.player.setCurrentTime(newTime);
 					}
@@ -119,9 +120,8 @@ class Controls {
 		this.player.on('timeupdate', () => {
 			var currentTime = _this.player.getCurrentTime();
 			var duration = _this.player.getCurrentDuration();
-			var percentage = ((currentTime / duration) * 100).toFixed(2);
 
-			progress.style.width = (percentage + '%');
+			progress.style.width = getPercentage(currentTime, duration) + '%';
 		});
 
 		return progressBar;
