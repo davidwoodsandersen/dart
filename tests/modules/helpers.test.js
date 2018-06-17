@@ -1,6 +1,6 @@
 import setUp from '../setup.js';
 import tearDown from '../teardown.js';
-import { DOMHelpers } from '../../src/modules/helpers.js';
+import { DOMHelpers, mathHelpers } from '../../src/modules/helpers.js';
 
 beforeEach(setUp);
 afterEach(tearDown);
@@ -51,4 +51,12 @@ test('The type of element returned by "createElement" matches the type argument'
 	var testElement = DOMHelpers.createElement({ type: 'li' });
 
 	expect(testElement.nodeName).toBe('LI');
+});
+
+test('The "getPercentage" helper returns the numerator\'s percentage of the denominator, to two decimal places', () => {
+	expect(mathHelpers.getPercentage(2, 4)).toBe('50.00');
+});
+
+test('The "getPercentageOf" helper returns an integer roughly equaling the specified percentage of the whole', () => {
+	expect(mathHelpers.getPercentageOf(4, 50)).toBe('2');
 });
