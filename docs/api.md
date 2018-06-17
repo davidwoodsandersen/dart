@@ -217,7 +217,7 @@ Hosts the MasterInterval class.
 
 * [interval](#module_interval)
     * [~MasterInterval](#module_interval..MasterInterval)
-        * [new MasterInterval(actions)](#new_module_interval..MasterInterval_new)
+        * [new MasterInterval()](#new_module_interval..MasterInterval_new)
 
 <a name="module_interval..MasterInterval"></a>
 
@@ -225,13 +225,8 @@ Hosts the MasterInterval class.
 **Kind**: inner class of <code>[interval](#module_interval)</code>  
 <a name="new_module_interval..MasterInterval_new"></a>
 
-#### new MasterInterval(actions)
+#### new MasterInterval()
 Handles all interval-based checks.
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| actions | <code>array</code> | An array of functions to call. |
 
 <a name="module_player"></a>
 
