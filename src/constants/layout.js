@@ -115,4 +115,29 @@ export default `
 #$video_id$ .${selectors.CONTROLS_VOLUME_SLIDER}::-webkit-slider-thumb {
 	-webkit-appearance: none;
 }
+
+#$video_id$ .${selectors.CONTROLS_PROGRESS_BAR} {
+	position: absolute;
+	bottom: 46px;
+	left: 10px;
+	width: calc(100% - 20px);
+	height: 4px;
+	background-color: rgba(255, 255, 255, .3);
+	transition: background-color .2s;
+}
+
+#$video_id$ .${selectors.CONTROLS_PROGRESS_BAR}:hover {
+	cursor: pointer;
+	background-color: rgba(255, 255, 255, .5);
+}
+
+#$video_id$ .${selectors.CONTROLS_PROGRESS} {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100%;
+	background-color: rgba(255, 255, 255, .9);
+	pointer-events: none;
+}
 `;
