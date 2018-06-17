@@ -110,3 +110,11 @@ test('The volume slider is created with an "onchange" property', () => {
 
 	expect(typeof testVolumeSlider.onchange).toBe('function');
 });
+
+test('The "createProgressBar" helper returns an element with an "onclick" property', () => {
+	var controls = createMockControls();
+	var testProgressBar = controls.createProgressBar();
+
+	expect(testProgressBar instanceof Node).toBe(true);
+	expect(typeof testProgressBar.onclick).toBe('function');
+});
