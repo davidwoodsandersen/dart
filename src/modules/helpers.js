@@ -50,4 +50,32 @@ const DOMHelpers = {
 	}
 };
 
-export { DOMHelpers };
+/**
+ * @namespace mathHelpers
+ * @description Math-related helper functions.
+ */
+const mathHelpers = {
+	/**
+	 * @memberof mathHelpers
+	 * @method getPercentage
+	 * @param {number} numerator - The numerator, representing a fraction of the whole.
+	 * @param {number} denominator - The denominator, representing the whole.
+	 * @description Compute a percentage to two decimal points.
+	 */
+	getPercentage(numerator, denominator) {
+		return ((numerator / denominator) * 100).toFixed(2);
+	},
+
+	/**
+	 * @memberof mathHelpers
+	 * @method getPercentageOf
+	 * @param {number} whole - The number to get a percentage of.
+	 * @param {number} percentage - The percentage of the number to get.
+	 * @description Get a percentage of a number as an integer.
+	 */
+	getPercentageOf(whole, percentage) {
+		return (whole * (percentage / 100)).toFixed(0);
+	}
+};
+
+export { DOMHelpers, mathHelpers };
