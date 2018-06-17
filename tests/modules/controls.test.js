@@ -7,6 +7,15 @@ import selectors from '../../src/constants/selectors.js';
 beforeEach(setUp);
 afterEach(tearDown);
 
+function createMockControls(player, parent) {
+	var player = player || {};
+	var parent = parent || document.createElement('div');
+
+	player.on = player.on || function() {};
+
+	return new Controls(player, parent);
+}
+
 test('Controls are built on instantiation', () => {
 	jest.spyOn(Controls.prototype, 'build')
 		.mockImplementation(() => {});
@@ -18,7 +27,7 @@ test('Controls are built on instantiation', () => {
 
 test('When the controls are built, the play button is added to the container', () => {
 	var parent = document.createElement('div');
-	var controls = new Controls({}, parent);
+	var controls = createMockControls(null, parent);
 
 	controls.anchor();
 
@@ -29,7 +38,7 @@ test('When the controls are built, the play button is added to the container', (
 
 test('When the controls are built, the pause button is added to the container', () => {
 	var parent = document.createElement('div');
-	var controls = new Controls({}, parent);
+	var controls = createMockControls(null, parent);
 
 	controls.anchor();
 
@@ -40,7 +49,7 @@ test('When the controls are built, the pause button is added to the container', 
 
 test('When the controls are built, the next button is added to the container', () => {
 	var parent = document.createElement('div');
-	var controls = new Controls({ isPlaylist: true }, parent);
+	var controls = createMockControls({ isPlaylist: true }, parent);
 
 	controls.anchor();
 
@@ -51,7 +60,7 @@ test('When the controls are built, the next button is added to the container', (
 
 test('When the controls are built, the previous button is added to the container', () => {
 	var parent = document.createElement('div');
-	var controls = new Controls({ isPlaylist: true }, parent);
+	var controls = createMockControls({ isPlaylist: true }, parent);
 
 	controls.anchor();
 
@@ -81,7 +90,7 @@ test('The "createButton" method assigns an onclick action', () => {
 test('The "addControl" method appends an element to the controls container', () => {
 	var parent = document.createElement('div');
 	var testElement = document.createElement('div');
-	var controls = new Controls({}, parent);
+	var controls = createMockControls(null, parent);
 
 	controls.addControl(testElement);
 

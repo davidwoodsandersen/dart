@@ -56,6 +56,12 @@ class Video {
 				timestamp: Date.now()
 			});
 		}, true);
+
+		this.element.addEventListener('timeupdate', () => {
+			dispatcher.publish('timeupdate', {
+				timestamp: Date.now()
+			});
+		});
 	}
 
 	/**

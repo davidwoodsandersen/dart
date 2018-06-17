@@ -45,6 +45,7 @@ class Controls {
 		}
 
 		this.addControl(this.createVolumeSlider());
+		this.addControl(this.createProgressBar());
 	}
 
 	/**
@@ -82,6 +83,48 @@ class Controls {
 		});
 
 		return slider;
+	}
+
+	/**
+	 * @memberof Controls
+	 * @method createProgressBar
+	 * @description Creates the progress bar for the currently playing video.
+	 */
+	createProgressBar() {
+		var _this = this;
+		var progressBar = createElement({
+			type: 'div',
+			properties: {
+				className: `${selectors.CONTROLS_PROGRESS_BAR}`,
+				onclick: (e) => {
+					if (_this.player.hasActiveVideo()) {
+						var offset = e.offsetX;
+						var elementWidth = e.target.offsetWidth;
+						var position = (offset / elementWidth).toFixed(2);
+						var videoDuration = _this.player.getCurrentDuration();
+						var newTime = (videoDuration * position).toFixed(0);
+
+						_this.player.setCurrentTime(newTime);
+					}
+				}
+			}
+		});
+		var progress = createElement({
+			type: 'div',
+			properties: { className: `${selectors.CONTROLS_PROGRESS}` }
+		});
+
+		progressBar.appendChild(progress);
+
+		this.player.on('timeupdate', () => {
+			var currentTime = _this.player.getCurrentTime();
+			var duration = _this.player.getCurrentDuration();
+			var percentage = ((currentTime / duration) * 100).toFixed(2);
+
+			progress.style.width = (percentage + '%');
+		});
+
+		return progressBar;
 	}
 
 	/**
