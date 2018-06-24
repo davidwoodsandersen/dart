@@ -17,8 +17,14 @@ test('When the master interval is instantiated, the isRunning flag is set to fal
 	expect(interval.isRunning).toBe(false);
 });
 
+test('When the master interval is instantiated, the "actions" property is set as an object', () => {
+	var interval = new MasterInterval();
+
+	expect(typeof interval.actions).toBe('object');
+});
+
 test('Once the master interval\'s "run" method is called, the interval is running', () => {
-	var interval = new MasterInterval({});
+	var interval = new MasterInterval();
 
 	interval.run();
 
@@ -27,7 +33,7 @@ test('Once the master interval\'s "run" method is called, the interval is runnin
 });
 
 test('Once the master interval\'s "run" method is called, the isRunning flag is set to true', () => {
-	var interval = new MasterInterval({});
+	var interval = new MasterInterval();
 
 	interval.run();
 
@@ -35,7 +41,7 @@ test('Once the master interval\'s "run" method is called, the isRunning flag is 
 });
 
 test('Once the master interval\'s "destroy" method is called, the interval is cleared', () => {
-	var interval = new MasterInterval({});
+	var interval = new MasterInterval();
 
 	jest.spyOn(window, 'clearInterval');
 
@@ -46,10 +52,18 @@ test('Once the master interval\'s "destroy" method is called, the interval is cl
 });
 
 test('Once the master interval\'s "destroy" method is called, the isRunning flag is set to false', () => {
-	var interval = new MasterInterval({});
+	var interval = new MasterInterval();
 
 	interval.run();
 	interval.destroy();
 
 	expect(interval.isRunning).toBe(false);
+});
+
+test('When the "register" method is called, the name and action passed to it are registered on the actions property', () => {
+	var interval = new MasterInterval();
+
+	interval.register('testAction', () => {});
+
+	expect('testAction' in interval.actions).toBe(true);
 });

@@ -37,6 +37,9 @@
 ## Constants
 
 <dl>
+<dt><a href="#defaultStyles">defaultStyles</a> : <code>string</code></dt>
+<dd><p>The default styles for the video player.</p>
+</dd>
 <dt><a href="#events">events</a> : <code>array</code></dt>
 <dd><p>The official list of valid video player events.</p>
 </dd>
@@ -61,7 +64,7 @@ the &quot;Feather&quot; collection at <a href="https://feathericons.com/">https:
 Sam Herbet&#39;s collection here: <a href="http://samherbert.net/svg-loaders/">http://samherbert.net/svg-loaders/</a></p>
 </dd>
 <dt><a href="#layout">layout</a> : <code>string</code></dt>
-<dd><p>The CSS defaults for the video player.</p>
+<dd><p>The CSS layout defaults for the video player.</p>
 </dd>
 <dt><a href="#readyStates">readyStates</a> : <code>object</code></dt>
 <dd><p>Aliases for the video element ready states.</p>
@@ -112,7 +115,7 @@ Hosts all player-controls-related code and the Controls class.
 
 * [controls](#module_controls)
     * [~Controls](#module_controls..Controls)
-        * [new Controls(actions, parentNode)](#new_module_controls..Controls_new)
+        * [new Controls(player, parentNode)](#new_module_controls..Controls_new)
     * [~isValidEvent(event)](#module_controls..isValidEvent)
 
 <a name="module_controls..Controls"></a>
@@ -121,13 +124,13 @@ Hosts all player-controls-related code and the Controls class.
 **Kind**: inner class of <code>[controls](#module_controls)</code>  
 <a name="new_module_controls..Controls_new"></a>
 
-#### new Controls(actions, parentNode)
+#### new Controls(player, parentNode)
 Facilitates user interaction with the video player.
 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| actions | <code>object</code> | Actions from the player API. |
+| player | <code>object</code> | The video player instance. |
 | parentNode | <code>object</code> | The element to append the controls to. |
 
 <a name="module_controls..isValidEvent"></a>
@@ -214,7 +217,7 @@ Hosts the MasterInterval class.
 
 * [interval](#module_interval)
     * [~MasterInterval](#module_interval..MasterInterval)
-        * [new MasterInterval(actions)](#new_module_interval..MasterInterval_new)
+        * [new MasterInterval()](#new_module_interval..MasterInterval_new)
 
 <a name="module_interval..MasterInterval"></a>
 
@@ -222,13 +225,8 @@ Hosts the MasterInterval class.
 **Kind**: inner class of <code>[interval](#module_interval)</code>  
 <a name="new_module_interval..MasterInterval_new"></a>
 
-#### new MasterInterval(actions)
+#### new MasterInterval()
 Handles all interval-based checks.
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| actions | <code>array</code> | An array of functions to call. |
 
 <a name="module_player"></a>
 
@@ -300,6 +298,12 @@ as the value of "globalVarName" in package.json.
 Generates a new instance of the Player class.
 
 **Kind**: static method of <code>[Dart](#Dart)</code>  
+<a name="defaultStyles"></a>
+
+## defaultStyles : <code>string</code>
+The default styles for the video player.
+
+**Kind**: global constant  
 <a name="events"></a>
 
 ## events : <code>array</code>
@@ -344,7 +348,7 @@ Sam Herbet's collection here: http://samherbert.net/svg-loaders/
 <a name="layout"></a>
 
 ## layout : <code>string</code>
-The CSS defaults for the video player.
+The CSS layout defaults for the video player.
 
 **Kind**: global constant  
 <a name="readyStates"></a>

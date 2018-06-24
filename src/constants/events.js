@@ -9,5 +9,6 @@ export default [
 	'pause',
 	'error',
 	'videoStart',
-	'videoEnd'
+	'videoEnd',
+	'timeupdate'
 ];

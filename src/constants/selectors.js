@@ -13,5 +13,8 @@ export default {
 	CONTROLS_PLAY_BUTTON: 'dart-controls-play',
 	CONTROLS_PAUSE_BUTTON: 'dart-controls-pause',
 	CONTROLS_NEXT_BUTTON: 'dart-controls-next',
-	CONTROLS_PREVIOUS_BUTTON: 'dart-controls-previous'
+	CONTROLS_PREVIOUS_BUTTON: 'dart-controls-previous',
+	CONTROLS_VOLUME_SLIDER: 'dart-controls-volume',
+	CONTROLS_PROGRESS_BAR: 'dart-controls-progress-bar',
+	CONTROLS_PROGRESS: 'dart-controls-progress'
 };

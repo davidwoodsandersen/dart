@@ -15,7 +15,6 @@ Dart is an all-purpose JavaScript video player.
 ```javascript
 var video = dart.create({
 	controls: true,
-	playlist: true,
 	container: {
 		id: 'example-video',
 		parent: document.getElementById('video'),

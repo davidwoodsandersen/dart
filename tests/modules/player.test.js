@@ -121,3 +121,26 @@ test('When Player.previous is called, the previous video in the queue is played'
 	expect(player.index).toBe(1);
 	expect(player.currentVideo).toBe(player.queue[1]);
 });
+
+test('When a video is assigned to "currentVideo", the "hasActiveVideo" method returns true', () => {
+	var player = new Player({
+		container: { parent: document.body },
+		videos: [{ source: testLinks.video }]
+	});
+
+	player.init();
+	player.start();
+
+	expect(player.hasActiveVideo()).toBe(true);
+});
+
+test('When a video is not assigned to "currentVideo", the "hasActiveVideo" method returns false', () => {
+	var player = new Player({
+		container: { parent: document.body },
+		videos: [{ source: testLinks.video }]
+	});
+
+	player.init();
+
+	expect(player.hasActiveVideo()).toBe(false);
+});
