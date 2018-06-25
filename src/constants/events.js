@@ -4,6 +4,7 @@
  * @description The official list of valid video player events.
  */
 export default [
+	'init',
 	'load',
 	'play',
 	'pause',

@@ -203,10 +203,21 @@ Describes and reports internal player errors.
 ## helpers
 Hosts all helper functions.
 
+
+* [helpers](#module_helpers)
+    * [~DOMHelpers](#module_helpers..DOMHelpers) : <code>object</code>
+    * [~mathHelpers](#module_helpers..mathHelpers) : <code>object</code>
+
 <a name="module_helpers..DOMHelpers"></a>
 
 ### helpers~DOMHelpers : <code>object</code>
 DOM-related helper functions.
+
+**Kind**: inner namespace of <code>[helpers](#module_helpers)</code>  
+<a name="module_helpers..mathHelpers"></a>
+
+### helpers~mathHelpers : <code>object</code>
+Math-related helper functions.
 
 **Kind**: inner namespace of <code>[helpers](#module_helpers)</code>  
 <a name="module_interval"></a>

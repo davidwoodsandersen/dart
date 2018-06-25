@@ -39,6 +39,7 @@ class Player {
 		this.dispatcher = new Dispatcher(this.debug);
 
 		this.createQueue();
+		this.initPlugins(props.plugins);
 	}
 
 	/**
@@ -76,6 +77,20 @@ class Player {
 				this.next();
 			});
 		}
+
+		this.dispatcher.publish('init', {
+			timestamp: Date.now()
+		});
+	}
+
+	/**
+	 * @memberof Player
+	 * @method initPlugins
+	 * @description Pass the Player instance to all plugins specified
+	 * in the configuration, and call their initialization functions.
+	 */
+	initPlugins(plugins) {
+		if (plugins) plugins.forEach((plugin) => { plugin(this); });
 	}
 
 	/**
