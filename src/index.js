@@ -9,10 +9,22 @@ class Dart {
 	/**
 	 * @memberof Dart
 	 * @method create
-	 * @description Generates a new instance of the Player class.
+	 * @description Generates a new instance of the Player class
+	 * and exposes a limited interface.
 	 */
 	create(config) {
-		return new Player(config);
+		var player = new Player(config);
+
+		return {
+			destroy: () => { player.destroy(); },
+			init: () => { player.init(); },
+			next: () => { player.next(); },
+			on: (event, callback) => { player.on(event, callback) },
+			pause: () => { player.pause(); },
+			play: () => { player.play(); },
+			previous: () => { player.previous(); },
+			start: () => { player.start(); }
+		}
 	}
 }
 

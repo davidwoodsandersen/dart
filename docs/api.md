@@ -306,7 +306,8 @@ as the value of "globalVarName" in package.json.
 <a name="Dart.create"></a>
 
 ### Dart.create()
-Generates a new instance of the Player class.
+Generates a new instance of the Player class
+and exposes a limited interface.
 
 **Kind**: static method of <code>[Dart](#Dart)</code>  
 <a name="defaultStyles"></a>
