@@ -11,5 +11,5 @@ jobs:
       - run:
           name: run tests
           command: npm run test
-      - store_test_results:
-          path: ./
+      - store_artifacts:
+          path: junit.xml
