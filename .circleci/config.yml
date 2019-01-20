@@ -10,7 +10,9 @@ jobs:
       - run: npm install
       - run:
           name: run tests
-          command: npm run test -- --bail --ci
+          command: |
+              set -e
+              npm run test
       - store_artifacts:
           path: test-results.xml
           prefix: tests
