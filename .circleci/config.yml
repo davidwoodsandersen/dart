@@ -8,10 +8,9 @@ jobs:
     steps:
       - checkout
       - run: npm install
-      - run: sudo npm install -g jest
       - run:
           name: run tests
-          command: jest --ci --testResultsProcessor="jest-junit"
+          command: gulp test
       - store_artifacts:
           path: test-results.xml
           prefix: tests

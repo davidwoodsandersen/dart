@@ -47,6 +47,7 @@ gulp.task('test', function() {
 			'<rootDir>/lib/',
 			'<rootDir>/node_modules/',
 		],
+		testResultsProcessor: 'jest-junit',
 		automock: false
 	};
 
