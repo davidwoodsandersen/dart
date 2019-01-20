@@ -49,7 +49,7 @@ gulp.task('test', function() {
 		],
 		testResultsProcessor: 'jest-junit',
 		automock: false,
-		bail: true
+		reporters: ['default', 'jest-junit']
 	};
 
 	gulp.src('./tests').pipe(jest.default(jestConfig));
