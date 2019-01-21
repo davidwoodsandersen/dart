@@ -9,7 +9,7 @@ class TestReporter {
 			console.log('Test failure detected.');
 			process.exit(1);
 		} else {
-			console.log('Tests passed.');
+			console.log(results);
 		}
 	}
 }
