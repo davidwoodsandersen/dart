@@ -7,7 +7,6 @@ class TestReporter {
 	}
 
 	onRunComplete(contexts, results) {
-		console.log(results);
 		if (this.failed(results)) {
 			console.log('Test failure detected.');
 			process.exit(1);
@@ -16,8 +15,8 @@ class TestReporter {
 
 	failed(results) {
 		return (
-			this.numPassedTestSuites < this.numTotalTestSuites ||
-			this.numPassedTests < this.numTotalTests
+			results.numPassedTestSuites < results.numTotalTestSuites ||
+			results.numPassedTests < results.numTotalTests
 		);
 	}
 }
