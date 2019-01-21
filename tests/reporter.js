@@ -5,7 +5,7 @@ class TestReporter {
 	}
 
 	onRunComplete(contexts, results) {
-		if (results.snapshot.failure) {
+		if (!results.success) {
 			console.log('Test failure detected.');
 			process.exit(1);
 		} else {
