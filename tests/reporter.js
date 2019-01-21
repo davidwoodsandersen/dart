@@ -1,3 +1,5 @@
+// Used to notify circle-ci of
+// test failures and errors.
 class TestReporter {
 	constructor(globalConfig, options) {
 		this._globalConfig = globalConfig;
@@ -8,8 +10,6 @@ class TestReporter {
 		if (!results.success) {
 			console.log('Test failure detected.');
 			process.exit(1);
-		} else {
-			console.log(results);
 		}
 	}
 }
