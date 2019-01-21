@@ -8,6 +8,7 @@ const replace = require('gulp-replace');
 const concat = require('gulp-concat');
 const jsdoc = require('gulp-jsdoc-to-markdown');
 const jest = require('gulp-jest');
+const eslint = require('gulp-eslint');
 const buffer = require('vinyl-buffer');
 const source = require('vinyl-source-stream');
 const config = require('./package.json');
@@ -54,6 +55,13 @@ gulp.task('test', function() {
 	};
 
 	gulp.src('./tests').pipe(jest.default(jestConfig));
+});
+
+gulp.task('lint', function() {
+	gulp.src(['./src/*.js', './src/**/*.js'])
+		.pipe(eslint())
+		.pipe(eslint.format())
+		.pipe(eslint.failAfterError());
 });
 
 gulp.task('watch', function() {

@@ -12,7 +12,7 @@ class MasterInterval {
 	 * @memberof MasterInterval
 	 * @constructor
 	 */
-	constructor(actions) {
+	constructor() {
 		this.interval;
 		this.actions = {};
 		this.isRunning = false;

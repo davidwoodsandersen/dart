@@ -80,6 +80,7 @@ class Dispatcher {
 	 * @description Print an event report to the console.
 	 */
 	printEventReport(name, metadata) {
+		/* eslint-disable no-console */
 		console.group(`Dart Event Report: ${name}`);
 
 		console.log(`%cEvent Name: %c${name}`, 'font-weight: bold;', '');
@@ -88,6 +89,7 @@ class Dispatcher {
 		for (var x in metadata) console.log(`\t %c${x}: %c${metadata[x]}`, 'font-weight: bold;', '');
 
 		console.groupEnd();
+		/* eslint-enable no-console */
 	}
 }
 
