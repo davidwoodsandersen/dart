@@ -7,6 +7,7 @@ class TestReporter {
 	}
 
 	onRunComplete(contexts, results) {
+		console.log(results);
 		if (this.failed(results)) {
 			console.log('Test failure detected.');
 			process.exit(1);
