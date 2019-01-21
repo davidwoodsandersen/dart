@@ -4,9 +4,10 @@ class TestReporter {
 		this._options = options;
 	}
 
-	getLastError() {
-		if (this._shouldFail) {
-			return new Error();
+	onRunComplete(contexts, results) {
+		if (results.snapshot.failure) {
+			console.log('Test failure detected.');
+			process.exit(1);
 		}
 	}
 }
