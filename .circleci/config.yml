@@ -11,7 +11,9 @@ jobs:
       - run:
           name: run tests
           command: npm run test
+          environment:
+              JEST_JUNIT_OUTPUT: "reports/junit.xml"
       - store_test_results:
-          path: junit.xml
+          path: reports/junit.xml
       - store_artifacts:
-          path: junit.xml
+          path: reports/junit.xml
