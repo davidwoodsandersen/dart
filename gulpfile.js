@@ -44,6 +44,13 @@ gulp.task('docs', function() {
 
 gulp.task('test', function() {
 	var jestConfig = {
+		collectCoverage: true,
+		collectCoverageFrom: [
+			'<rootDir>/src/*.js',
+			'<rootDir>/src/**/*.js',
+		],
+		coverageDirectory: 'coverage',
+		coverageReporters: ['json'],
 		preprocessorIgnorePatterns: [
 			'<rootDir>/lib/',
 			'<rootDir>/node_modules/',
