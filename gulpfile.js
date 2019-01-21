@@ -49,7 +49,7 @@ gulp.task('test', function() {
 		],
 		testResultsProcessor: 'jest-junit',
 		automock: false,
-		testUrl: 'http://localhost',
+		testUrl: 'http://www.google.com',
 		reporters: ['default', '<rootDir>/tests/reporter.js']
 	};
 
