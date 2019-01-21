@@ -47,7 +47,10 @@ gulp.task('test', function() {
 			'<rootDir>/lib/',
 			'<rootDir>/node_modules/',
 		],
-		automock: false
+		testResultsProcessor: 'jest-junit',
+		automock: false,
+		testURL: 'http://localhost/',
+		reporters: ['default', '<rootDir>/tests/reporter.js']
 	};
 
 	gulp.src('./tests').pipe(jest.default(jestConfig));
