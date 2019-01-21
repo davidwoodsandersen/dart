@@ -14,7 +14,10 @@ class TestReporter {
 	}
 
 	failed(results) {
-		return this.numPassedTests < this.numTotalTests;
+		return (
+			this.numPassedTestSuites < this.numTotalTestSuites ||
+			this.numPassedTests < this.numTotalTests
+		);
 	}
 }
 
