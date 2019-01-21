@@ -50,7 +50,7 @@ gulp.task('test', function() {
 			'<rootDir>/src/**/*.js',
 		],
 		coverageDirectory: 'coverage',
-		coverageReporters: ['json'],
+		coverageReporters: ['json', 'json-summary'],
 		preprocessorIgnorePatterns: [
 			'<rootDir>/lib/',
 			'<rootDir>/node_modules/',
