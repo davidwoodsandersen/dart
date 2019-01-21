@@ -1,5 +1,7 @@
 # :dart: Dart [![CircleCI](https://circleci.com/gh/davidwoodsandersen/dart.svg?style=shield)](https://circleci.com/gh/davidwoodsandersen/dart)
 
+![Lines](coverage/badge-lines.svg) ![Functions](coverage/badge-functions.svg) ![Branches](coverage/badge-branches.svg) ![Statements](coverage/badge-statements.svg)
+
 Dart is an all-purpose JavaScript video player.
 
 ### Development
