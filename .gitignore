@@ -5,3 +5,4 @@ package-lock.json
 **.swp
 junit.xml
 coverage/*.json
+dev/*.js
