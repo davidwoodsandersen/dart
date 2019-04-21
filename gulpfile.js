@@ -2,6 +2,8 @@ const gulp = require('gulp');
 const path = require('path');
 const babelify = require('babelify');
 const browserify = require('browserify');
+const http = require('http');
+const handler = require('serve-handler');
 const uglify = require('gulp-uglify');
 const rename = require('gulp-rename');
 const replace = require('gulp-replace');
@@ -13,9 +15,7 @@ const buffer = require('vinyl-buffer');
 const source = require('vinyl-source-stream');
 const config = require('./package.json');
 
-gulp.task('default', function() {
-	var outputPath = path.resolve(__dirname, config.vars.outputPath);
-	var fileName = config.vars.fileName;
+function buildAsset(fileName, outputPath) {
 	var bundler = browserify('src/index.js');
 
 	bundler.transform(babelify);
@@ -33,6 +33,14 @@ gulp.task('default', function() {
 		.pipe(gulp.dest(outputPath));
 
 		console.log(`${fileName}.js created at ${outputPath}`);
+}
+
+gulp.task('build', function() {
+	buildAsset(config.vars.fileName, path.resolve(__dirname, config.vars.outputPath));
+});
+
+gulp.task('build:dev', function() {
+	buildAsset(config.vars.fileName, path.resolve(__dirname, 'dev'));
 });
 
 gulp.task('docs', function() {
@@ -40,6 +48,20 @@ gulp.task('docs', function() {
 		.pipe(concat('api.md'))
 		.pipe(jsdoc())
 		.pipe(gulp.dest('./docs'));
+});
+
+gulp.task('dev-server', function() {
+	var port = 3000;
+	var server = http.createServer((request, response) => {
+		return handler(request, response, {
+			cleanUrls: true,
+			public: 'dev'
+		});
+	});
+
+	server.listen(port, () => {
+		console.log(`Dev server running at http://localhost:${port}`);
+	});
 });
 
 gulp.task('test', function() {
@@ -72,5 +94,9 @@ gulp.task('lint', function() {
 });
 
 gulp.task('watch', function() {
-	gulp.watch(['./src/*.js', './src/**/*.js'], ['test', 'docs', 'default']);
+	gulp.watch(['./src/*.js', './src/**/*.js'], ['test', 'docs', 'build:dev']);
 });
+
+gulp.task('dev', ['build:dev', 'watch', 'dev-server']);
+
+gulp.task('default', ['build']);

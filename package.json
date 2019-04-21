@@ -9,7 +9,7 @@
     "test:badges": "jest-coverage-badges",
     "lint": "gulp lint",
     "docs": "gulp docs",
-    "dev": "gulp watch"
+    "dev": "gulp dev"
   },
   "author": "",
   "license": "ISC",
@@ -37,6 +37,7 @@
     "jest-cli": "^22.4.3",
     "jest-coverage-badges": "^1.1.2",
     "jest-junit": "^3.6.0",
+    "serve-handler": "^6.0.0",
     "vinyl-buffer": "^1.0.1",
     "vinyl-source-stream": "^2.0.0"
   }
