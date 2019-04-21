@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<style>
+			body {
+				font-family: Helvetica, sans-serif;
+			}
+		</style>
+		<title>Dart - Development Testing</title>
+	</head>
+	<body>
+		<h1>Development Testing</h1>
+		<div id="error"></div>
+		<div id="video"></div>
+		<script src="./dart.js"></script>
+		<script type="text/javascript">
+			function assetLoaded() {
+				return !!window.dart;
+			}
+
+			function createVideoInstance() {
+				return dart.create({
+					controls: true,
+					container: {
+						id: 'test-video',
+						parent: document.getElementById('video'),
+						dimensions: {
+							width: 600,
+							height: 400
+						}
+					},
+					videos: [{
+						source: 'https://stream-media.loc.gov/ammem/EarlyFilmsofNewYork/36374.mp4"'
+					}]
+				});
+			}
+
+			function showError(message) {
+				var el = document.getElementById('error');
+				el.textContent = message;
+			}
+
+			function init() {
+				if (!assetLoaded()) {
+					showError('No asset found. Make sure you have built to "lib/".');
+				} else {
+					var video = createVideoInstance();
+					video.init();
+				}
+			}
+
+			init();
+		</script>
+	</body>
+</html>
